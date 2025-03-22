@@ -2,31 +2,31 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>建模 on Linear Programming in Practice</title>
-    <link>http://localhost:1313/docs/modeling/</link>
+    <link>//localhost:1313/docs/modeling/</link>
     <description>Recent content in 建模 on Linear Programming in Practice</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 22 Mar 2025 17:39:17 +0800</lastBuildDate>
-    <atom:link href="http://localhost:1313/docs/modeling/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="//localhost:1313/docs/modeling/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>如何写线性规划</title>
-      <link>http://localhost:1313/docs/modeling/write-linear-program/</link>
+      <link>//localhost:1313/docs/modeling/write-linear-program/</link>
       <pubDate>Sat, 22 Mar 2025 17:33:08 +0800</pubDate>
-      <guid>http://localhost:1313/docs/modeling/write-linear-program/</guid>
+      <guid>//localhost:1313/docs/modeling/write-linear-program/</guid>
       <description></description>
     </item>
     <item>
       <title>如何写对偶问题</title>
-      <link>http://localhost:1313/docs/modeling/write-dual/</link>
+      <link>//localhost:1313/docs/modeling/write-dual/</link>
       <pubDate>Sat, 22 Mar 2025 17:33:14 +0800</pubDate>
-      <guid>http://localhost:1313/docs/modeling/write-dual/</guid>
+      <guid>//localhost:1313/docs/modeling/write-dual/</guid>
       <description></description>
     </item>
     <item>
       <title>线性化技巧</title>
-      <link>http://localhost:1313/docs/modeling/linearize/</link>
+      <link>//localhost:1313/docs/modeling/linearize/</link>
       <pubDate>Sat, 22 Mar 2025 17:39:17 +0800</pubDate>
-      <guid>http://localhost:1313/docs/modeling/linearize/</guid>
+      <guid>//localhost:1313/docs/modeling/linearize/</guid>
       <description></description>
     </item>
   </channel>

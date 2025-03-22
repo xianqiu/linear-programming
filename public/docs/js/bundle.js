@@ -294,7 +294,7 @@ tocBtn.addEventListener('hidden.bs.dropdown', event => {
   var stdin_default;
   var init_stdin = __esm({
     "ns-hugo-params:<stdin>"() {
-      stdin_default = { langPath: "http://localhost:1313/docs/js/components/" };
+      stdin_default = { langPath: "//localhost:1313/docs/js/components/" };
     }
   });
 
