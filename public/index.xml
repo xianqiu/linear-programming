@@ -2,122 +2,122 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Linear Programming in Practice</title>
-    <link>//localhost:1313/</link>
+    <link>http://localhost:1313/</link>
     <description>Recent content on Linear Programming in Practice</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 22 Mar 2025 17:39:17 +0800</lastBuildDate>
-    <atom:link href="//localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>为什么写这个教程</title>
-      <link>//localhost:1313/docs/start/motivation/</link>
+      <link>http://localhost:1313/docs/start/motivation/</link>
       <pubDate>Thu, 20 Mar 2025 20:00:22 +0800</pubDate>
-      <guid>//localhost:1313/docs/start/motivation/</guid>
-      <description></description>
+      <guid>http://localhost:1313/docs/start/motivation/</guid>
+      <description>&lt;p&gt;TBA.&lt;/p&gt;</description>
     </item>
     <item>
       <title>写作的原则</title>
-      <link>//localhost:1313/docs/start/principles/</link>
+      <link>http://localhost:1313/docs/start/principles/</link>
       <pubDate>Fri, 21 Mar 2025 20:12:21 +0800</pubDate>
-      <guid>//localhost:1313/docs/start/principles/</guid>
+      <guid>http://localhost:1313/docs/start/principles/</guid>
       <description></description>
     </item>
     <item>
       <title>版权声明</title>
-      <link>//localhost:1313/docs/start/copyright/</link>
+      <link>http://localhost:1313/docs/start/copyright/</link>
       <pubDate>Sat, 22 Mar 2025 10:55:26 +0800</pubDate>
-      <guid>//localhost:1313/docs/start/copyright/</guid>
+      <guid>http://localhost:1313/docs/start/copyright/</guid>
       <description></description>
     </item>
     <item>
       <title>关于作者</title>
-      <link>//localhost:1313/docs/start/about-me/</link>
+      <link>http://localhost:1313/docs/start/about-me/</link>
       <pubDate>Sat, 22 Mar 2025 11:29:44 +0800</pubDate>
-      <guid>//localhost:1313/docs/start/about-me/</guid>
+      <guid>http://localhost:1313/docs/start/about-me/</guid>
       <description></description>
     </item>
     <item>
       <title>什么是线性规划</title>
-      <link>//localhost:1313/docs/start/what-is/</link>
+      <link>http://localhost:1313/docs/start/what-is/</link>
       <pubDate>Fri, 21 Mar 2025 19:47:58 +0800</pubDate>
-      <guid>//localhost:1313/docs/start/what-is/</guid>
+      <guid>http://localhost:1313/docs/start/what-is/</guid>
       <description></description>
     </item>
     <item>
       <title>线性规划有什么用</title>
-      <link>//localhost:1313/docs/start/applications/</link>
+      <link>http://localhost:1313/docs/start/applications/</link>
       <pubDate>Sat, 22 Mar 2025 11:06:13 +0800</pubDate>
-      <guid>//localhost:1313/docs/start/applications/</guid>
+      <guid>http://localhost:1313/docs/start/applications/</guid>
       <description></description>
     </item>
     <item>
       <title>如何写线性规划</title>
-      <link>//localhost:1313/docs/modeling/write-linear-program/</link>
+      <link>http://localhost:1313/docs/modeling/write-linear-program/</link>
       <pubDate>Sat, 22 Mar 2025 17:33:08 +0800</pubDate>
-      <guid>//localhost:1313/docs/modeling/write-linear-program/</guid>
+      <guid>http://localhost:1313/docs/modeling/write-linear-program/</guid>
       <description></description>
     </item>
     <item>
       <title>分支定界法</title>
-      <link>//localhost:1313/docs/integer-programming/branch-and-bound/</link>
+      <link>http://localhost:1313/docs/integer-programming/branch-and-bound/</link>
       <pubDate>Sat, 22 Mar 2025 17:12:18 +0800</pubDate>
-      <guid>//localhost:1313/docs/integer-programming/branch-and-bound/</guid>
+      <guid>http://localhost:1313/docs/integer-programming/branch-and-bound/</guid>
       <description></description>
     </item>
     <item>
       <title>列生成</title>
-      <link>//localhost:1313/docs/decomposition/column-generation/</link>
+      <link>http://localhost:1313/docs/decomposition/column-generation/</link>
       <pubDate>Sat, 22 Mar 2025 17:07:49 +0800</pubDate>
-      <guid>//localhost:1313/docs/decomposition/column-generation/</guid>
+      <guid>http://localhost:1313/docs/decomposition/column-generation/</guid>
       <description></description>
     </item>
     <item>
       <title>如何写对偶问题</title>
-      <link>//localhost:1313/docs/modeling/write-dual/</link>
+      <link>http://localhost:1313/docs/modeling/write-dual/</link>
       <pubDate>Sat, 22 Mar 2025 17:33:14 +0800</pubDate>
-      <guid>//localhost:1313/docs/modeling/write-dual/</guid>
+      <guid>http://localhost:1313/docs/modeling/write-dual/</guid>
       <description></description>
     </item>
     <item>
       <title>割平面法</title>
-      <link>//localhost:1313/docs/integer-programming/cutting-plane/</link>
+      <link>http://localhost:1313/docs/integer-programming/cutting-plane/</link>
       <pubDate>Sat, 22 Mar 2025 17:12:29 +0800</pubDate>
-      <guid>//localhost:1313/docs/integer-programming/cutting-plane/</guid>
+      <guid>http://localhost:1313/docs/integer-programming/cutting-plane/</guid>
       <description></description>
     </item>
     <item>
       <title>行生成</title>
-      <link>//localhost:1313/docs/decomposition/row-generation/</link>
+      <link>http://localhost:1313/docs/decomposition/row-generation/</link>
       <pubDate>Sat, 22 Mar 2025 17:08:12 +0800</pubDate>
-      <guid>//localhost:1313/docs/decomposition/row-generation/</guid>
+      <guid>http://localhost:1313/docs/decomposition/row-generation/</guid>
       <description></description>
     </item>
     <item>
       <title>线性化技巧</title>
-      <link>//localhost:1313/docs/modeling/linearize/</link>
+      <link>http://localhost:1313/docs/modeling/linearize/</link>
       <pubDate>Sat, 22 Mar 2025 17:39:17 +0800</pubDate>
-      <guid>//localhost:1313/docs/modeling/linearize/</guid>
+      <guid>http://localhost:1313/docs/modeling/linearize/</guid>
       <description></description>
     </item>
     <item>
       <title>Benders分解</title>
-      <link>//localhost:1313/docs/decomposition/benders/</link>
+      <link>http://localhost:1313/docs/decomposition/benders/</link>
       <pubDate>Sat, 22 Mar 2025 17:08:24 +0800</pubDate>
-      <guid>//localhost:1313/docs/decomposition/benders/</guid>
+      <guid>http://localhost:1313/docs/decomposition/benders/</guid>
       <description></description>
     </item>
     <item>
       <title>标准形式</title>
-      <link>//localhost:1313/docs/basics/standard-form/</link>
+      <link>http://localhost:1313/docs/basics/standard-form/</link>
       <pubDate>Fri, 21 Mar 2025 19:38:06 +0800</pubDate>
-      <guid>//localhost:1313/docs/basics/standard-form/</guid>
+      <guid>http://localhost:1313/docs/basics/standard-form/</guid>
       <description></description>
     </item>
     <item>
       <title>单纯形算法</title>
-      <link>//localhost:1313/docs/simplex-algorithm/primal/</link>
+      <link>http://localhost:1313/docs/simplex-algorithm/primal/</link>
       <pubDate>Fri, 21 Mar 2025 19:35:16 +0800</pubDate>
-      <guid>//localhost:1313/docs/simplex-algorithm/primal/</guid>
+      <guid>http://localhost:1313/docs/simplex-algorithm/primal/</guid>
       <description></description>
     </item>
   </channel>

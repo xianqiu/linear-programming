@@ -2,24 +2,24 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>整数规划 on Linear Programming in Practice</title>
-    <link>//localhost:1313/docs/integer-programming/</link>
+    <link>http://localhost:1313/docs/integer-programming/</link>
     <description>Recent content in 整数规划 on Linear Programming in Practice</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 22 Mar 2025 17:12:29 +0800</lastBuildDate>
-    <atom:link href="//localhost:1313/docs/integer-programming/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/docs/integer-programming/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>分支定界法</title>
-      <link>//localhost:1313/docs/integer-programming/branch-and-bound/</link>
+      <link>http://localhost:1313/docs/integer-programming/branch-and-bound/</link>
       <pubDate>Sat, 22 Mar 2025 17:12:18 +0800</pubDate>
-      <guid>//localhost:1313/docs/integer-programming/branch-and-bound/</guid>
+      <guid>http://localhost:1313/docs/integer-programming/branch-and-bound/</guid>
       <description></description>
     </item>
     <item>
       <title>割平面法</title>
-      <link>//localhost:1313/docs/integer-programming/cutting-plane/</link>
+      <link>http://localhost:1313/docs/integer-programming/cutting-plane/</link>
       <pubDate>Sat, 22 Mar 2025 17:12:29 +0800</pubDate>
-      <guid>//localhost:1313/docs/integer-programming/cutting-plane/</guid>
+      <guid>http://localhost:1313/docs/integer-programming/cutting-plane/</guid>
       <description></description>
     </item>
   </channel>

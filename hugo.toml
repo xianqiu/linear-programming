@@ -1,4 +1,4 @@
-baseURL = 'lpp.buypdf.cn'
+baseURL = 'https://lpp.buypdf.cn'
 languageCode = 'en-us'
 title = 'Linear Programming in Practice'
 
