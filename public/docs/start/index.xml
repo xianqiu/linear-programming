@@ -2,52 +2,52 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>开始 on Linear Programming in Practice</title>
-    <link>http://localhost:1313/docs/start/</link>
+    <link>//localhost:1313/docs/start/</link>
     <description>Recent content in 开始 on Linear Programming in Practice</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 22 Mar 2025 11:29:44 +0800</lastBuildDate>
-    <atom:link href="http://localhost:1313/docs/start/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="//localhost:1313/docs/start/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>为什么写这个教程</title>
-      <link>http://localhost:1313/docs/start/motivation/</link>
+      <link>//localhost:1313/docs/start/motivation/</link>
       <pubDate>Thu, 20 Mar 2025 20:00:22 +0800</pubDate>
-      <guid>http://localhost:1313/docs/start/motivation/</guid>
+      <guid>//localhost:1313/docs/start/motivation/</guid>
       <description>&lt;p&gt;TBA.&lt;/p&gt;</description>
     </item>
     <item>
       <title>写作的原则</title>
-      <link>http://localhost:1313/docs/start/principles/</link>
+      <link>//localhost:1313/docs/start/principles/</link>
       <pubDate>Fri, 21 Mar 2025 20:12:21 +0800</pubDate>
-      <guid>http://localhost:1313/docs/start/principles/</guid>
+      <guid>//localhost:1313/docs/start/principles/</guid>
       <description></description>
     </item>
     <item>
       <title>版权声明</title>
-      <link>http://localhost:1313/docs/start/copyright/</link>
+      <link>//localhost:1313/docs/start/copyright/</link>
       <pubDate>Sat, 22 Mar 2025 10:55:26 +0800</pubDate>
-      <guid>http://localhost:1313/docs/start/copyright/</guid>
+      <guid>//localhost:1313/docs/start/copyright/</guid>
       <description></description>
     </item>
     <item>
       <title>关于作者</title>
-      <link>http://localhost:1313/docs/start/about-me/</link>
+      <link>//localhost:1313/docs/start/about-me/</link>
       <pubDate>Sat, 22 Mar 2025 11:29:44 +0800</pubDate>
-      <guid>http://localhost:1313/docs/start/about-me/</guid>
+      <guid>//localhost:1313/docs/start/about-me/</guid>
       <description></description>
     </item>
     <item>
       <title>什么是线性规划</title>
-      <link>http://localhost:1313/docs/start/what-is/</link>
+      <link>//localhost:1313/docs/start/what-is/</link>
       <pubDate>Fri, 21 Mar 2025 19:47:58 +0800</pubDate>
-      <guid>http://localhost:1313/docs/start/what-is/</guid>
+      <guid>//localhost:1313/docs/start/what-is/</guid>
       <description></description>
     </item>
     <item>
       <title>线性规划有什么用</title>
-      <link>http://localhost:1313/docs/start/applications/</link>
+      <link>//localhost:1313/docs/start/applications/</link>
       <pubDate>Sat, 22 Mar 2025 11:06:13 +0800</pubDate>
-      <guid>http://localhost:1313/docs/start/applications/</guid>
+      <guid>//localhost:1313/docs/start/applications/</guid>
       <description></description>
     </item>
   </channel>
