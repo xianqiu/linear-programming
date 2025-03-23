@@ -1,3 +1,4 @@
+baseURL = "/"
 title = 'Linear Programming in Practice'
 enableGitInfo = true 
 [module]
