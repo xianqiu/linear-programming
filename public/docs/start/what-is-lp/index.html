@@ -16,7 +16,7 @@
 
 <html lang="en"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
     <meta charset="utf-8" />
-    <title>行生成 | Linear Programming in Practice</title>
+    <title>什么是线性规划 | Linear Programming in Practice</title>
     <meta name="robots" content="noindex">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="keywords" content="Documentation, Hugo, Hugo Theme, Bootstrap" />
@@ -31,15 +31,41 @@
 <link rel="icon" type="image/png" sizes="32x32" href="//localhost:1313/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="//localhost:1313/favicon-16x16.png">
 <link rel="manifest" crossorigin="use-credentials" href="//localhost:1313/site.webmanifest">
-<meta property="og:title" content="行生成" />
-<meta property="og:description" content="" />
+<meta property="og:title" content="什么是线性规划" />
+<meta property="og:description" content="线性规划的英文是 Linear Programming。注意，Programming 不是编程的意思，它指的是一类优化问题。从字面翻译，Linear Programming 就是一种线性的优化问题。
+线性规划 link我们看一个例子。
+
+  $$
+\begin{aligned}
+\max~ &amp; 7x_1 &#43; 6x_2 \\
+\text{s.t. }  &amp; 3x_1 &#43; x_2 \leq 120 \\
+&amp; x_1 &#43; 2x_2 \leq 160 \\
+&amp; x_1 \leq 35\\
+\end{aligned}
+$$
+  
+第一行的表达式 $7x_1 &#43; 6x_2$ 称为目标函数，它前面那个 max 是 maximize 的缩写，代表优化方向。即，找到满足条件的 $x_1, x_2$ 使得这个目标函数值最大。接下来的三行公式是在描述 $x_1, x_2$ 需要满足的条件，其中 s.t. 是 subject to 的缩写。
+以第一个条件为例，如果 $x_1=40, x_2=0$, 它满足 $3x_1 &#43; x_2 \leq 120$ 这个条件。但是，它不满足第三个条件 $x_1\leq 35$。因此 $x_1=40, x_2=0$ 不符合要求。" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="//localhost:1313/docs/decomposition/row-generation/" /><meta property="og:image" content="//localhost:1313/opengraph/card-base-2_hu_7ab5b3fb7c222d5f.png"/><meta property="article:section" content="docs" />
-<meta property="article:published_time" content="2025-03-22T17:08:12+08:00" />
-<meta property="article:modified_time" content="2025-03-22T21:08:48+08:00" /><meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="//localhost:1313/opengraph/card-base-2_hu_7ab5b3fb7c222d5f.png"/>
-<meta name="twitter:title" content="行生成"/>
-<meta name="twitter:description" content=""/>
+<meta property="og:url" content="//localhost:1313/docs/start/what-is-lp/" /><meta property="og:image" content="//localhost:1313/opengraph/card-base-2_hu_f4844f541f3029de.png"/><meta property="article:section" content="docs" />
+<meta property="article:published_time" content="2025-03-21T19:47:58+08:00" />
+<meta property="article:modified_time" content="2025-03-21T19:47:58+08:00" /><meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="//localhost:1313/opengraph/card-base-2_hu_f4844f541f3029de.png"/>
+<meta name="twitter:title" content="什么是线性规划"/>
+<meta name="twitter:description" content="线性规划的英文是 Linear Programming。注意，Programming 不是编程的意思，它指的是一类优化问题。从字面翻译，Linear Programming 就是一种线性的优化问题。
+线性规划 link我们看一个例子。
+
+  $$
+\begin{aligned}
+\max~ &amp; 7x_1 &#43; 6x_2 \\
+\text{s.t. }  &amp; 3x_1 &#43; x_2 \leq 120 \\
+&amp; x_1 &#43; 2x_2 \leq 160 \\
+&amp; x_1 \leq 35\\
+\end{aligned}
+$$
+  
+第一行的表达式 $7x_1 &#43; 6x_2$ 称为目标函数，它前面那个 max 是 maximize 的缩写，代表优化方向。即，找到满足条件的 $x_1, x_2$ 使得这个目标函数值最大。接下来的三行公式是在描述 $x_1, x_2$ 需要满足的条件，其中 s.t. 是 subject to 的缩写。
+以第一个条件为例，如果 $x_1=40, x_2=0$, 它满足 $3x_1 &#43; x_2 \leq 120$ 这个条件。但是，它不满足第三个条件 $x_1\leq 35$。因此 $x_1=40, x_2=0$ 不符合要求。"/>
 
     
         <link rel="alternate" type="application/atom+xml" title="Atom feed for Linear Programming in Practice" href="/index.xml" />
@@ -49,8 +75,27 @@
     
 
     <link rel="stylesheet" href="/docs/scss/style.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="/docs/scss/katex.css" crossorigin="anonymous">
     
+    <script src="/docs/js/katex.js" defer></script>
+    <script src="/docs/js/auto-render.js" defer></script>
     
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.getElementById("content"), {
+          
+          
+          delimiters: [
+              {left: '$$', right: '$$', display: true},
+              {left: '$', right: '$', display: false},
+              {left: '\\(', right: '\\)', display: false},
+              {left: '\\[', right: '\\]', display: true}
+          ],
+          
+          throwOnError : false
+        });
+    });
+</script>
     </head>
 <body>
         <div class="content">
@@ -70,12 +115,12 @@
                 
                     
                     
-                        <li class="sidebar-dropdown  ">
+                        <li class="sidebar-dropdown  current active">
                             <button class="btn">
                                 <i class="material-icons me-2">circle</i>
                                 开始
                             </button>
-                            <div class="sidebar-submenu ">
+                            <div class="sidebar-submenu d-block">
                                 <ul>
                                     
                                         
@@ -85,7 +130,7 @@
                                     
                                         
                                         
-                                            <li class=" "><a class="sidebar-nested-link" href="//localhost:1313/docs/start/what-is-lp/">什么是线性规划</a></li>
+                                            <li class="current "><a class="sidebar-nested-link" href="//localhost:1313/docs/start/what-is-lp/">什么是线性规划</a></li>
                                         
                                     
                                         
@@ -176,12 +221,12 @@
                 
                     
                     
-                        <li class="sidebar-dropdown  current active">
+                        <li class="sidebar-dropdown  ">
                             <button class="btn">
                                 <i class="material-icons me-2">grid_view</i>
                                 分解
                             </button>
-                            <div class="sidebar-submenu d-block">
+                            <div class="sidebar-submenu ">
                                 <ul>
                                     
                                         
@@ -191,7 +236,7 @@
                                     
                                         
                                         
-                                            <li class="current "><a class="sidebar-nested-link" href="//localhost:1313/docs/decomposition/row-generation/">行生成</a></li>
+                                            <li class=" "><a class="sidebar-nested-link" href="//localhost:1313/docs/decomposition/row-generation/">行生成</a></li>
                                         
                                     
                                         
@@ -321,15 +366,15 @@
             
             
                 <li class="breadcrumb-item text-capitalize" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-                    <a itemprop="item" href="/docs/decomposition/">
-                        <span itemprop="name">分解</span>
+                    <a itemprop="item" href="/docs/start/">
+                        <span itemprop="name">开始</span>
                     </a>
                     <meta itemprop="position" content='2' />
                 </li>
             
         
             <li class="breadcrumb-item text-capitalize active" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-                <span itemprop="name">行生成</span>
+                <span itemprop="name">什么是线性规划</span>
                 <meta itemprop="position" content='3' />
             </li>
         
@@ -338,24 +383,42 @@
                                     
                                     <div class="row flex-xl-nowrap">
                                         
-                                        <div class="docs-toc col-xl-3  visually-hidden  d-xl-block"><toc>
+                                        <div class="docs-toc col-xl-3    d-xl-block"><toc>
     <div class="fw-bold text-uppercase mb-2">On this page</div>
-    <nav id="TableOfContents"></nav>
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#线性规划">线性规划</a></li>
+        <li><a href="#有什么用">有什么用</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
     </toc></div>
                                         
                                         
-                                        <div class="docs-toc-mobile  visually-hidden  d-print-none d-xl-none">
+                                        <div class="docs-toc-mobile    d-print-none d-xl-none">
                                             <button id="toc-dropdown-btn" class="btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" data-bs-offset="0,0" aria-expanded="false">
                                                 Table of Contents
                                             </button>
-<nav id="toc-mobile"></nav></div>
-                                        <div class="docs-content col-12  mt-0">
+<nav id="toc-mobile">
+  <ul class="dropdown-menu">
+    <li>
+      <ul>
+        <li><a href="#线性规划">线性规划</a></li>
+        <li><a href="#有什么用">有什么用</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+                                        <div class="docs-content col-12 col-xl-9 mt-0">
                                             <div class="mb-0 d-flex">
                                                 
                                                 <i class="material-icons title-icon me-2">article</i>
                                                 
                                                 <h1 class="content-title mb-0">
-                                                    行生成
+                                                    什么是线性规划
                                                     
                                                         <span class="badge bg-default fs-6 mb-1 align-middle">DRAFT</span>
                                                     
@@ -368,51 +431,38 @@
                                                 
     
     <div data-prismjs-copy="" data-prismjs-copy-success="" data-prismjs-copy-error="">
-        
+        <p>线性规划的英文是 Linear Programming。注意，Programming 不是编程的意思，它指的是一类优化问题。从字面翻译，Linear Programming 就是一种线性的优化问题。</p>
+<h3 id="线性规划">线性规划 <a href="#%e7%ba%bf%e6%80%a7%e8%a7%84%e5%88%92" class="anchor" aria-hidden="true"><i class="material-icons align-middle">link</i></a></h3><p>我们看一个例子。
+
+  <div class="equation leqno" >$$
+\begin{aligned}
+\max~ &amp; 7x_1 &#43; 6x_2 \\
+\text{s.t. }  &amp; 3x_1 &#43; x_2 \leq 120 \\
+&amp; x_1 &#43; 2x_2 \leq 160 \\
+&amp; x_1 \leq 35\\
+\end{aligned}
+$$
+  </div></p>
+<p>第一行的表达式 $7x_1 + 6x_2$ 称为<strong>目标函数</strong>，它前面那个 <code>max</code> 是 <code>maximize</code> 的缩写，代表优化方向。即，找到满足条件的 $x_1, x_2$ 使得这个目标函数值最大。接下来的三行公式是在描述 $x_1, x_2$ 需要满足的条件，其中 <code>s.t.</code> 是 <code>subject to</code> 的缩写。</p>
+<p>以第一个条件为例，如果 $x_1=40, x_2=0$, 它满足 $3x_1 + x_2 \leq 120$ 这个条件。但是，它不满足第三个条件 $x_1\leq 35$。因此 $x_1=40, x_2=0$ 不符合要求。</p>
+<p>可以验证 $x_1=0, x_2=0$ 满足上述三个条件，因此它是一个<strong>可行解</strong>。显然，它不是最优解。最优解要使得目标函数值最大。</p>
+<p>如果把一个优化问题写成上面的形式，即目标函数和约束条件的形式，一般称它为数学规划。<strong>线性规划</strong>指的就是目标函数和约束条件都是线性的数学规划问题。</p>
+<p>什么是线性？简单来说，就是变量的系数是常数，而且指数是1，例如 $3 x_1 + x_2 $。二次及以上就是非线性，比如 $2 x_1^2 + 3$，$4x_1 + x_1x_2$。</p>
+<p>我们的核心问题就是求线性规划问题的最优解。换句话说，要找到一个算法，任给一个线性规划的例子，能够在合理的时间内计算这个例子的最优解，或者判断无解。</p>
+<h3 id="有什么用">有什么用 <a href="#%e6%9c%89%e4%bb%80%e4%b9%88%e7%94%a8" class="anchor" aria-hidden="true"><i class="material-icons align-middle">link</i></a></h3><p>注意数学规划的形式，它有两个关键要素，一个是目标，另一个是约束条件。在企业的经营和管理中，很多问题都可以这样去描述。</p>
+<p>粗略地讲，经营的目标一般是收益，约束条件可以是成本、效率或者资源等等。目标和约束还可以相互转换。当问题规模很大时，决策就变得复杂。人工决策不仅效率低，而且质量得不到保证。</p>
+<p>在这种情况下，自动化的决策决策工具，就能发挥很大的价值。那么线性规划，就为自动化决策工具提供了算法基础。</p>
+<p>接下来我举几个实际应用的场景。</p>
+<ul>
+<li><strong>商品采购</strong> 一家大型超市，或者电商平台，有几千种商品在卖。可能每天都需要补货。如果多补点货，采购成本会降低，但是库存成本会增加；如果少补一点，万一缺货了，顾客体验就差。问题来了，什么时候补货，补哪些商品，补多少货。收益和成本怎么平衡。</li>
+<li><strong>物流规划</strong> 物流简单说就是运货。需要把货物从出发地运输到目的地。目标是费用越少越好，约束是时效要保障。这就涉及到车辆的路径规划，仓库的选址规划，车辆的调度等等。简单来说，给你一批货，如果要暂存，仓库建哪里，建几个；运输的时候，用什么交通工具，货车还是火车或者飞机；如果是货车，用大车还是小车；货物装车的时候，怎么装才能装满；运输的时候，走什么路线等等。</li>
+<li><strong>机器人调度</strong> 在制造业中，尤其是汽车和半导体行业，有大量的工业机器人在车间7*24小时工作。注意，工业机器人是满足特定功能的自动化设备，不一定是人的形态。例如机械臂，机械手，自动化的物流车等。一个工件对应多个任务，一个任务对应一种机器人。给定一批工件和任务，如何调度机器人执行任务，才能最大化效率。</li>
+<li><strong>生产运营</strong> 制造业的生产运营一般有两类决策问题：一是排产；二是排班。工厂一般有多条流水线，每条流水线负责一些产品的生产任务。不同的任务有不同的工序和加工时间，以及需要的资源。如何安排这些任务，使得工厂的产能最大化。排班主要是安排人，把人安排在对应的任务，或者对应的机器，目标是人和机器的产出最大化。</li>
+<li><strong>广告营销</strong> 假如你需要打广告，也就是买流量。广告平台采取的是竞价模式。如果买流量的人多，那流量就贵，那么收益就少。所以，什么时候买，买多少流量，收益能最大化。你有一些用户，你想给用户发优惠券，让他来买你的东西。问题来了，发给哪些用户，发什么优惠券，发多少金额。</li>
+</ul>
+<p>还有更多的例子，但是没必要都列出来。我们知道它有用就够了。它的核心功能就是作为一个基础的决策工具。</p>
+
     </div>
-
-    
-
-
-
-
-
-    
-    
-
-
-
-
-
-
-<div class="gitinfo d-flex flex-wrap justify-content-between align-items-center opacity-85 pt-3">
-    <div id="edit-this-page" class="mt-1">
-        <a href="https://github.com/xianqiu/linear-programming/blob/main/content/docs/decomposition/row-generation.md" alt="行生成" rel="noopener noreferrer" target="_blank">
-            
-            <span class="me-1 align-text-bottom">
-                
-                    <svg width="20px" height="20px" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
-  <path d="M16 0.396c-8.839 0-16 7.167-16 16 0 7.073 4.584 13.068 10.937 15.183 0.803 0.151 1.093-0.344 1.093-0.772 0-0.38-0.009-1.385-0.015-2.719-4.453 0.964-5.391-2.151-5.391-2.151-0.729-1.844-1.781-2.339-1.781-2.339-1.448-0.989 0.115-0.968 0.115-0.968 1.604 0.109 2.448 1.645 2.448 1.645 1.427 2.448 3.744 1.74 4.661 1.328 0.14-1.031 0.557-1.74 1.011-2.135-3.552-0.401-7.287-1.776-7.287-7.907 0-1.751 0.62-3.177 1.645-4.297-0.177-0.401-0.719-2.031 0.141-4.235 0 0 1.339-0.427 4.4 1.641 1.281-0.355 2.641-0.532 4-0.541 1.36 0.009 2.719 0.187 4 0.541 3.043-2.068 4.381-1.641 4.381-1.641 0.859 2.204 0.317 3.833 0.161 4.235 1.015 1.12 1.635 2.547 1.635 4.297 0 6.145-3.74 7.5-7.296 7.891 0.556 0.479 1.077 1.464 1.077 2.959 0 2.14-0.020 3.864-0.020 4.385 0 0.416 0.28 0.916 1.104 0.755 6.4-2.093 10.979-8.093 10.979-15.156 0-8.833-7.161-16-16-16z"/>
-</svg>
-
-                
-            </span>
-            Edit this page
-            
-        </a>
-    </div>
-    
-    <div id="last-modified" class="mt-1">
-        <p class="mb-0 fw-semibold">Last updated <span
-            id="relativetime"
-            data-authdate="2025-03-22T21:08:48&#43;0800"
-            title="22 Mar 2025, 21:08 CST">
-            22 Mar 2025, 21:08 CST
-        </span>. <span class="material-icons size-20 align-text-bottom opacity-75">history</span>
-        </p>
-    </div>
-    
-</div>
 
     
 
@@ -423,20 +473,20 @@
 
 	<div class="row flex-xl-nowrap ">
 	<div class="col-sm-6 pt-2 doc-next">
-		<a href="/docs/integer-programming/cutting-plane/">
+		<a href="/docs/start/why/">
 			<div class="card h-100 my-1">
 				<div class="card-body py-2">
-                    <p class="card-title fs-5 fw-semibold lh-base mb-0"><i class="material-icons align-middle">navigate_before</i> 割平面法</p>
+                    <p class="card-title fs-5 fw-semibold lh-base mb-0"><i class="material-icons align-middle">navigate_before</i> 为什么写这个教程</p>
 					
 				</div>
 			</div>
 		</a>
         </div>
 	<div class="col-sm-6 pt-2 doc-prev">
-		<a class="ms-auto" href="/docs/modeling/linearize/">
+		<a class="ms-auto" href="/docs/modeling/write-linear-program/">
 			<div class="card h-100 my-1 text-end">
 				<div class="card-body py-2">
-                    <p class="card-title fs-5 fw-semibold lh-base mb-0">线性化技巧 <i class="material-icons align-middle">navigate_next</i></p>
+                    <p class="card-title fs-5 fw-semibold lh-base mb-0">如何写线性规划 <i class="material-icons align-middle">navigate_next</i></p>
 					
 				</div>
 			</div>

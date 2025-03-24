@@ -6,49 +6,28 @@
     <description>Recent content in 开始 on Linear Programming in Practice</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 22 Mar 2025 21:15:47 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 22 Mar 2025 21:08:48 +0800</lastBuildDate>
     <atom:link href="//localhost:1313/docs/start/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>为什么写这个教程</title>
-      <link>//localhost:1313/docs/start/motivation/</link>
+      <link>//localhost:1313/docs/start/why/</link>
       <pubDate>Thu, 20 Mar 2025 20:00:22 +0800</pubDate>
-      <guid>//localhost:1313/docs/start/motivation/</guid>
-      <description>&lt;p&gt;TBA.&lt;/p&gt;</description>
+      <guid>//localhost:1313/docs/start/why/</guid>
+      <description>&lt;p&gt;线性规划是一门应用课程。它是数学系课程中，少有的实用性高的课程。我看过的一些资料，主要还是在讲理论，讲实践的比较少。比如说单纯形算法，我学过它的证明，了解它的算法细节。那问题来了，如果我想实现一个单纯形算法的求解器，应该怎么开始呢。从理论到工程，要解决哪些问题呢。&lt;/p&gt;&#xA;&lt;p&gt;如果你是计算机背景，这个难不到你。如果是数学背景，可能会遇到一些困难。但是线性规划的教材，一般不讲编程实现。在我看来，既然在讲算法，为什么不去实现呢。自己的代码跑起来，顺便做一些测试，这样也更容易理解算法。&lt;/p&gt;&#xA;&lt;p&gt;我之前在CSDN上写过一些基础的教程，文章的阅读量和收藏也不错。但我自己觉得写得不好，有些东西没讲清楚，代码质量也不高，但是我懒得在CSDN上改了。这个平台我不喜欢，写作体验不好，阅读体验也不好。平台还未经允许把我的文章转成了收费。当然，也没给我钱。我想把些之前写的内容做个整合，顺便提升一下质量。最重要的是，我想免费分享。&lt;/p&gt;&#xA;&lt;h3 id=&#34;目标&#34;&gt;目标 &lt;a href=&#34;#%e7%9b%ae%e6%a0%87&#34; class=&#34;anchor&#34; aria-hidden=&#34;true&#34;&gt;&lt;i class=&#34;material-icons align-middle&#34;&gt;link&lt;/i&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;线性规划这个内容，不只是数学系有。在其他专业，比如经济管理，机械制造，自动化，计算机都有讲。只不过侧重点各有不同。这也间接证明了，这个课程的实用性。&lt;/p&gt;&#xA;&lt;p&gt;从这个实用性出发。我想实现下面两个目标。&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;提升工程能力&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;p&gt;如果你是数学背景，或者说工程经验有欠缺。我希望这个教程能帮你提升工程能力。&#xA;这里主要讲相关算法的实现。比如说，我们从0到1实现一个线性规划的求解器。当然，这是实验性质的，离真正的产品还很遥远。但这个实现过程，会让我们看到工程化的思想。&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;降低学习门槛&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;p&gt;线性规划是很有用的。但是学习和使用门槛不低。如果能降低它的使用门槛，让更多的人能掌握这个技术，那么它的价值会更大。基本思路就是从例子出发，让非数学背景的人，也能理解背后的思想，并且能够顺利上手。&lt;/p&gt;&#xA;&lt;p&gt;当然，要实现这两个目标并不容易。我打算慢慢来，通过持续迭代，去接近这两个目标。&lt;/p&gt;&#xA;&lt;h3 id=&#34;前提&#34;&gt;前提 &lt;a href=&#34;#%e5%89%8d%e6%8f%90&#34; class=&#34;anchor&#34; aria-hidden=&#34;true&#34;&gt;&lt;i class=&#34;material-icons align-middle&#34;&gt;link&lt;/i&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;如果你想学习这个教程，最好是具备这些前提知识。&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;线性代数&lt;/strong&gt; 了解矩阵和向量相关的计算，比如矩阵乘法，求逆，求秩等。&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;编程能力&lt;/strong&gt; 了解Python编程，了解面向对象编程的思想。&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h3 id=&#34;原则&#34;&gt;原则 &lt;a href=&#34;#%e5%8e%9f%e5%88%99&#34; class=&#34;anchor&#34; aria-hidden=&#34;true&#34;&gt;&lt;i class=&#34;material-icons align-middle&#34;&gt;link&lt;/i&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;下面是关于写作的原则，主是为了约束我自己。我认为遵循这些原则，对提升文章的可读性和实用性是有帮助的。&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;保持简单。语言尽量简单，尽量口语化，让人读起来轻松。但是，保持简单的同时，会损失一些严谨性。我觉得这个可以接受，因为这是讲实践，而不是做理论证明。&lt;/li&gt;&#xA;&lt;li&gt;独立性。各章节的内容要尽量独立，不要交叉引用。这样做的好处是，节约阅读时间。假如你要看后面的章节，跳过去直接看就行，而不需要从头开始。当然，完全不引用，是做不到的。有一些基础知识，是要提前掌握的。&lt;/li&gt;&#xA;&lt;li&gt;有例子。所有的知识点都要有具体的例子，不能空讲理论。如果写不清楚，那就不写。但是要注意，例子的作用是帮助理解，代替不了证明。&lt;/li&gt;&#xA;&lt;li&gt;能验证。用代码去实现相关算法，要有测试用例。不但要保证代码的质量，还要保证代码与教程的一致性。&lt;/li&gt;&#xA;&lt;li&gt;用中文。本文档的第一语言是中文。有些地方可能会标注英文，是为了方便检索。但是有例外，代码或伪代码会用英文。&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;h3 id=&#34;交流&#34;&gt;交流 &lt;a href=&#34;#%e4%ba%a4%e6%b5%81&#34; class=&#34;anchor&#34; aria-hidden=&#34;true&#34;&gt;&lt;i class=&#34;material-icons align-middle&#34;&gt;link&lt;/i&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;欢迎交流，提意见或建议。&lt;/p&gt;</description>
     </item>
     <item>
-      <title>写作的原则</title>
-      <link>//localhost:1313/docs/start/principles/</link>
-      <pubDate>Fri, 21 Mar 2025 20:12:21 +0800</pubDate>
-      <guid>//localhost:1313/docs/start/principles/</guid>
-      <description></description>
+      <title>什么是线性规划</title>
+      <link>//localhost:1313/docs/start/what-is-lp/</link>
+      <pubDate>Fri, 21 Mar 2025 19:47:58 +0800</pubDate>
+      <guid>//localhost:1313/docs/start/what-is-lp/</guid>
+      <description>&lt;p&gt;线性规划的英文是 Linear Programming。注意，Programming 不是编程的意思，它指的是一类优化问题。从字面翻译，Linear Programming 就是一种线性的优化问题。&lt;/p&gt;&#xA;&lt;h3 id=&#34;线性规划&#34;&gt;线性规划 &lt;a href=&#34;#%e7%ba%bf%e6%80%a7%e8%a7%84%e5%88%92&#34; class=&#34;anchor&#34; aria-hidden=&#34;true&#34;&gt;&lt;i class=&#34;material-icons align-middle&#34;&gt;link&lt;/i&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;我们看一个例子。&#xA;&#xA;  &lt;div class=&#34;equation leqno&#34; &gt;$$&#xA;\begin{aligned}&#xA;\max~ &amp;amp; 7x_1 &amp;#43; 6x_2 \\&#xA;\text{s.t. }  &amp;amp; 3x_1 &amp;#43; x_2 \leq 120 \\&#xA;&amp;amp; x_1 &amp;#43; 2x_2 \leq 160 \\&#xA;&amp;amp; x_1 \leq 35\\&#xA;\end{aligned}&#xA;$$&#xA;  &lt;/div&gt;&lt;/p&gt;&#xA;&lt;p&gt;第一行的表达式 $7x_1 + 6x_2$ 称为&lt;strong&gt;目标函数&lt;/strong&gt;，它前面那个 &lt;code&gt;max&lt;/code&gt; 是 &lt;code&gt;maximize&lt;/code&gt; 的缩写，代表优化方向。即，找到满足条件的 $x_1, x_2$ 使得这个目标函数值最大。接下来的三行公式是在描述 $x_1, x_2$ 需要满足的条件，其中 &lt;code&gt;s.t.&lt;/code&gt; 是 &lt;code&gt;subject to&lt;/code&gt; 的缩写。&lt;/p&gt;&#xA;&lt;p&gt;以第一个条件为例，如果 $x_1=40, x_2=0$, 它满足 $3x_1 + x_2 \leq 120$ 这个条件。但是，它不满足第三个条件 $x_1\leq 35$。因此 $x_1=40, x_2=0$ 不符合要求。&lt;/p&gt;</description>
     </item>
     <item>
       <title>版权声明</title>
       <link>//localhost:1313/docs/start/copyright/</link>
       <pubDate>Sat, 22 Mar 2025 10:55:26 +0800</pubDate>
       <guid>//localhost:1313/docs/start/copyright/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>关于作者</title>
-      <link>//localhost:1313/docs/start/about-me/</link>
-      <pubDate>Sat, 22 Mar 2025 11:29:44 +0800</pubDate>
-      <guid>//localhost:1313/docs/start/about-me/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>什么是线性规划</title>
-      <link>//localhost:1313/docs/start/what-is/</link>
-      <pubDate>Fri, 21 Mar 2025 19:47:58 +0800</pubDate>
-      <guid>//localhost:1313/docs/start/what-is/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>线性规划有什么用</title>
-      <link>//localhost:1313/docs/start/applications/</link>
-      <pubDate>Sat, 22 Mar 2025 11:06:13 +0800</pubDate>
-      <guid>//localhost:1313/docs/start/applications/</guid>
-      <description></description>
+      <description>&lt;div class=&#34;alert alert-info d-flex&#34; role=&#34;alert&#34;&gt;&#xA;  &lt;div class=&#34;flex-shrink-1 alert-icon&#34;&gt;&#xA;  &#xA;  &lt;span class=&#34;material-icons size-20 me-2&#34;&gt;&#xA;  info&#xA;  &lt;/span&gt;&lt;/div&gt;&#xA;  &#xA;  &lt;div class=&#34;w-100&#34;&gt;&lt;strong&gt;声明&lt;/strong&gt; 本网站所有内容（包括文档和代码）版权归作者所有。&lt;/div&gt;&#xA;  &lt;/div&gt;&#xA;&lt;p&gt;&lt;strong&gt;说明&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;所有内容对个人免费开放；&lt;/li&gt;&#xA;&lt;li&gt;允许个人对内容进行复制、修改和分发；&lt;/li&gt;&#xA;&lt;li&gt;不允许直接出售相关资料；&lt;/li&gt;&#xA;&lt;li&gt;允许在社交媒体中引用本网站的内容（期待注明出处）；&lt;/li&gt;&#xA;&lt;li&gt;允许在出版物中引用本网站的内容（期待注明出处）；&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
     </item>
   </channel>
 </rss>

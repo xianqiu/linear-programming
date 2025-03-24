@@ -2,3 +2,9 @@
 
 
 TODO
+
+
+## 主页
+
+* https://notes-lpp.netlify.app/
+* https://lpp.buypdf.cn/

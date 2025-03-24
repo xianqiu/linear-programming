@@ -5,25 +5,13 @@
     <loc>//localhost:1313/docs/start/</loc>
     <lastmod>2025-03-22T21:08:48+08:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/docs/start/motivation/</loc>
-    <lastmod>2025-03-22T21:15:47+08:00</lastmod>
+    <loc>//localhost:1313/docs/start/why/</loc>
+    <lastmod>2025-03-20T20:00:22+08:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/docs/start/principles/</loc>
-    <lastmod>2025-03-22T21:08:48+08:00</lastmod>
-  </url><url>
-    <loc>//localhost:1313/docs/start/copyright/</loc>
-    <lastmod>2025-03-22T21:08:48+08:00</lastmod>
-  </url><url>
-    <loc>//localhost:1313/docs/start/about-me/</loc>
-    <lastmod>2025-03-22T21:08:48+08:00</lastmod>
-  </url><url>
-    <loc>//localhost:1313/docs/start/what-is/</loc>
-    <lastmod>2025-03-22T21:08:48+08:00</lastmod>
+    <loc>//localhost:1313/docs/start/what-is-lp/</loc>
+    <lastmod>2025-03-21T19:47:58+08:00</lastmod>
   </url><url>
     <loc>//localhost:1313/docs/basics/</loc>
-    <lastmod>2025-03-22T21:08:48+08:00</lastmod>
-  </url><url>
-    <loc>//localhost:1313/docs/start/applications/</loc>
     <lastmod>2025-03-22T21:08:48+08:00</lastmod>
   </url><url>
     <loc>//localhost:1313/docs/modeling/write-linear-program/</loc>
@@ -33,6 +21,9 @@
     <lastmod>2025-03-22T21:08:48+08:00</lastmod>
   </url><url>
     <loc>//localhost:1313/docs/decomposition/column-generation/</loc>
+    <lastmod>2025-03-22T21:08:48+08:00</lastmod>
+  </url><url>
+    <loc>//localhost:1313/docs/start/copyright/</loc>
     <lastmod>2025-03-22T21:08:48+08:00</lastmod>
   </url><url>
     <loc>//localhost:1313/docs/simplex-algorithm/</loc>
@@ -78,7 +69,7 @@
     <lastmod>2025-03-22T21:08:48+08:00</lastmod>
   </url><url>
     <loc>//localhost:1313/</loc>
-    <lastmod>2025-03-22T21:15:47+08:00</lastmod>
+    <lastmod>2025-03-22T21:08:48+08:00</lastmod>
   </url><url>
     <loc>//localhost:1313/categories/</loc>
   </url><url>

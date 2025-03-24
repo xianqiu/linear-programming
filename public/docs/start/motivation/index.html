@@ -32,14 +32,52 @@
 <link rel="icon" type="image/png" sizes="16x16" href="//localhost:1313/favicon-16x16.png">
 <link rel="manifest" crossorigin="use-credentials" href="//localhost:1313/site.webmanifest">
 <meta property="og:title" content="为什么写这个教程" />
-<meta property="og:description" content="TBA." />
+<meta property="og:description" content="线性规划是一门应用课程。它是数学系课程中，少有的实用性高的课程。我看过的一些资料，主要还是在讲理论，讲实践的比较少。比如说单纯形算法，我学过它的证明，了解它的算法细节。那问题来了，如果我想实现一个单纯形算法的求解器，应该怎么开始呢。从理论到工程，要解决哪些问题呢。
+如果你是计算机背景，这个难不到你。如果是数学背景，可能会遇到一些困难。但是线性规划的教材，一般不讲编程实现。在我看来，既然在讲算法，为什么不去实现呢。自己的代码跑起来，顺便做一些测试，这样也更容易理解算法。
+我之前在CSDN上写过一些基础的教程，文章的阅读量和收藏也不错。但我自己觉得写得不好，有些东西没讲清楚，代码质量也不高，但是我懒得在CSDN上改了。这个平台我不喜欢，写作体验不好，阅读体验也不好。平台还未经允许把我的文章转成了收费。当然，也没给我钱。我想把些之前写的内容做个整合，顺便提升一下质量。最重要的是，我想免费分享。
+目标 link线性规划这个内容，不只是数学系有。在其他专业，比如经济管理，机械制造，自动化，计算机都有讲。只不过侧重点各有不同。这也间接证明了，这个课程的实用性。
+从这个实用性出发。我想实现下面两个目标。
+提升工程能力
+如果你是数学背景，或者说工程经验有欠缺。我希望这个教程能帮你提升工程能力。
+这里主要讲相关算法的实现。比如说，我们从0到1实现一个线性规划的求解器。当然，这是实验性质的，离真正的产品还很遥远。但这个实现过程，会让我们看到工程化的思想。
+降低学习门槛
+线性规划是很有用的。但是学习和使用门槛不低。如果能降低它的使用门槛，让更多的人能掌握这个技术，那么它的价值会更大。基本思路就是从例子出发，让非数学背景的人，也能理解背后的思想，并且能够顺利上手。
+当然，要实现这两个目标并不容易。我打算慢慢来，通过持续迭代，去接近这两个目标。
+原则 link下面是关于写作的原则，主是为了约束我自己。我认为遵循这些原则，对提升文章的可读性和实用性是有帮助的。
+
+保持简单。语言尽量简单，尽量口语化，让人读起来轻松。但是，保持简单的同时，会损失一些严谨性。我觉得这个可以接受，因为这是讲实践，而不是做理论证明。
+独立性。各章节的内容要尽量独立，不要交叉引用。这样做的好处是，节约阅读时间。假如你要看后面的章节，跳过去直接看就行，而不需要从头开始。当然，完全不引用，是做不到的。有一些基础知识，是要提前掌握的。
+有例子。所有的知识点都要有具体的例子，不能空讲理论。如果写不清楚，那就不写。但是要注意，例子的作用是帮助理解，代替不了证明。
+能验证。用代码去实现相关算法，要有测试用例。不但要保证代码的质量，还要保证代码与教程的一致性。
+用中文。本文档的第一语言是中文。有些地方可能会标注英文，是为了方便检索。但是有例外，代码或伪代码会用英文。
+
+最后，欢迎交流。欢迎提意见或建议。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="//localhost:1313/docs/start/motivation/" /><meta property="og:image" content="//localhost:1313/opengraph/card-base-2_hu_67a75b01a97e1d4c.png"/><meta property="article:section" content="docs" />
 <meta property="article:published_time" content="2025-03-20T20:00:22+08:00" />
 <meta property="article:modified_time" content="2025-03-22T21:15:47+08:00" /><meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="//localhost:1313/opengraph/card-base-2_hu_67a75b01a97e1d4c.png"/>
 <meta name="twitter:title" content="为什么写这个教程"/>
-<meta name="twitter:description" content="TBA."/>
+<meta name="twitter:description" content="线性规划是一门应用课程。它是数学系课程中，少有的实用性高的课程。我看过的一些资料，主要还是在讲理论，讲实践的比较少。比如说单纯形算法，我学过它的证明，了解它的算法细节。那问题来了，如果我想实现一个单纯形算法的求解器，应该怎么开始呢。从理论到工程，要解决哪些问题呢。
+如果你是计算机背景，这个难不到你。如果是数学背景，可能会遇到一些困难。但是线性规划的教材，一般不讲编程实现。在我看来，既然在讲算法，为什么不去实现呢。自己的代码跑起来，顺便做一些测试，这样也更容易理解算法。
+我之前在CSDN上写过一些基础的教程，文章的阅读量和收藏也不错。但我自己觉得写得不好，有些东西没讲清楚，代码质量也不高，但是我懒得在CSDN上改了。这个平台我不喜欢，写作体验不好，阅读体验也不好。平台还未经允许把我的文章转成了收费。当然，也没给我钱。我想把些之前写的内容做个整合，顺便提升一下质量。最重要的是，我想免费分享。
+目标 link线性规划这个内容，不只是数学系有。在其他专业，比如经济管理，机械制造，自动化，计算机都有讲。只不过侧重点各有不同。这也间接证明了，这个课程的实用性。
+从这个实用性出发。我想实现下面两个目标。
+提升工程能力
+如果你是数学背景，或者说工程经验有欠缺。我希望这个教程能帮你提升工程能力。
+这里主要讲相关算法的实现。比如说，我们从0到1实现一个线性规划的求解器。当然，这是实验性质的，离真正的产品还很遥远。但这个实现过程，会让我们看到工程化的思想。
+降低学习门槛
+线性规划是很有用的。但是学习和使用门槛不低。如果能降低它的使用门槛，让更多的人能掌握这个技术，那么它的价值会更大。基本思路就是从例子出发，让非数学背景的人，也能理解背后的思想，并且能够顺利上手。
+当然，要实现这两个目标并不容易。我打算慢慢来，通过持续迭代，去接近这两个目标。
+原则 link下面是关于写作的原则，主是为了约束我自己。我认为遵循这些原则，对提升文章的可读性和实用性是有帮助的。
+
+保持简单。语言尽量简单，尽量口语化，让人读起来轻松。但是，保持简单的同时，会损失一些严谨性。我觉得这个可以接受，因为这是讲实践，而不是做理论证明。
+独立性。各章节的内容要尽量独立，不要交叉引用。这样做的好处是，节约阅读时间。假如你要看后面的章节，跳过去直接看就行，而不需要从头开始。当然，完全不引用，是做不到的。有一些基础知识，是要提前掌握的。
+有例子。所有的知识点都要有具体的例子，不能空讲理论。如果写不清楚，那就不写。但是要注意，例子的作用是帮助理解，代替不了证明。
+能验证。用代码去实现相关算法，要有测试用例。不但要保证代码的质量，还要保证代码与教程的一致性。
+用中文。本文档的第一语言是中文。有些地方可能会标注英文，是为了方便检索。但是有例外，代码或伪代码会用英文。
+
+最后，欢迎交流。欢迎提意见或建议。"/>
 
     
         <link rel="alternate" type="application/atom+xml" title="Atom feed for Linear Programming in Practice" href="/index.xml" />
@@ -85,27 +123,12 @@
                                     
                                         
                                         
-                                            <li class=" "><a class="sidebar-nested-link" href="//localhost:1313/docs/start/principles/">写作的原则</a></li>
-                                        
-                                    
-                                        
-                                        
-                                            <li class=" "><a class="sidebar-nested-link" href="//localhost:1313/docs/start/copyright/">版权声明</a></li>
-                                        
-                                    
-                                        
-                                        
-                                            <li class=" "><a class="sidebar-nested-link" href="//localhost:1313/docs/start/about-me/">关于作者</a></li>
-                                        
-                                    
-                                        
-                                        
                                             <li class=" "><a class="sidebar-nested-link" href="//localhost:1313/docs/start/what-is/">什么是线性规划</a></li>
                                         
                                     
                                         
                                         
-                                            <li class=" "><a class="sidebar-nested-link" href="//localhost:1313/docs/start/applications/">线性规划有什么用</a></li>
+                                            <li class=" "><a class="sidebar-nested-link" href="//localhost:1313/docs/start/copyright/">版权声明</a></li>
                                         
                                     
                                 </ul>
@@ -353,18 +376,36 @@
                                     
                                     <div class="row flex-xl-nowrap">
                                         
-                                        <div class="docs-toc col-xl-3  visually-hidden  d-xl-block"><toc>
+                                        <div class="docs-toc col-xl-3    d-xl-block"><toc>
     <div class="fw-bold text-uppercase mb-2">On this page</div>
-    <nav id="TableOfContents"></nav>
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#目标">目标</a></li>
+        <li><a href="#原则">原则</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
     </toc></div>
                                         
                                         
-                                        <div class="docs-toc-mobile  visually-hidden  d-print-none d-xl-none">
+                                        <div class="docs-toc-mobile    d-print-none d-xl-none">
                                             <button id="toc-dropdown-btn" class="btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" data-bs-offset="0,0" aria-expanded="false">
                                                 Table of Contents
                                             </button>
-<nav id="toc-mobile"></nav></div>
-                                        <div class="docs-content col-12  mt-0">
+<nav id="toc-mobile">
+  <ul class="dropdown-menu">
+    <li>
+      <ul>
+        <li><a href="#目标">目标</a></li>
+        <li><a href="#原则">原则</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+                                        <div class="docs-content col-12 col-xl-9 mt-0">
                                             <div class="mb-0 d-flex">
                                                 
                                                 <i class="material-icons title-icon me-2">circle</i>
@@ -381,7 +422,26 @@
                                                 
     
     <div data-prismjs-copy="" data-prismjs-copy-success="" data-prismjs-copy-error="">
-        <p>TBA.</p>
+        <p>线性规划是一门应用课程。它是数学系课程中，少有的实用性高的课程。我看过的一些资料，主要还是在讲理论，讲实践的比较少。比如说单纯形算法，我学过它的证明，了解它的算法细节。那问题来了，如果我想实现一个单纯形算法的求解器，应该怎么开始呢。从理论到工程，要解决哪些问题呢。</p>
+<p>如果你是计算机背景，这个难不到你。如果是数学背景，可能会遇到一些困难。但是线性规划的教材，一般不讲编程实现。在我看来，既然在讲算法，为什么不去实现呢。自己的代码跑起来，顺便做一些测试，这样也更容易理解算法。</p>
+<p>我之前在CSDN上写过一些基础的教程，文章的阅读量和收藏也不错。但我自己觉得写得不好，有些东西没讲清楚，代码质量也不高，但是我懒得在CSDN上改了。这个平台我不喜欢，写作体验不好，阅读体验也不好。平台还未经允许把我的文章转成了收费。当然，也没给我钱。我想把些之前写的内容做个整合，顺便提升一下质量。最重要的是，我想免费分享。</p>
+<h3 id="目标">目标 <a href="#%e7%9b%ae%e6%a0%87" class="anchor" aria-hidden="true"><i class="material-icons align-middle">link</i></a></h3><p>线性规划这个内容，不只是数学系有。在其他专业，比如经济管理，机械制造，自动化，计算机都有讲。只不过侧重点各有不同。这也间接证明了，这个课程的实用性。</p>
+<p>从这个实用性出发。我想实现下面两个目标。</p>
+<p><strong>提升工程能力</strong></p>
+<p>如果你是数学背景，或者说工程经验有欠缺。我希望这个教程能帮你提升工程能力。
+这里主要讲相关算法的实现。比如说，我们从0到1实现一个线性规划的求解器。当然，这是实验性质的，离真正的产品还很遥远。但这个实现过程，会让我们看到工程化的思想。</p>
+<p><strong>降低学习门槛</strong></p>
+<p>线性规划是很有用的。但是学习和使用门槛不低。如果能降低它的使用门槛，让更多的人能掌握这个技术，那么它的价值会更大。基本思路就是从例子出发，让非数学背景的人，也能理解背后的思想，并且能够顺利上手。</p>
+<p>当然，要实现这两个目标并不容易。我打算慢慢来，通过持续迭代，去接近这两个目标。</p>
+<h3 id="原则">原则 <a href="#%e5%8e%9f%e5%88%99" class="anchor" aria-hidden="true"><i class="material-icons align-middle">link</i></a></h3><p>下面是关于写作的原则，主是为了约束我自己。我认为遵循这些原则，对提升文章的可读性和实用性是有帮助的。</p>
+<ol>
+<li>保持简单。语言尽量简单，尽量口语化，让人读起来轻松。但是，保持简单的同时，会损失一些严谨性。我觉得这个可以接受，因为这是讲实践，而不是做理论证明。</li>
+<li>独立性。各章节的内容要尽量独立，不要交叉引用。这样做的好处是，节约阅读时间。假如你要看后面的章节，跳过去直接看就行，而不需要从头开始。当然，完全不引用，是做不到的。有一些基础知识，是要提前掌握的。</li>
+<li>有例子。所有的知识点都要有具体的例子，不能空讲理论。如果写不清楚，那就不写。但是要注意，例子的作用是帮助理解，代替不了证明。</li>
+<li>能验证。用代码去实现相关算法，要有测试用例。不但要保证代码的质量，还要保证代码与教程的一致性。</li>
+<li>用中文。本文档的第一语言是中文。有些地方可能会标注英文，是为了方便检索。但是有例外，代码或伪代码会用英文。</li>
+</ol>
+<p>最后，欢迎交流。欢迎提意见或建议。</p>
 
     </div>
 
@@ -437,10 +497,10 @@
 
 	<div class="row flex-xl-nowrap flex-row-reverse">
 	<div class="col-sm-6 pt-2 doc-prev">
-		<a class="ms-auto" href="/docs/start/principles/">
+		<a class="ms-auto" href="/docs/start/what-is/">
 			<div class="card h-100 my-1 text-end">
 				<div class="card-body py-2">
-                    <p class="card-title fs-5 fw-semibold lh-base mb-0">写作的原则 <i class="material-icons align-middle">navigate_next</i></p>
+                    <p class="card-title fs-5 fw-semibold lh-base mb-0">什么是线性规划 <i class="material-icons align-middle">navigate_next</i></p>
 					
 				</div>
 			</div>
