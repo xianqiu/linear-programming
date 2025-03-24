@@ -28,3 +28,7 @@ enableGitInfo = true
 
     [params.social]
         github = "xianqiu/linear-programming"
+
+[services]
+  [services.googleAnalytics]
+      id = 'G-PTWZS77SPR'
