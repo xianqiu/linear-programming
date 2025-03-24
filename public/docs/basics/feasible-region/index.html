@@ -16,7 +16,7 @@
 
 <html lang="en"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
     <meta charset="utf-8" />
-    <title>标准形式 | Linear Programming in Practice</title>
+    <title>可行区域 | Linear Programming in Practice</title>
     <meta name="robots" content="noindex">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="keywords" content="Documentation, Hugo, Hugo Theme, Bootstrap" />
@@ -31,69 +31,131 @@
 <link rel="icon" type="image/png" sizes="32x32" href="//localhost:1313/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="//localhost:1313/favicon-16x16.png">
 <link rel="manifest" crossorigin="use-credentials" href="//localhost:1313/site.webmanifest">
-<meta property="og:title" content="标准形式" />
-<meta property="og:description" content="考虑一个线性规划的例子。
+<meta property="og:title" content="可行区域" />
+<meta property="og:description" content="几何理解 link下面我们从几何的角度来理解线性规划问题。
+线性规划问题的约束由 $m$ 个等式定义。从几何上看，每个等式代表一个超平面。$m$ 个超平面相交构成了一个多面体（Polyhedron）。
+在三维空间中，如下图所示。
 
-  $$
-\begin{aligned}
-\max~ &amp; 7x_1 &#43; 6 x_2\\
-\text{s.t.}~ &amp; 3x_1 &#43; x_2 \leq 120 \\
-&amp; x_1 &#43; 2x_2 \leq 160 \\
-&amp; x_1 \leq 35 \\
-\end{aligned}
-$$
-  
-其中第一行是目标函数，其中 max​ 代表优化方向，即最大化目标函数值。接下来是三个约束条件，分别用不等式来描述，其中 s.t. 是 subject to 的缩写）。
-求解这个问题，就要找到满足约束条件的 $x_1,x_2$​​，使得目标函数值最大。
-矩阵形式 link接下来我们把它写成矩阵的形式。定义列向量 $c$ 和 $x$:
 
-  $$
-c = \begin{bmatrix}
-7\\
-6
-\end{bmatrix}\quad
-x = \begin{bmatrix}
-x_1\\
-x_2
-\end{bmatrix}
-$$
+
+
+
+
   
-那么目标函数可以写成 $c^Tx$。
-定义矩阵 $A$ 和 列向量 $b$:" />
+
+
+
+  
+    
+      
+    
+  
+
+注意，这个多面体是凸凸的。
+作为对比，下面这个多面体就不是凸的：
+
+
+
+
+
+
+  
+
+
+
+  
+    
+      
+    
+  
+
+求解线性规划问题，就是要在一个凸多面体 $P$​ 中找到一个点 $x$​，使得目标函数 $c^Tx$​ 最小。
+令 $d = c / ||c||$​，把 $d$​ 看成一个超平面 $H$​ 的法向量。注意到$c^Tx =  ||c|| \cdot d^Tx$​，因此最小化 $c^Tx$​ 等价于最小化 $d^Tx$​。
+这样一来，线性规划问题可以这样描述：找一个点 $x\in P$​，离超平面 $H$​ 最近。
+
+
+
+
+
+
+  
+
+
+
+  
+    
+      
+    
+  
+
+什么点离超平面最近？
+最优解在多面体的顶点上（证明略）。
+有了这样的认知，只要枚举所有顶点，然后看看哪个顶点对应的目标函数值最小，即可找到最优解。但是枚举的效率太低，还有更好的方法，比如单纯形法、内点法。" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="//localhost:1313/docs/basics/standard-form/" /><meta property="og:image" content="//localhost:1313/opengraph/card-base-2_hu_59a30c0a1c2ca45b.png"/><meta property="article:section" content="docs" />
-<meta property="article:published_time" content="2025-03-21T19:38:06+08:00" />
-<meta property="article:modified_time" content="2025-03-22T21:08:48+08:00" /><meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="//localhost:1313/opengraph/card-base-2_hu_59a30c0a1c2ca45b.png"/>
-<meta name="twitter:title" content="标准形式"/>
-<meta name="twitter:description" content="考虑一个线性规划的例子。
+<meta property="og:url" content="//localhost:1313/docs/basics/feasible-region/" /><meta property="og:image" content="//localhost:1313/opengraph/card-base-2_hu_adb5f12a70ccf733.png"/><meta property="article:section" content="docs" />
+<meta property="article:published_time" content="2025-03-24T17:21:06+08:00" />
+<meta property="article:modified_time" content="2025-03-24T17:21:06+08:00" /><meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="//localhost:1313/opengraph/card-base-2_hu_adb5f12a70ccf733.png"/>
+<meta name="twitter:title" content="可行区域"/>
+<meta name="twitter:description" content="几何理解 link下面我们从几何的角度来理解线性规划问题。
+线性规划问题的约束由 $m$ 个等式定义。从几何上看，每个等式代表一个超平面。$m$ 个超平面相交构成了一个多面体（Polyhedron）。
+在三维空间中，如下图所示。
 
-  $$
-\begin{aligned}
-\max~ &amp; 7x_1 &#43; 6 x_2\\
-\text{s.t.}~ &amp; 3x_1 &#43; x_2 \leq 120 \\
-&amp; x_1 &#43; 2x_2 \leq 160 \\
-&amp; x_1 \leq 35 \\
-\end{aligned}
-$$
-  
-其中第一行是目标函数，其中 max​ 代表优化方向，即最大化目标函数值。接下来是三个约束条件，分别用不等式来描述，其中 s.t. 是 subject to 的缩写）。
-求解这个问题，就要找到满足约束条件的 $x_1,x_2$​​，使得目标函数值最大。
-矩阵形式 link接下来我们把它写成矩阵的形式。定义列向量 $c$ 和 $x$:
 
-  $$
-c = \begin{bmatrix}
-7\\
-6
-\end{bmatrix}\quad
-x = \begin{bmatrix}
-x_1\\
-x_2
-\end{bmatrix}
-$$
+
+
+
+
   
-那么目标函数可以写成 $c^Tx$。
-定义矩阵 $A$ 和 列向量 $b$:"/>
+
+
+
+  
+    
+      
+    
+  
+
+注意，这个多面体是凸凸的。
+作为对比，下面这个多面体就不是凸的：
+
+
+
+
+
+
+  
+
+
+
+  
+    
+      
+    
+  
+
+求解线性规划问题，就是要在一个凸多面体 $P$​ 中找到一个点 $x$​，使得目标函数 $c^Tx$​ 最小。
+令 $d = c / ||c||$​，把 $d$​ 看成一个超平面 $H$​ 的法向量。注意到$c^Tx =  ||c|| \cdot d^Tx$​，因此最小化 $c^Tx$​ 等价于最小化 $d^Tx$​。
+这样一来，线性规划问题可以这样描述：找一个点 $x\in P$​，离超平面 $H$​ 最近。
+
+
+
+
+
+
+  
+
+
+
+  
+    
+      
+    
+  
+
+什么点离超平面最近？
+最优解在多面体的顶点上（证明略）。
+有了这样的认知，只要枚举所有顶点，然后看看哪个顶点对应的目标函数值最小，即可找到最优解。但是枚举的效率太低，还有更好的方法，比如单纯形法、内点法。"/>
 
     
         <link rel="alternate" type="application/atom+xml" title="Atom feed for Linear Programming in Practice" href="/index.xml" />
@@ -103,27 +165,8 @@ $$
     
 
     <link rel="stylesheet" href="/docs/scss/style.css" crossorigin="anonymous">
-    <link rel="stylesheet" href="/docs/scss/katex.css" crossorigin="anonymous">
     
-    <script src="/docs/js/katex.js" defer></script>
-    <script src="/docs/js/auto-render.js" defer></script>
     
-    <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        renderMathInElement(document.getElementById("content"), {
-          
-          
-          delimiters: [
-              {left: '$$', right: '$$', display: true},
-              {left: '$', right: '$', display: false},
-              {left: '\\(', right: '\\)', display: false},
-              {left: '\\[', right: '\\]', display: true}
-          ],
-          
-          throwOnError : false
-        });
-    });
-</script>
     </head>
 <body>
         <div class="content">
@@ -183,12 +226,12 @@ $$
                                     
                                         
                                         
-                                            <li class="current "><a class="sidebar-nested-link" href="//localhost:1313/docs/basics/standard-form/">标准形式</a></li>
+                                            <li class=" "><a class="sidebar-nested-link" href="//localhost:1313/docs/basics/standard-form/">标准形式</a></li>
                                         
                                     
                                         
                                         
-                                            <li class=" "><a class="sidebar-nested-link" href="//localhost:1313/docs/basics/feasible-region/">可行区域</a></li>
+                                            <li class="current "><a class="sidebar-nested-link" href="//localhost:1313/docs/basics/feasible-region/">可行区域</a></li>
                                         
                                     
                                 </ul>
@@ -407,7 +450,7 @@ $$
             
         
             <li class="breadcrumb-item text-capitalize active" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-                <span itemprop="name">标准形式</span>
+                <span itemprop="name">可行区域</span>
                 <meta itemprop="position" content='3' />
             </li>
         
@@ -420,13 +463,7 @@ $$
     <div class="fw-bold text-uppercase mb-2">On this page</div>
     <nav id="TableOfContents">
   <ul>
-    <li>
-      <ul>
-        <li><a href="#矩阵形式">矩阵形式</a></li>
-        <li><a href="#简化问题">简化问题</a></li>
-        <li><a href="#标准形式">标准形式</a></li>
-      </ul>
-    </li>
+    <li><a href="#几何理解">几何理解</a></li>
   </ul>
 </nav>
     </toc></div>
@@ -438,13 +475,7 @@ $$
                                             </button>
 <nav id="toc-mobile">
   <ul class="dropdown-menu">
-    <li>
-      <ul>
-        <li><a href="#矩阵形式">矩阵形式</a></li>
-        <li><a href="#简化问题">简化问题</a></li>
-        <li><a href="#标准形式">标准形式</a></li>
-      </ul>
-    </li>
+    <li><a href="#几何理解">几何理解</a></li>
   </ul>
 </nav></div>
                                         <div class="docs-content col-12 col-xl-9 mt-0">
@@ -453,7 +484,9 @@ $$
                                                 <i class="material-icons title-icon me-2">article</i>
                                                 
                                                 <h1 class="content-title mb-0">
-                                                    标准形式
+                                                    可行区域
+                                                    
+                                                        <span class="badge bg-default fs-6 mb-1 align-middle">DRAFT</span>
                                                     
                                                 </h1>
                                             </div>
@@ -464,142 +497,67 @@ $$
                                                 
     
     <div data-prismjs-copy="" data-prismjs-copy-success="" data-prismjs-copy-error="">
-        <p>考虑一个线性规划的例子。</p>
-
-  <div class="equation leqno" >$$
-\begin{aligned}
-\max~ &amp; 7x_1 &#43; 6 x_2\\
-\text{s.t.}~ &amp; 3x_1 &#43; x_2 \leq 120 \\
-&amp; x_1 &#43; 2x_2 \leq 160 \\
-&amp; x_1 \leq 35 \\
-\end{aligned}
-$$
-  </div>
-<p>其中第一行是目标函数，其中 <code>max</code>​ 代表优化方向，即最大化目标函数值。接下来是三个约束条件，分别用不等式来描述，其中 <code>s.t.</code> 是 <code>subject to</code> 的缩写）。</p>
-<p>求解这个问题，就要找到满足约束条件的 $x_1,x_2$​​，使得目标函数值最大。</p>
-<h3 id="矩阵形式">矩阵形式 <a href="#%e7%9f%a9%e9%98%b5%e5%bd%a2%e5%bc%8f" class="anchor" aria-hidden="true"><i class="material-icons align-middle">link</i></a></h3><p>接下来我们把它写成矩阵的形式。定义列向量 $c$ 和 $x$:
-
-  <div class="equation leqno" >$$
-c = \begin{bmatrix}
-7\\
-6
-\end{bmatrix}\quad
-x = \begin{bmatrix}
-x_1\\
-x_2
-\end{bmatrix}
-$$
-  </div>
-那么目标函数可以写成 $c^Tx$。
-定义矩阵 $A$ 和 列向量 $b$:</p>
+        <h2 id="几何理解">几何理解 <a href="#%e5%87%a0%e4%bd%95%e7%90%86%e8%a7%a3" class="anchor" aria-hidden="true"><i class="material-icons align-middle">link</i></a></h2><p>下面我们从几何的角度来理解线性规划问题。</p>
+<p>线性规划问题的约束由 $m$ 个等式定义。从几何上看，每个等式代表一个超平面。$m$ 个超平面相交构成了一个多面体（Polyhedron）。</p>
+<p>在三维空间中，如下图所示。</p>
 <p>
-  <div class="equation leqno" >$$
-A = \begin{bmatrix}
-3 &amp; 1 \\
-1 &amp; 2 \\
-1 &amp; 0 
-\end{bmatrix}\quad
-b = 
-\begin{bmatrix}
-120\\
-160\\
-35
-\end{bmatrix}
-$$
-  </div>
-那么约束条件可以写成 $Ax\leq b$。</p>
-<p>因此，它可以写成下面的形式。</p>
 
-  <div class="equation leqno" >$$
-\begin{aligned}
-\max~ &amp; c^Tx \\
-\text{s.t. } &amp; Ax\leq b.
-\end{aligned}
-$$
-  </div>
-<h3 id="简化问题">简化问题 <a href="#%e7%ae%80%e5%8c%96%e9%97%ae%e9%a2%98" class="anchor" aria-hidden="true"><i class="material-icons align-middle">link</i></a></h3><p>在不改变最优解的前提下，我们可以对问题的形式进行简化。</p>
-<ol>
-<li>
-<p>把最大化问题转化成最小化问题。</p>
-<p>假设 $x^*$ 使得 $f(x) = c^Tx$ 最大，那么它就使得 $-f(x) = - c^Tx$ 最小。因此，$\max c^Tx$ 可以转化成 $\min -c^Tx$，而不会改变最优解。</p>
-<p>例：$\max 7x_1 + 6x_2$。它可以写成 $\min -7x_1 - 6x_2$。</p>
-</li>
-<li>
-<p>把不等式变成等式。</p>
-<p>例： $3x_1+x_2\leq 120$。引入新变量 $x_3$ 当作不等式两边的差值，那么原来的不等式可以写成等式，即
-$$
-3x_1 + x_2 + x_3 = 120
-$$
-这个操作不会改变原问题的最优解。</p>
-</li>
-<li>
-<p>把等式右边的常数变成非负。</p>
-<p>例：$-3x_1-x_2 = -120$。等式两边同时乘以 $-1$ 即可。</p>
-</li>
-<li>
-<p>把变量变成非负。</p>
-<p>设 $x \in\mathbb{R}$，引入非负变量 $x^+ = \max(x, 0), x^- = -\min(x, 0)$ 。这样一来， $x$ 可以表示成 $x = x^+ - x^-$。</p>
-<p>例：$x_1+2x_2 \leq 160$， $x_1,x_2\in \mathbb{R}$。</p>
-<p>引入非负变量 $x_{11}=\max(x_1,0), x_{12}=-\min(x_1,0)$，那么 $x_1=x_{11}+x_{12}$；再令 $x_{21}=\max(x_2,0), x_{22}=-\min(x_2,0)$，那么 $x_2 = x_{21} + x_{22}$。</p>
-<p>代入不等式，得到 $x_{11} + x_{12} + 2(x_{21}+x_{22})\leq 160$。</p>
-</li>
-</ol>
-<h3 id="标准形式">标准形式 <a href="#%e6%a0%87%e5%87%86%e5%bd%a2%e5%bc%8f" class="anchor" aria-hidden="true"><i class="material-icons align-middle">link</i></a></h3><p>综上所述，我们得到线性规划的<strong>标准形式</strong>。
 
-  <div class="equation leqno" >$$
-\begin{aligned}
-\min~ &amp; c^T x\\ 
-\text{s.t.}~ &amp; Ax=b\\
-&amp; x\geq 0
-\end{aligned}
-$$
-  </div></p>
-<p>其中 $c, x \in \mathbb{R}^n$​​​，$A\in\mathbb{R}^{m\times n}$​​​，$b\in\mathbb{R}^m \geq \mathbf{0}$​​​。</p>
+
+
+
+  
+
+
+
+  
+    
+      <img src="/f604149f337a141fd0ee3ba8c8a0fa9d_14558427005160865008.jpg" alt="" width="400" height="402" loading="lazy">
+    
+  
+</p>
+<p>注意，这个多面体是凸凸的。</p>
+<p>作为对比，下面这个多面体就不是凸的：</p>
+<p>
+
+
+
+
+
+  
+
+
+
+  
+    
+      <img src="/b09280cadd1470780b97b09e8bb5e8cb_6753857869280177371.jpg" alt="在这里插入图片描述" width="400" height="362" loading="lazy">
+    
+  
+</p>
+<p>求解线性规划问题，就是要在一个凸多面体 $P$​ 中找到一个点 $x$​，使得目标函数 $c^Tx$​ 最小。</p>
+<p>令 $d = c / ||c||$​，把 $d$​ 看成一个超平面 $H$​ 的法向量。注意到$c^Tx =  ||c|| \cdot d^Tx$​，因此最小化 $c^Tx$​ 等价于最小化 $d^Tx$​。</p>
+<p>这样一来，线性规划问题可以这样描述：<strong>找一个点 $x\in P$​，离超平面 $H$​ 最近。</strong></p>
+<p>
+
+
+
+
+
+  
+
+
+
+  
+    
+      <img src="/0aaad6a6916f7b70be2afa28ad2627a8_15678087330120696541.jpg" alt="在这里插入图片描述" width="400" height="324" loading="lazy">
+    
+  
+</p>
+<p>什么点离超平面最近？</p>
+<p><strong>最优解在多面体的顶点上</strong>（证明略）。</p>
+<p>有了这样的认知，只要枚举所有顶点，然后看看哪个顶点对应的目标函数值最小，即可找到最优解。但是枚举的效率太低，还有更好的方法，比如单纯形法、内点法。</p>
 
     </div>
-
-    
-
-
-
-
-
-    
-    
-
-
-
-
-
-
-<div class="gitinfo d-flex flex-wrap justify-content-between align-items-center opacity-85 pt-3">
-    <div id="edit-this-page" class="mt-1">
-        <a href="https://github.com/xianqiu/linear-programming/blob/main/content/docs/basics/standard-form.md" alt="标准形式" rel="noopener noreferrer" target="_blank">
-            
-            <span class="me-1 align-text-bottom">
-                
-                    <svg width="20px" height="20px" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
-  <path d="M16 0.396c-8.839 0-16 7.167-16 16 0 7.073 4.584 13.068 10.937 15.183 0.803 0.151 1.093-0.344 1.093-0.772 0-0.38-0.009-1.385-0.015-2.719-4.453 0.964-5.391-2.151-5.391-2.151-0.729-1.844-1.781-2.339-1.781-2.339-1.448-0.989 0.115-0.968 0.115-0.968 1.604 0.109 2.448 1.645 2.448 1.645 1.427 2.448 3.744 1.74 4.661 1.328 0.14-1.031 0.557-1.74 1.011-2.135-3.552-0.401-7.287-1.776-7.287-7.907 0-1.751 0.62-3.177 1.645-4.297-0.177-0.401-0.719-2.031 0.141-4.235 0 0 1.339-0.427 4.4 1.641 1.281-0.355 2.641-0.532 4-0.541 1.36 0.009 2.719 0.187 4 0.541 3.043-2.068 4.381-1.641 4.381-1.641 0.859 2.204 0.317 3.833 0.161 4.235 1.015 1.12 1.635 2.547 1.635 4.297 0 6.145-3.74 7.5-7.296 7.891 0.556 0.479 1.077 1.464 1.077 2.959 0 2.14-0.020 3.864-0.020 4.385 0 0.416 0.28 0.916 1.104 0.755 6.4-2.093 10.979-8.093 10.979-15.156 0-8.833-7.161-16-16-16z"/>
-</svg>
-
-                
-            </span>
-            Edit this page
-            
-        </a>
-    </div>
-    
-    <div id="last-modified" class="mt-1">
-        <p class="mb-0 fw-semibold">Last updated <span
-            id="relativetime"
-            data-authdate="2025-03-22T21:08:48&#43;0800"
-            title="22 Mar 2025, 21:08 CST">
-            22 Mar 2025, 21:08 CST
-        </span>. <span class="material-icons size-20 align-text-bottom opacity-75">history</span>
-        </p>
-    </div>
-    
-</div>
 
     
 
@@ -608,12 +566,22 @@ $$
                                             <div><hr class="doc-hr">
 <div id="doc-nav" class="d-print-none">
 
-	<div class="row flex-xl-nowrap flex-row-reverse">
+	<div class="row flex-xl-nowrap ">
+	<div class="col-sm-6 pt-2 doc-next">
+		<a href="/docs/start/why/">
+			<div class="card h-100 my-1">
+				<div class="card-body py-2">
+                    <p class="card-title fs-5 fw-semibold lh-base mb-0"><i class="material-icons align-middle">navigate_before</i> 为什么写这个教程</p>
+					
+				</div>
+			</div>
+		</a>
+        </div>
 	<div class="col-sm-6 pt-2 doc-prev">
-		<a class="ms-auto" href="/docs/start/why/">
+		<a class="ms-auto" href="/docs/start/what-is-lp/">
 			<div class="card h-100 my-1 text-end">
 				<div class="card-body py-2">
-                    <p class="card-title fs-5 fw-semibold lh-base mb-0">为什么写这个教程 <i class="material-icons align-middle">navigate_next</i></p>
+                    <p class="card-title fs-5 fw-semibold lh-base mb-0">什么是线性规划 <i class="material-icons align-middle">navigate_next</i></p>
 					
 				</div>
 			</div>
