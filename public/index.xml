@@ -27,21 +27,21 @@
       <link>//localhost:1313/docs/modeling/write-linear-program/</link>
       <pubDate>Sat, 22 Mar 2025 17:33:08 +0800</pubDate>
       <guid>//localhost:1313/docs/modeling/write-linear-program/</guid>
-      <description></description>
+      <description>&lt;p&gt;tba&lt;/p&gt;</description>
     </item>
     <item>
       <title>分支定界法</title>
       <link>//localhost:1313/docs/integer-programming/branch-and-bound/</link>
       <pubDate>Sat, 22 Mar 2025 17:12:18 +0800</pubDate>
       <guid>//localhost:1313/docs/integer-programming/branch-and-bound/</guid>
-      <description></description>
+      <description>&lt;p&gt;tba&lt;/p&gt;</description>
     </item>
     <item>
       <title>列生成</title>
       <link>//localhost:1313/docs/decomposition/column-generation/</link>
       <pubDate>Sat, 22 Mar 2025 17:07:49 +0800</pubDate>
       <guid>//localhost:1313/docs/decomposition/column-generation/</guid>
-      <description></description>
+      <description>&lt;p&gt;tba&lt;/p&gt;</description>
     </item>
     <item>
       <title>版权声明</title>
@@ -55,49 +55,49 @@
       <link>//localhost:1313/docs/modeling/write-dual/</link>
       <pubDate>Sat, 22 Mar 2025 17:33:14 +0800</pubDate>
       <guid>//localhost:1313/docs/modeling/write-dual/</guid>
-      <description></description>
+      <description>&lt;p&gt;tba&lt;/p&gt;</description>
     </item>
     <item>
       <title>割平面法</title>
       <link>//localhost:1313/docs/integer-programming/cutting-plane/</link>
       <pubDate>Sat, 22 Mar 2025 17:12:29 +0800</pubDate>
       <guid>//localhost:1313/docs/integer-programming/cutting-plane/</guid>
-      <description></description>
+      <description>&lt;p&gt;tba&lt;/p&gt;</description>
     </item>
     <item>
       <title>行生成</title>
       <link>//localhost:1313/docs/decomposition/row-generation/</link>
       <pubDate>Sat, 22 Mar 2025 17:08:12 +0800</pubDate>
       <guid>//localhost:1313/docs/decomposition/row-generation/</guid>
-      <description></description>
+      <description>&lt;p&gt;tba&lt;/p&gt;</description>
     </item>
     <item>
       <title>线性化技巧</title>
       <link>//localhost:1313/docs/modeling/linearize/</link>
       <pubDate>Sat, 22 Mar 2025 17:39:17 +0800</pubDate>
       <guid>//localhost:1313/docs/modeling/linearize/</guid>
-      <description></description>
+      <description>&lt;p&gt;tba&lt;/p&gt;</description>
     </item>
     <item>
       <title>Benders分解</title>
       <link>//localhost:1313/docs/decomposition/benders/</link>
       <pubDate>Sat, 22 Mar 2025 17:08:24 +0800</pubDate>
       <guid>//localhost:1313/docs/decomposition/benders/</guid>
-      <description></description>
+      <description>&lt;p&gt;tba&lt;/p&gt;</description>
     </item>
     <item>
       <title>标准形式</title>
       <link>//localhost:1313/docs/basics/standard-form/</link>
       <pubDate>Fri, 21 Mar 2025 19:38:06 +0800</pubDate>
       <guid>//localhost:1313/docs/basics/standard-form/</guid>
-      <description></description>
+      <description>&lt;p&gt;综上所述，下面用向量和矩阵描述线性规划的 &lt;strong&gt;标准形&lt;/strong&gt;。&#xA;&#xA;  &lt;div class=&#34;equation leqno&#34; &gt;$$&#xA;\begin{aligned}&#xA;\min~ &amp;amp; c^T x\\ &#xA;\text{s.t.}~ &amp;amp; Ax=b\\&#xA;&amp;amp; x\geq 0&#xA;\end{aligned}&#xA;$$&#xA;  &lt;/div&gt;&lt;/p&gt;&#xA;&lt;p&gt;其中 $c, x \in \mathbb{R}^n$​​​，$A\in\mathbb{R}^{m\times n}$​​​，$b\in\mathbb{R}^m \geq \mathbf{0}$​​​。&lt;/p&gt;&#xA;&lt;p&gt;比如这样的问题：&lt;/p&gt;&#xA;&lt;p&gt;$$&#xA;\begin{aligned}&#xA;\max~ &amp;amp; 7x_1 + 6 x_2\&#xA;\text{s.t.}~ &amp;amp; 3x_1 + x_2 \leq 120 \&#xA;&amp;amp; x_1 + 2x_2 \leq 160 \&#xA;&amp;amp; x_1 \leq 35 \&#xA;\end{aligned}&#xA;$$&lt;/p&gt;&#xA;&lt;p&gt;第一行是目标函数，其中 $\max$​​​​ 代表优化方向，即最大化。&lt;/p&gt;&#xA;&lt;p&gt;第二行至最后，是约束条件，用不等式描述（s.t. 是 subject to 的缩写）。它要求 $x = (x_1, x_2)$​ 满足所有不等式，这样的 $x$ 称为 &lt;em&gt;可行解&lt;/em&gt;。&lt;/p&gt;</description>
     </item>
     <item>
       <title>单纯形算法</title>
       <link>//localhost:1313/docs/simplex-algorithm/primal/</link>
       <pubDate>Fri, 21 Mar 2025 19:35:16 +0800</pubDate>
       <guid>//localhost:1313/docs/simplex-algorithm/primal/</guid>
-      <description></description>
+      <description>&lt;p&gt;tba&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

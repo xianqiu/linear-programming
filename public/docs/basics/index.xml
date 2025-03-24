@@ -6,14 +6,21 @@
     <description>Recent content in 基本概念 on Linear Programming in Practice</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 22 Mar 2025 21:08:48 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 24 Mar 2025 17:21:06 +0800</lastBuildDate>
     <atom:link href="//localhost:1313/docs/basics/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>标准形式</title>
       <link>//localhost:1313/docs/basics/standard-form/</link>
       <pubDate>Fri, 21 Mar 2025 19:38:06 +0800</pubDate>
       <guid>//localhost:1313/docs/basics/standard-form/</guid>
-      <description></description>
+      <description>&lt;p&gt;考虑一个线性规划的例子。&lt;/p&gt;&#xA;&#xA;  &lt;div class=&#34;equation leqno&#34; &gt;$$&#xA;\begin{aligned}&#xA;\max~ &amp;amp; 7x_1 &amp;#43; 6 x_2\\&#xA;\text{s.t.}~ &amp;amp; 3x_1 &amp;#43; x_2 \leq 120 \\&#xA;&amp;amp; x_1 &amp;#43; 2x_2 \leq 160 \\&#xA;&amp;amp; x_1 \leq 35 \\&#xA;\end{aligned}&#xA;$$&#xA;  &lt;/div&gt;&#xA;&lt;p&gt;其中第一行是目标函数，其中 &lt;code&gt;max&lt;/code&gt;​ 代表优化方向，即最大化目标函数值。接下来是三个约束条件，分别用不等式来描述，其中 &lt;code&gt;s.t.&lt;/code&gt; 是 &lt;code&gt;subject to&lt;/code&gt; 的缩写）。&lt;/p&gt;&#xA;&lt;p&gt;求解这个问题，就要找到满足约束条件的 $x_1,x_2$​​，使得目标函数值最大。&lt;/p&gt;&#xA;&lt;h3 id=&#34;矩阵形式&#34;&gt;矩阵形式 &lt;a href=&#34;#%e7%9f%a9%e9%98%b5%e5%bd%a2%e5%bc%8f&#34; class=&#34;anchor&#34; aria-hidden=&#34;true&#34;&gt;&lt;i class=&#34;material-icons align-middle&#34;&gt;link&lt;/i&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;接下来我们把它写成矩阵的形式。定义列向量 $c$ 和 $x$:&#xA;&#xA;  &lt;div class=&#34;equation leqno&#34; &gt;$$&#xA;c = \begin{bmatrix}&#xA;7\\&#xA;6&#xA;\end{bmatrix}\quad&#xA;x = \begin{bmatrix}&#xA;x_1\\&#xA;x_2&#xA;\end{bmatrix}&#xA;$$&#xA;  &lt;/div&gt;&#xA;那么目标函数可以写成 $c^Tx$。&#xA;定义矩阵 $A$ 和 列向量 $b$:&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>可行区域</title>
+      <link>//localhost:1313/docs/basics/feasible-solution/</link>
+      <pubDate>Mon, 24 Mar 2025 17:21:06 +0800</pubDate>
+      <guid>//localhost:1313/docs/basics/feasible-solution/</guid>
+      <description>&lt;h2 id=&#34;几何理解&#34;&gt;几何理解 &lt;a href=&#34;#%e5%87%a0%e4%bd%95%e7%90%86%e8%a7%a3&#34; class=&#34;anchor&#34; aria-hidden=&#34;true&#34;&gt;&lt;i class=&#34;material-icons align-middle&#34;&gt;link&lt;/i&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;下面我们从几何的角度来理解线性规划问题。&lt;/p&gt;&#xA;&lt;p&gt;线性规划问题的约束由 $m$ 个等式定义。从几何上看，每个等式代表一个超平面。$m$ 个超平面相交构成了一个多面体（Polyhedron）。&lt;/p&gt;&#xA;&lt;p&gt;在三维空间中，如下图所示。&lt;/p&gt;&#xA;&lt;p&gt;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;  &#xA;&#xA;&#xA;&#xA;  &#xA;    &#xA;      &lt;img src=&#34;//localhost:1313/f604149f337a141fd0ee3ba8c8a0fa9d_14558427005160865008.jpg&#34; alt=&#34;&#34; width=&#34;400&#34; height=&#34;402&#34; loading=&#34;lazy&#34;&gt;&#xA;    &#xA;  &#xA;&lt;/p&gt;&#xA;&lt;p&gt;注意，这个多面体是凸凸的。&lt;/p&gt;&#xA;&lt;p&gt;作为对比，下面这个多面体就不是凸的：&lt;/p&gt;&#xA;&lt;p&gt;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;  &#xA;&#xA;&#xA;&#xA;  &#xA;    &#xA;      &lt;img src=&#34;//localhost:1313/b09280cadd1470780b97b09e8bb5e8cb_6753857869280177371.jpg&#34; alt=&#34;在这里插入图片描述&#34; width=&#34;400&#34; height=&#34;362&#34; loading=&#34;lazy&#34;&gt;&#xA;    &#xA;  &#xA;&lt;/p&gt;&#xA;&lt;p&gt;求解线性规划问题，就是要在一个凸多面体 $P$​ 中找到一个点 $x$​，使得目标函数 $c^Tx$​ 最小。&lt;/p&gt;&#xA;&lt;p&gt;令 $d = c / ||c||$​，把 $d$​ 看成一个超平面 $H$​ 的法向量。注意到$c^Tx =  ||c|| \cdot d^Tx$​，因此最小化 $c^Tx$​ 等价于最小化 $d^Tx$​。&lt;/p&gt;&#xA;&lt;p&gt;这样一来，线性规划问题可以这样描述：&lt;strong&gt;找一个点 $x\in P$​，离超平面 $H$​ 最近。&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;p&gt;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;  &#xA;&#xA;&#xA;&#xA;  &#xA;    &#xA;      &lt;img src=&#34;//localhost:1313/0aaad6a6916f7b70be2afa28ad2627a8_15678087330120696541.jpg&#34; alt=&#34;在这里插入图片描述&#34; width=&#34;400&#34; height=&#34;324&#34; loading=&#34;lazy&#34;&gt;&#xA;    &#xA;  &#xA;&lt;/p&gt;&#xA;&lt;p&gt;什么点离超平面最近？&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;最优解在多面体的顶点上&lt;/strong&gt;（证明略）。&lt;/p&gt;&#xA;&lt;p&gt;有了这样的认知，只要枚举所有顶点，然后看看哪个顶点对应的目标函数值最小，即可找到最优解。但是枚举的效率太低，还有更好的方法，比如单纯形法、内点法。&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

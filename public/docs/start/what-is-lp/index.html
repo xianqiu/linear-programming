@@ -44,7 +44,7 @@
 \end{aligned}
 $$
   
-第一行的表达式 $7x_1 &#43; 6x_2$ 称为目标函数，它前面那个 max 是 maximize 的缩写，代表优化方向。即，找到满足条件的 $x_1, x_2$ 使得这个目标函数值最大。接下来的三行公式是在描述 $x_1, x_2$ 需要满足的条件，其中 s.t. 是 subject to 的缩写。
+第一行的表达式 $7x_1 &#43; 6x_2$ 称为目标函数，它前面那个 max 是 maximize 的缩写，代表优化方向。即，找到满足条件的 $x_1, x_2$ 使得这个目标函数值最大。接下来的三行公式描述 $x_1, x_2$ 要满足的条件，其中 s.t. 是 subject to 的缩写。
 以第一个条件为例，如果 $x_1=40, x_2=0$, 它满足 $3x_1 &#43; x_2 \leq 120$ 这个条件。但是，它不满足第三个条件 $x_1\leq 35$。因此 $x_1=40, x_2=0$ 不符合要求。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="//localhost:1313/docs/start/what-is-lp/" /><meta property="og:image" content="//localhost:1313/opengraph/card-base-2_hu_f4844f541f3029de.png"/><meta property="article:section" content="docs" />
@@ -64,7 +64,7 @@ $$
 \end{aligned}
 $$
   
-第一行的表达式 $7x_1 &#43; 6x_2$ 称为目标函数，它前面那个 max 是 maximize 的缩写，代表优化方向。即，找到满足条件的 $x_1, x_2$ 使得这个目标函数值最大。接下来的三行公式是在描述 $x_1, x_2$ 需要满足的条件，其中 s.t. 是 subject to 的缩写。
+第一行的表达式 $7x_1 &#43; 6x_2$ 称为目标函数，它前面那个 max 是 maximize 的缩写，代表优化方向。即，找到满足条件的 $x_1, x_2$ 使得这个目标函数值最大。接下来的三行公式描述 $x_1, x_2$ 要满足的条件，其中 s.t. 是 subject to 的缩写。
 以第一个条件为例，如果 $x_1=40, x_2=0$, 它满足 $3x_1 &#43; x_2 \leq 120$ 这个条件。但是，它不满足第三个条件 $x_1\leq 35$。因此 $x_1=40, x_2=0$ 不符合要求。"/>
 
     
@@ -156,6 +156,11 @@ $$
                                         
                                         
                                             <li class=" "><a class="sidebar-nested-link" href="//localhost:1313/docs/basics/standard-form/">标准形式</a></li>
+                                        
+                                    
+                                        
+                                        
+                                            <li class=" "><a class="sidebar-nested-link" href="//localhost:1313/docs/basics/feasible-solution/">可行区域</a></li>
                                         
                                     
                                 </ul>
@@ -441,7 +446,7 @@ $$
 \end{aligned}
 $$
   </div></p>
-<p>第一行的表达式 $7x_1 + 6x_2$ 称为<strong>目标函数</strong>，它前面那个 <code>max</code> 是 <code>maximize</code> 的缩写，代表优化方向。即，找到满足条件的 $x_1, x_2$ 使得这个目标函数值最大。接下来的三行公式是在描述 $x_1, x_2$ 需要满足的条件，其中 <code>s.t.</code> 是 <code>subject to</code> 的缩写。</p>
+<p>第一行的表达式 $7x_1 + 6x_2$ 称为<strong>目标函数</strong>，它前面那个 <code>max</code> 是 <code>maximize</code> 的缩写，代表优化方向。即，找到满足条件的 $x_1, x_2$ 使得这个目标函数值最大。接下来的三行公式描述 $x_1, x_2$ 要满足的条件，其中 <code>s.t.</code> 是 <code>subject to</code> 的缩写。</p>
 <p>以第一个条件为例，如果 $x_1=40, x_2=0$, 它满足 $3x_1 + x_2 \leq 120$ 这个条件。但是，它不满足第三个条件 $x_1\leq 35$。因此 $x_1=40, x_2=0$ 不符合要求。</p>
 <p>可以验证 $x_1=0, x_2=0$ 满足上述三个条件，因此它是一个<strong>可行解</strong>。显然，它不是最优解。最优解要使得目标函数值最大。</p>
 <p>如果把一个优化问题写成上面的形式，即目标函数和约束条件的形式，一般称它为数学规划。<strong>线性规划</strong>指的就是目标函数和约束条件都是线性的数学规划问题。</p>
@@ -514,10 +519,10 @@ $$
 
 	<div class="row flex-xl-nowrap ">
 	<div class="col-sm-6 pt-2 doc-next">
-		<a href="/docs/start/why/">
+		<a href="/docs/basics/feasible-solution/">
 			<div class="card h-100 my-1">
 				<div class="card-body py-2">
-                    <p class="card-title fs-5 fw-semibold lh-base mb-0"><i class="material-icons align-middle">navigate_before</i> 为什么写这个教程</p>
+                    <p class="card-title fs-5 fw-semibold lh-base mb-0"><i class="material-icons align-middle">navigate_before</i> 可行区域</p>
 					
 				</div>
 			</div>

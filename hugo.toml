@@ -29,6 +29,13 @@ enableGitInfo = true
     [params.social]
         github = "xianqiu/linear-programming"
 
+    [params.plausible] # Parameters for Plausible Analytics
+        dataDomain = "lotusdocs.dev" # (or set via env variable HUGO_PARAMS_PLAUSIBLE_dataDomain)
+        scriptURL  = "/docs/s/js/script.outbound-links.js"       # (or set via env variable HUGO_PARAMS_PLAUSIBLE_scriptURL)
+        eventAPI   = "/docs/s/api/event/"       # optional - (or set via env variable HUGO_PARAMS_PLAUSIBLE_eventAPI)
+
 [services]
   [services.googleAnalytics]
       id = 'G-PTWZS77SPR'
+
+    
