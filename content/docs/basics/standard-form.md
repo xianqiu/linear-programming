@@ -25,7 +25,7 @@ $$
 
 其中第一行是目标函数，其中 `max`​ 代表优化方向，即最大化目标函数值。接下来是三个约束条件，分别用不等式来描述，其中 `s.t.` 是 `subject to` 的缩写）。
 
-求解这个问题，就要找到满足约束条件的 $x_1,x_2$​​，使得目标函数值最大。
+求解这个问题，就要找到满足约束条件的 $x_1,x_2$，使得目标函数值最大。
 
 ### 矩阵形式
 
@@ -111,11 +111,31 @@ $$
 {{<katex>}}
 $$
 \begin{aligned}
-\min~ & c^T x\\ 
+\min~ & c^T x\\
 \text{s.t.}~ & Ax=b\\
 & x\geq 0
 \end{aligned}
 $$
 {{</katex>}}
 
-其中 $c, x \in \mathbb{R}^n$​​​，$A\in\mathbb{R}^{m\times n}$​​​，$b\in\mathbb{R}^m \geq \mathbf{0}$​​​。
+其中 $c, x \in \mathbb{R}^n$，$A\in\mathbb{R}^{m\times n}$，$b\in\mathbb{R}^m \geq \mathbf{0}$，$n\geq m$。
+
+注意：变量个数 $n$ 不少于约束数量 $m$，否则可以添加冗余变量使得 $n\geq m$。
+
+
+
+如果不用矩阵形式，标准形式也可以写成这样。
+
+{{<katex>}}
+$$
+\begin{aligned}
+\min~ & c_1x_1 + c_2x_2 + ... + c_nx_n\\
+\text{s.t. }~ & a_{11}x_1 + a_{12}x_2 + ... + a_{1n}x_n = b_1 \\
+& a_{12}x_2 + a_{22}x_2 + ... + a_{2n}x_n = b_2 \\
+& \quad \vdots\\
+& a_{m1}x_1 + a_{m2}x_2 + ... + a_{mn}x_n = b_m \\
+& x_1, ..., x_n \geq 0
+\end{aligned}
+$$
+{{</katex>}}
+
