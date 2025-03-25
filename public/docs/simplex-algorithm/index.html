@@ -111,6 +111,11 @@
                                             <li class=" "><a class="sidebar-nested-link" href="//localhost:1313/docs/basics/standard-form/">标准形式</a></li>
                                         
                                     
+                                        
+                                        
+                                            <li class=" "><a class="sidebar-nested-link" href="//localhost:1313/docs/basics/feasible-region/">可行区域</a></li>
+                                        
+                                    
                                 </ul>
                             </div>
                         </li>
@@ -274,6 +279,7 @@
             <button id="close-sidebar" class="btn btn-icon btn-soft">
                 <span class="material-icons size-20 menu-icon align-middle">menu</span>
             </button>
+            <span><div id="docsearch"></div></span>
             
             </div>
 
@@ -411,6 +417,7 @@
         
 
 
+    
 
 
     
@@ -427,7 +434,24 @@
 
     <script type="text/javascript" src="//localhost:1313/docs/js/bundle.js" defer></script>
 
+        <script>
+    window.addEventListener('DOMContentLoaded', function() {
         
+        docsearch({
+            container: '#docsearch',
+            appId: 'LOI5OKXTGT',
+            apiKey: '2714a64027ec87c56646114eb7d2c3b3',
+            indexName: 'lpp-buypdf',
+            placeholder: 'Search Documentation',
+            translations: {
+                button: {
+                    buttonText: 'Search',
+                    buttonAriaLabel: 'Search',
+                }
+            }
+        });
+    });
+</script>
 
         
         

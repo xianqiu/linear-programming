@@ -6,7 +6,7 @@
     <description>Recent content in 开始 on Linear Programming in Practice</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 24 Mar 2025 15:26:52 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 24 Mar 2025 18:25:23 +0800</lastBuildDate>
     <atom:link href="//localhost:1313/docs/start/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>为什么写这个教程</title>
@@ -20,7 +20,7 @@
       <link>//localhost:1313/docs/start/what-is-lp/</link>
       <pubDate>Fri, 21 Mar 2025 19:47:58 +0800</pubDate>
       <guid>//localhost:1313/docs/start/what-is-lp/</guid>
-      <description>&lt;p&gt;线性规划的英文是 Linear Programming。注意，Programming 不是编程的意思，它指的是一类优化问题。从字面翻译，Linear Programming 就是一种线性的优化问题。&lt;/p&gt;&#xA;&lt;h3 id=&#34;线性规划&#34;&gt;线性规划 &lt;a href=&#34;#%e7%ba%bf%e6%80%a7%e8%a7%84%e5%88%92&#34; class=&#34;anchor&#34; aria-hidden=&#34;true&#34;&gt;&lt;i class=&#34;material-icons align-middle&#34;&gt;link&lt;/i&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;我们看一个例子。&#xA;&#xA;  &lt;div class=&#34;equation leqno&#34; &gt;$$&#xA;\begin{aligned}&#xA;\max~ &amp;amp; 7x_1 &amp;#43; 6x_2 \\&#xA;\text{s.t. }  &amp;amp; 3x_1 &amp;#43; x_2 \leq 120 \\&#xA;&amp;amp; x_1 &amp;#43; 2x_2 \leq 160 \\&#xA;&amp;amp; x_1 \leq 35\\&#xA;\end{aligned}&#xA;$$&#xA;  &lt;/div&gt;&lt;/p&gt;&#xA;&lt;p&gt;第一行的表达式 $7x_1 + 6x_2$ 称为&lt;strong&gt;目标函数&lt;/strong&gt;，它前面那个 &lt;code&gt;max&lt;/code&gt; 是 &lt;code&gt;maximize&lt;/code&gt; 的缩写，代表优化方向。即，找到满足条件的 $x_1, x_2$ 使得这个目标函数值最大。接下来的三行公式是在描述 $x_1, x_2$ 需要满足的条件，其中 &lt;code&gt;s.t.&lt;/code&gt; 是 &lt;code&gt;subject to&lt;/code&gt; 的缩写。&lt;/p&gt;&#xA;&lt;p&gt;以第一个条件为例，如果 $x_1=40, x_2=0$, 它满足 $3x_1 + x_2 \leq 120$ 这个条件。但是，它不满足第三个条件 $x_1\leq 35$。因此 $x_1=40, x_2=0$ 不符合要求。&lt;/p&gt;</description>
+      <description>&lt;p&gt;线性规划的英文是 Linear Programming。注意，Programming 不是编程的意思，它指的是一类优化问题。从字面翻译，Linear Programming 就是一种线性的优化问题。&lt;/p&gt;&#xA;&lt;h3 id=&#34;线性规划&#34;&gt;线性规划 &lt;a href=&#34;#%e7%ba%bf%e6%80%a7%e8%a7%84%e5%88%92&#34; class=&#34;anchor&#34; aria-hidden=&#34;true&#34;&gt;&lt;i class=&#34;material-icons align-middle&#34;&gt;link&lt;/i&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;我们看一个例子。&#xA;&#xA;  &lt;div class=&#34;equation leqno&#34; &gt;$$&#xA;\begin{aligned}&#xA;\max~ &amp;amp; 7x_1 &amp;#43; 6x_2 \\&#xA;\text{s.t. }  &amp;amp; 3x_1 &amp;#43; x_2 \leq 120 \\&#xA;&amp;amp; x_1 &amp;#43; 2x_2 \leq 160 \\&#xA;&amp;amp; x_1 \leq 35\\&#xA;\end{aligned}&#xA;$$&#xA;  &lt;/div&gt;&lt;/p&gt;&#xA;&lt;p&gt;第一行的表达式 $7x_1 + 6x_2$ 称为&lt;strong&gt;目标函数&lt;/strong&gt;，它前面那个 &lt;code&gt;max&lt;/code&gt; 是 &lt;code&gt;maximize&lt;/code&gt; 的缩写，代表优化方向。即，找到满足条件的 $x_1, x_2$ 使得这个目标函数值最大。接下来的三行公式描述 $x_1, x_2$ 要满足的条件，其中 &lt;code&gt;s.t.&lt;/code&gt; 是 &lt;code&gt;subject to&lt;/code&gt; 的缩写。&lt;/p&gt;&#xA;&lt;p&gt;以第一个条件为例，如果 $x_1=40, x_2=0$, 它满足 $3x_1 + x_2 \leq 120$ 这个条件。但是，它不满足第三个条件 $x_1\leq 35$。因此 $x_1=40, x_2=0$ 不符合要求。&lt;/p&gt;</description>
     </item>
     <item>
       <title>版权声明</title>

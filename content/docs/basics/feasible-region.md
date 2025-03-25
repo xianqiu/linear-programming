@@ -11,6 +11,36 @@ toc: true
 
 
 
+从几何的角度理解。
+
+例子：二维情况。
+
+
+
+### 多面体
+
+ - polytope
+ - polyhedra
+ - simplex
+
+obj: hyperplane
+
+
+
+### 顶点
+
+vertex
+
+feasible solutions
+
+
+
+### 最优解
+
+离超平面最近或者最远的顶点。
+
+
+
 ## 几何理解
 
 下面我们从几何的角度来理解线性规划问题。

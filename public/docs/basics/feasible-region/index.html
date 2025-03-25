@@ -32,7 +32,18 @@
 <link rel="icon" type="image/png" sizes="16x16" href="//localhost:1313/favicon-16x16.png">
 <link rel="manifest" crossorigin="use-credentials" href="//localhost:1313/site.webmanifest">
 <meta property="og:title" content="可行区域" />
-<meta property="og:description" content="几何理解 link下面我们从几何的角度来理解线性规划问题。
+<meta property="og:description" content="从几何的角度理解。
+例子：二维情况。
+多面体 link
+polytope
+polyhedra
+simplex
+
+obj: hyperplane
+顶点 linkvertex
+feasible solutions
+最优解 link离超平面最近或者最远的顶点。
+几何理解 link下面我们从几何的角度来理解线性规划问题。
 线性规划问题的约束由 $m$ 个等式定义。从几何上看，每个等式代表一个超平面。$m$ 个超平面相交构成了一个多面体（Polyhedron）。
 在三维空间中，如下图所示。
 
@@ -94,10 +105,21 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="//localhost:1313/docs/basics/feasible-region/" /><meta property="og:image" content="//localhost:1313/opengraph/card-base-2_hu_adb5f12a70ccf733.png"/><meta property="article:section" content="docs" />
 <meta property="article:published_time" content="2025-03-24T17:21:06+08:00" />
-<meta property="article:modified_time" content="2025-03-24T17:21:06+08:00" /><meta name="twitter:card" content="summary_large_image"/>
+<meta property="article:modified_time" content="2025-03-24T18:28:01+08:00" /><meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="//localhost:1313/opengraph/card-base-2_hu_adb5f12a70ccf733.png"/>
 <meta name="twitter:title" content="可行区域"/>
-<meta name="twitter:description" content="几何理解 link下面我们从几何的角度来理解线性规划问题。
+<meta name="twitter:description" content="从几何的角度理解。
+例子：二维情况。
+多面体 link
+polytope
+polyhedra
+simplex
+
+obj: hyperplane
+顶点 linkvertex
+feasible solutions
+最优解 link离超平面最近或者最远的顶点。
+几何理解 link下面我们从几何的角度来理解线性规划问题。
 线性规划问题的约束由 $m$ 个等式定义。从几何上看，每个等式代表一个超平面。$m$ 个超平面相交构成了一个多面体（Polyhedron）。
 在三维空间中，如下图所示。
 
@@ -397,6 +419,7 @@
             <button id="close-sidebar" class="btn btn-icon btn-soft">
                 <span class="material-icons size-20 menu-icon align-middle">menu</span>
             </button>
+            <span><div id="docsearch"></div></span>
             
             </div>
 
@@ -463,6 +486,13 @@
     <div class="fw-bold text-uppercase mb-2">On this page</div>
     <nav id="TableOfContents">
   <ul>
+    <li>
+      <ul>
+        <li><a href="#多面体">多面体</a></li>
+        <li><a href="#顶点">顶点</a></li>
+        <li><a href="#最优解">最优解</a></li>
+      </ul>
+    </li>
     <li><a href="#几何理解">几何理解</a></li>
   </ul>
 </nav>
@@ -475,6 +505,13 @@
                                             </button>
 <nav id="toc-mobile">
   <ul class="dropdown-menu">
+    <li>
+      <ul>
+        <li><a href="#多面体">多面体</a></li>
+        <li><a href="#顶点">顶点</a></li>
+        <li><a href="#最优解">最优解</a></li>
+      </ul>
+    </li>
     <li><a href="#几何理解">几何理解</a></li>
   </ul>
 </nav></div>
@@ -497,7 +534,18 @@
                                                 
     
     <div data-prismjs-copy="" data-prismjs-copy-success="" data-prismjs-copy-error="">
-        <h2 id="几何理解">几何理解 <a href="#%e5%87%a0%e4%bd%95%e7%90%86%e8%a7%a3" class="anchor" aria-hidden="true"><i class="material-icons align-middle">link</i></a></h2><p>下面我们从几何的角度来理解线性规划问题。</p>
+        <p>从几何的角度理解。</p>
+<p>例子：二维情况。</p>
+<h3 id="多面体">多面体 <a href="#%e5%a4%9a%e9%9d%a2%e4%bd%93" class="anchor" aria-hidden="true"><i class="material-icons align-middle">link</i></a></h3><ul>
+<li>polytope</li>
+<li>polyhedra</li>
+<li>simplex</li>
+</ul>
+<p>obj: hyperplane</p>
+<h3 id="顶点">顶点 <a href="#%e9%a1%b6%e7%82%b9" class="anchor" aria-hidden="true"><i class="material-icons align-middle">link</i></a></h3><p>vertex</p>
+<p>feasible solutions</p>
+<h3 id="最优解">最优解 <a href="#%e6%9c%80%e4%bc%98%e8%a7%a3" class="anchor" aria-hidden="true"><i class="material-icons align-middle">link</i></a></h3><p>离超平面最近或者最远的顶点。</p>
+<h2 id="几何理解">几何理解 <a href="#%e5%87%a0%e4%bd%95%e7%90%86%e8%a7%a3" class="anchor" aria-hidden="true"><i class="material-icons align-middle">link</i></a></h2><p>下面我们从几何的角度来理解线性规划问题。</p>
 <p>线性规划问题的约束由 $m$ 个等式定义。从几何上看，每个等式代表一个超平面。$m$ 个超平面相交构成了一个多面体（Polyhedron）。</p>
 <p>在三维空间中，如下图所示。</p>
 <p>
@@ -561,6 +609,49 @@
 
     
 
+
+
+
+
+    
+    
+
+
+
+
+
+
+<div class="gitinfo d-flex flex-wrap justify-content-between align-items-center opacity-85 pt-3">
+    <div id="edit-this-page" class="mt-1">
+        <a href="https://github.com/xianqiu/linear-programming/blob/main/content/docs/basics/feasible-region.md" alt="可行区域" rel="noopener noreferrer" target="_blank">
+            
+            <span class="me-1 align-text-bottom">
+                
+                    <svg width="20px" height="20px" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
+  <path d="M16 0.396c-8.839 0-16 7.167-16 16 0 7.073 4.584 13.068 10.937 15.183 0.803 0.151 1.093-0.344 1.093-0.772 0-0.38-0.009-1.385-0.015-2.719-4.453 0.964-5.391-2.151-5.391-2.151-0.729-1.844-1.781-2.339-1.781-2.339-1.448-0.989 0.115-0.968 0.115-0.968 1.604 0.109 2.448 1.645 2.448 1.645 1.427 2.448 3.744 1.74 4.661 1.328 0.14-1.031 0.557-1.74 1.011-2.135-3.552-0.401-7.287-1.776-7.287-7.907 0-1.751 0.62-3.177 1.645-4.297-0.177-0.401-0.719-2.031 0.141-4.235 0 0 1.339-0.427 4.4 1.641 1.281-0.355 2.641-0.532 4-0.541 1.36 0.009 2.719 0.187 4 0.541 3.043-2.068 4.381-1.641 4.381-1.641 0.859 2.204 0.317 3.833 0.161 4.235 1.015 1.12 1.635 2.547 1.635 4.297 0 6.145-3.74 7.5-7.296 7.891 0.556 0.479 1.077 1.464 1.077 2.959 0 2.14-0.020 3.864-0.020 4.385 0 0.416 0.28 0.916 1.104 0.755 6.4-2.093 10.979-8.093 10.979-15.156 0-8.833-7.161-16-16-16z"/>
+</svg>
+
+                
+            </span>
+            Edit this page
+            
+        </a>
+    </div>
+    
+    <div id="last-modified" class="mt-1">
+        <p class="mb-0 fw-semibold">Last updated <span
+            id="relativetime"
+            data-authdate="2025-03-24T18:28:01&#43;0800"
+            title="24 Mar 2025, 18:28 CST">
+            24 Mar 2025, 18:28 CST
+        </span>. <span class="material-icons size-20 align-text-bottom opacity-75">history</span>
+        </p>
+    </div>
+    
+</div>
+
+    
+
     
                                             </div>
                                             <div><hr class="doc-hr">
@@ -621,6 +712,7 @@
         
 
 
+    
 
 
     
@@ -637,7 +729,24 @@
 
     <script type="text/javascript" src="//localhost:1313/docs/js/bundle.js" defer></script>
 
+        <script>
+    window.addEventListener('DOMContentLoaded', function() {
         
+        docsearch({
+            container: '#docsearch',
+            appId: 'LOI5OKXTGT',
+            apiKey: '2714a64027ec87c56646114eb7d2c3b3',
+            indexName: 'lpp-buypdf',
+            placeholder: 'Search Documentation',
+            translations: {
+                button: {
+                    buttonText: 'Search',
+                    buttonAriaLabel: 'Search',
+                }
+            }
+        });
+    });
+</script>
 
         
         

@@ -26,6 +26,11 @@ enableGitInfo = true
     [params.flexsearch]
     enabled = false
 
+    [params.docsearch] # Parameters for DocSearch
+      appID     = "LOI5OKXTGT"                       # DocSearch Application ID (or set env variable HUGO_PARAM_DOCSEARCH_appID)
+      apiKey    = "2714a64027ec87c56646114eb7d2c3b3" # DocSearch Search-Only API (Public) Key (or set env variable HUGO_PARAM_DOCSEARCH_apiKey)
+      indexName = "lpp-buypdf"                    # Index Name on which to perform search (or set env variable HUGO_PARAM_DOCSEARCH_indexName)
+
     [params.social]
         github = "xianqiu/linear-programming"
 

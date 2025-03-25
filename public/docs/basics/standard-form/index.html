@@ -63,7 +63,7 @@ $$
 <meta property="og:type" content="article" />
 <meta property="og:url" content="//localhost:1313/docs/basics/standard-form/" /><meta property="og:image" content="//localhost:1313/opengraph/card-base-2_hu_59a30c0a1c2ca45b.png"/><meta property="article:section" content="docs" />
 <meta property="article:published_time" content="2025-03-21T19:38:06+08:00" />
-<meta property="article:modified_time" content="2025-03-22T21:08:48+08:00" /><meta name="twitter:card" content="summary_large_image"/>
+<meta property="article:modified_time" content="2025-03-24T18:28:01+08:00" /><meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="//localhost:1313/opengraph/card-base-2_hu_59a30c0a1c2ca45b.png"/>
 <meta name="twitter:title" content="标准形式"/>
 <meta name="twitter:description" content="考虑一个线性规划的例子。
@@ -354,6 +354,7 @@ $$
             <button id="close-sidebar" class="btn btn-icon btn-soft">
                 <span class="material-icons size-20 menu-icon align-middle">menu</span>
             </button>
+            <span><div id="docsearch"></div></span>
             
             </div>
 
@@ -538,10 +539,10 @@ $$
 </li>
 <li>
 <p>把变量变成非负。</p>
-<p>设 $x \in\mathbb{R}$，引入非负变量 $x^+ = \max(x, 0), x^- = -\min(x, 0)$ 。这样一来， $x$ 可以表示成 $x = x^+ - x^-$。</p>
-<p>例：$x_1+2x_2 \leq 160$， $x_1,x_2\in \mathbb{R}$。</p>
+<p>设 $x \in\mathbb{R}$，引入非负变量 $x^+ = \max(x, 0), x^- = -\min(x, 0)$ 。这样一来，$x$ 可以表示成 $x = x^+ - x^-$。</p>
+<p>例：$x_1+2x_2 = 160$，$x_1,x_2\in \mathbb{R}$。</p>
 <p>引入非负变量 $x_{11}=\max(x_1,0), x_{12}=-\min(x_1,0)$，那么 $x_1=x_{11}+x_{12}$；再令 $x_{21}=\max(x_2,0), x_{22}=-\min(x_2,0)$，那么 $x_2 = x_{21} + x_{22}$。</p>
-<p>代入不等式，得到 $x_{11} + x_{12} + 2(x_{21}+x_{22})\leq 160$。</p>
+<p>代入等式，得到 $x_{11} + x_{12} + 2(x_{21}+x_{22})= 160$。</p>
 </li>
 </ol>
 <h3 id="标准形式">标准形式 <a href="#%e6%a0%87%e5%87%86%e5%bd%a2%e5%bc%8f" class="anchor" aria-hidden="true"><i class="material-icons align-middle">link</i></a></h3><p>综上所述，我们得到线性规划的<strong>标准形式</strong>。
@@ -592,9 +593,9 @@ $$
     <div id="last-modified" class="mt-1">
         <p class="mb-0 fw-semibold">Last updated <span
             id="relativetime"
-            data-authdate="2025-03-22T21:08:48&#43;0800"
-            title="22 Mar 2025, 21:08 CST">
-            22 Mar 2025, 21:08 CST
+            data-authdate="2025-03-24T18:28:01&#43;0800"
+            title="24 Mar 2025, 18:28 CST">
+            24 Mar 2025, 18:28 CST
         </span>. <span class="material-icons size-20 align-text-bottom opacity-75">history</span>
         </p>
     </div>
@@ -653,6 +654,7 @@ $$
         
 
 
+    
 
 
     
@@ -669,7 +671,24 @@ $$
 
     <script type="text/javascript" src="//localhost:1313/docs/js/bundle.js" defer></script>
 
+        <script>
+    window.addEventListener('DOMContentLoaded', function() {
         
+        docsearch({
+            container: '#docsearch',
+            appId: 'LOI5OKXTGT',
+            apiKey: '2714a64027ec87c56646114eb7d2c3b3',
+            indexName: 'lpp-buypdf',
+            placeholder: 'Search Documentation',
+            translations: {
+                button: {
+                    buttonText: 'Search',
+                    buttonAriaLabel: 'Search',
+                }
+            }
+        });
+    });
+</script>
 
         
         

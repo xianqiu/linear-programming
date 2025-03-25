@@ -2,26 +2,32 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>//localhost:1313/docs/basics/standard-form/</loc>
+    <lastmod>2025-03-24T18:28:01+08:00</lastmod>
+  </url><url>
     <loc>//localhost:1313/docs/start/</loc>
     <lastmod>2025-03-22T21:08:48+08:00</lastmod>
   </url><url>
     <loc>//localhost:1313/docs/start/why/</loc>
     <lastmod>2025-03-24T15:26:29+08:00</lastmod>
   </url><url>
+    <loc>//localhost:1313/docs/basics/feasible-region/</loc>
+    <lastmod>2025-03-24T18:28:01+08:00</lastmod>
+  </url><url>
     <loc>//localhost:1313/docs/start/what-is-lp/</loc>
-    <lastmod>2025-03-24T15:26:52+08:00</lastmod>
+    <lastmod>2025-03-24T18:25:23+08:00</lastmod>
   </url><url>
     <loc>//localhost:1313/docs/basics/</loc>
-    <lastmod>2025-03-22T21:08:48+08:00</lastmod>
+    <lastmod>2025-03-24T18:25:23+08:00</lastmod>
   </url><url>
     <loc>//localhost:1313/docs/modeling/write-linear-program/</loc>
-    <lastmod>2025-03-22T21:08:48+08:00</lastmod>
+    <lastmod>2025-03-24T18:25:23+08:00</lastmod>
   </url><url>
     <loc>//localhost:1313/docs/integer-programming/branch-and-bound/</loc>
-    <lastmod>2025-03-22T21:08:48+08:00</lastmod>
+    <lastmod>2025-03-24T18:25:23+08:00</lastmod>
   </url><url>
     <loc>//localhost:1313/docs/decomposition/column-generation/</loc>
-    <lastmod>2025-03-22T21:08:48+08:00</lastmod>
+    <lastmod>2025-03-24T18:25:23+08:00</lastmod>
   </url><url>
     <loc>//localhost:1313/docs/start/copyright/</loc>
     <lastmod>2025-03-24T15:26:29+08:00</lastmod>
@@ -30,22 +36,22 @@
     <lastmod>2025-03-22T21:08:48+08:00</lastmod>
   </url><url>
     <loc>//localhost:1313/docs/modeling/write-dual/</loc>
-    <lastmod>2025-03-22T21:08:48+08:00</lastmod>
+    <lastmod>2025-03-24T18:25:23+08:00</lastmod>
   </url><url>
     <loc>//localhost:1313/docs/integer-programming/cutting-plane/</loc>
-    <lastmod>2025-03-22T21:08:48+08:00</lastmod>
+    <lastmod>2025-03-24T18:25:23+08:00</lastmod>
   </url><url>
     <loc>//localhost:1313/docs/decomposition/row-generation/</loc>
-    <lastmod>2025-03-22T21:08:48+08:00</lastmod>
+    <lastmod>2025-03-24T18:25:23+08:00</lastmod>
   </url><url>
     <loc>//localhost:1313/docs/interior-point-method/</loc>
     <lastmod>2025-03-22T21:08:48+08:00</lastmod>
   </url><url>
     <loc>//localhost:1313/docs/modeling/linearize/</loc>
-    <lastmod>2025-03-22T21:08:48+08:00</lastmod>
+    <lastmod>2025-03-24T18:25:23+08:00</lastmod>
   </url><url>
     <loc>//localhost:1313/docs/decomposition/benders/</loc>
-    <lastmod>2025-03-22T21:08:48+08:00</lastmod>
+    <lastmod>2025-03-24T18:25:23+08:00</lastmod>
   </url><url>
     <loc>//localhost:1313/docs/integer-programming/</loc>
     <lastmod>2025-03-22T21:08:48+08:00</lastmod>
@@ -62,14 +68,11 @@
     <loc>//localhost:1313/docs/</loc>
     <lastmod>2025-03-22T21:08:48+08:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/docs/basics/standard-form/</loc>
-    <lastmod>2025-03-22T21:08:48+08:00</lastmod>
-  </url><url>
     <loc>//localhost:1313/docs/simplex-algorithm/primal/</loc>
-    <lastmod>2025-03-22T21:08:48+08:00</lastmod>
+    <lastmod>2025-03-24T18:25:23+08:00</lastmod>
   </url><url>
     <loc>//localhost:1313/</loc>
-    <lastmod>2025-03-24T15:26:52+08:00</lastmod>
+    <lastmod>2025-03-24T18:28:01+08:00</lastmod>
   </url><url>
     <loc>//localhost:1313/categories/</loc>
   </url><url>
