@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>编程实现 on Linear Programming in Practice</title>
+    <link>//localhost:1313/docs/simplex-algorithm/implement/</link>
+    <description>Recent content in 编程实现 on Linear Programming in Practice</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 27 Mar 2025 13:58:44 +0800</lastBuildDate>
+    <atom:link href="//localhost:1313/docs/simplex-algorithm/implement/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>基础算法</title>
+      <link>//localhost:1313/docs/simplex-algorithm/implement/simplex-basic/</link>
+      <pubDate>Thu, 27 Mar 2025 13:55:12 +0800</pubDate>
+      <guid>//localhost:1313/docs/simplex-algorithm/implement/simplex-basic/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>处理退化</title>
+      <link>//localhost:1313/docs/simplex-algorithm/implement/simplex-degeneracy/</link>
+      <pubDate>Thu, 27 Mar 2025 13:55:23 +0800</pubDate>
+      <guid>//localhost:1313/docs/simplex-algorithm/implement/simplex-degeneracy/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>处理起点</title>
+      <link>//localhost:1313/docs/simplex-algorithm/implement/simplex-two-phase/</link>
+      <pubDate>Thu, 27 Mar 2025 13:58:44 +0800</pubDate>
+      <guid>//localhost:1313/docs/simplex-algorithm/implement/simplex-two-phase/</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>

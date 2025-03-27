@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+
+
+
+
+
+    
+        
+    
+
+    
+
+    
+
+    
+
+<html lang="en"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8" />
+    <title>单纯形算法 | Linear Programming in Practice</title>
+    <meta name="robots" content="noindex">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="Documentation, Hugo, Hugo Theme, Bootstrap" />
+    <meta name="author" content="Colin Wilson - Lotus Labs" />
+    <meta name="email" content="support@aigis.uk" />
+    <meta name="website" content="https://lotusdocs.dev" />
+    <meta name="Version" content="v0.1.0" />
+    
+    <link rel="icon" href="//localhost:1313/favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="//localhost:1313/favicon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="//localhost:1313/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="//localhost:1313/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="//localhost:1313/favicon-16x16.png">
+<link rel="manifest" crossorigin="use-credentials" href="//localhost:1313/site.webmanifest">
+<meta property="og:title" content="单纯形算法" />
+<meta property="og:description" content="考虑线性规划问题的标准形式。
+
+  $$
+\begin{aligned}
+\min~ &amp; c^T x\\ 
+\text{s.t.}~ &amp; Ax=b\\
+&amp; x\geq 0
+\end{aligned}
+$$
+  
+其中 $c, x \in \mathbb{R}^n$，$A\in\mathbb{R}^{m\times n}$，$b\in\mathbb{R}^m \geq \mathbf{0}$，$n\geq m$。
+这个问题还可以这样描述。
+找到一个点 $x\in P:={\{x| Ax=b, x\geq 0\}}$，使得目标函数 $f(x):=c^Tx$ 最小化。从几何的角度来看，$P$ 是一个多面体，$x$ 是多面体的一个顶点。
+单纯形算法的思路就是，从多面体的某一个顶点开始，然后沿着目标函数减少的方向，迭代到另一个顶点，直到目标函数值无法降低。那么对应的顶点就是最优解。
+分块矩阵 link先把原问题中的矩阵和向量用分块的方式表达。令 $B$ 和 $N$ 分别代表基矩阵和非基矩阵。$A$ 可以写成下面的形式。
+
+  $$
+A = [B \quad N]
+$$
+  
+相应地，$x$ 和 $c$ 可以写成
+
+  $$
+x = \begin{bmatrix}
+x_B \\
+x_N
+\end{bmatrix}\quad
+c = \begin{bmatrix} c_B \\
+c_N\end{bmatrix}
+$$
+  " />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="//localhost:1313/docs/simplex-algorithm/simplex/" /><meta property="og:image" content="//localhost:1313/opengraph/card-base-2_hu_55148b5eaaee07d0.png"/><meta property="article:section" content="docs" />
+<meta property="article:published_time" content="2025-03-21T19:35:16+08:00" />
+<meta property="article:modified_time" content="2025-03-21T19:35:16+08:00" /><meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="//localhost:1313/opengraph/card-base-2_hu_55148b5eaaee07d0.png"/>
+<meta name="twitter:title" content="单纯形算法"/>
+<meta name="twitter:description" content="考虑线性规划问题的标准形式。
+
+  $$
+\begin{aligned}
+\min~ &amp; c^T x\\ 
+\text{s.t.}~ &amp; Ax=b\\
+&amp; x\geq 0
+\end{aligned}
+$$
+  
+其中 $c, x \in \mathbb{R}^n$，$A\in\mathbb{R}^{m\times n}$，$b\in\mathbb{R}^m \geq \mathbf{0}$，$n\geq m$。
+这个问题还可以这样描述。
+找到一个点 $x\in P:={\{x| Ax=b, x\geq 0\}}$，使得目标函数 $f(x):=c^Tx$ 最小化。从几何的角度来看，$P$ 是一个多面体，$x$ 是多面体的一个顶点。
+单纯形算法的思路就是，从多面体的某一个顶点开始，然后沿着目标函数减少的方向，迭代到另一个顶点，直到目标函数值无法降低。那么对应的顶点就是最优解。
+分块矩阵 link先把原问题中的矩阵和向量用分块的方式表达。令 $B$ 和 $N$ 分别代表基矩阵和非基矩阵。$A$ 可以写成下面的形式。
+
+  $$
+A = [B \quad N]
+$$
+  
+相应地，$x$ 和 $c$ 可以写成
+
+  $$
+x = \begin{bmatrix}
+x_B \\
+x_N
+\end{bmatrix}\quad
+c = \begin{bmatrix} c_B \\
+c_N\end{bmatrix}
+$$
+  "/>
+
+    
+        <link rel="alternate" type="application/atom+xml" title="Atom feed for Linear Programming in Practice" href="/index.xml" />
+    
+    
+    
+    
+
+    <link rel="stylesheet" href="/docs/scss/style.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="/docs/scss/katex.css" crossorigin="anonymous">
+    
+    <script src="/docs/js/katex.js" defer></script>
+    <script src="/docs/js/auto-render.js" defer></script>
+    
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.getElementById("content"), {
+          
+          
+          delimiters: [
+              {left: '$$', right: '$$', display: true},
+              {left: '$', right: '$', display: false},
+              {left: '\\(', right: '\\)', display: false},
+              {left: '\\[', right: '\\]', display: true}
+          ],
+          
+          throwOnError : false
+        });
+    });
+</script>
+    </head>
+<body>
+        <div class="content">
+            <div class="page-wrapper toggled">
+<nav id="sidebar" class="sidebar-wrapper">
+    <div class="sidebar-brand">
+        <a href='/' aria-label="HomePage" alt="HomePage">
+            
+                <?xml version="1.0" encoding="UTF-8"?><svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 250"><path d="m143,39.5c-18,0-18,18-18,18,0,0,0-18-18-18H22c-2.76,0-5,2.24-5,5v143c0,2.76,2.24,5,5,5h76c7.2,0,8.64,11.52,8.93,16.13.07,1.05.95,1.87,2,1.87h32.14c1.06,0,1.94-.82,2-1.87.29-4.61,1.73-16.13,8.93-16.13h76c2.76,0,5-2.24,5-5V44.5c0-2.76-2.24-5-5-5h-85Zm63,123.5c0,1.38-1.12,2.5-2.5,2.5h-60.5c-18,0-18,18-18,18,0,0,0-18-18-18h-60.5c-1.38,0-2.5-1.12-2.5-2.5v-94c0-1.38,1.12-2.5,2.5-2.5h51.5c7.2,0,8.64,11.52,8.93,16.13.07,1.05.95,1.87,2,1.87h32.14c1.06,0,1.94-.82,2-1.87.29-4.61,1.73-16.13,8.93-16.13h51.5c1.38,0,2.5,1.12,2.5,2.5v94Z" style="fill:#06f;"/></svg>
+            
+        </a>
+    </div>
+    <div class="sidebar-content" style="height: calc(100% - 131px);">
+        <ul class="sidebar-menu">
+            
+                
+                
+                    
+                    
+                        <li class="sidebar-dropdown  ">
+                            <button class="btn">
+                                <i class="material-icons me-2">circle</i>
+                                开始
+                            </button>
+                            <div class="sidebar-submenu ">
+                                <ul>
+                                    
+                                        
+                                        
+                                            <li class=" "><a class="sidebar-nested-link" href="//localhost:1313/docs/start/why/">为什么写这个教程</a></li>
+                                        
+                                    
+                                        
+                                        
+                                            <li class=" "><a class="sidebar-nested-link" href="//localhost:1313/docs/start/what-is-lp/">什么是线性规划</a></li>
+                                        
+                                    
+                                        
+                                        
+                                            <li class=" "><a class="sidebar-nested-link" href="//localhost:1313/docs/start/copyright/">版权声明</a></li>
+                                        
+                                    
+                                </ul>
+                            </div>
+                        </li>
+                    
+                
+                    
+                    
+                        <li class="sidebar-dropdown  ">
+                            <button class="btn">
+                                <i class="material-icons me-2">format_list_bulleted</i>
+                                基础概念
+                            </button>
+                            <div class="sidebar-submenu ">
+                                <ul>
+                                    
+                                        
+                                        
+                                            <li class=" "><a class="sidebar-nested-link" href="//localhost:1313/docs/basics/standard-form/">标准形式</a></li>
+                                        
+                                    
+                                        
+                                        
+                                            <li class=" "><a class="sidebar-nested-link" href="//localhost:1313/docs/basics/feasible-region/">可行区域</a></li>
+                                        
+                                    
+                                        
+                                        
+                                            <li class=" "><a class="sidebar-nested-link" href="//localhost:1313/docs/basics/basic-feasible-solution/">基本可行解</a></li>
+                                        
+                                    
+                                </ul>
+                            </div>
+                        </li>
+                    
+                
+                    
+                    
+                        <li class="sidebar-dropdown  current active">
+                            <button class="btn">
+                                <i class="material-icons me-2">polyline</i>
+                                单纯形算法
+                            </button>
+                            <div class="sidebar-submenu d-block">
+                                <ul>
+                                    
+                                        
+                                        
+                                            <li class="current "><a class="sidebar-nested-link" href="//localhost:1313/docs/simplex-algorithm/simplex/">单纯形算法</a></li>
+                                        
+                                    
+                                        
+                                        
+                                            <li class=" "><a class="sidebar-nested-link" href="//localhost:1313/docs/simplex-algorithm/example/">算法示例</a></li>
+                                        
+                                    
+                                        
+                                        
+                                            <li class=" "><a class="sidebar-nested-link" href="//localhost:1313/docs/simplex-algorithm/degeneracy/">处理退化</a></li>
+                                        
+                                    
+                                        
+                                        
+                                            <li class=" "><a class="sidebar-nested-link" href="//localhost:1313/docs/simplex-algorithm/start-vertex/">处理起点</a></li>
+                                        
+                                    
+                                        
+                                        
+                                            <li class="sidebar-dropdown nested  ">
+                                                <button class="btn">
+                                                    
+                                                    编程实现
+                                                </button>
+                                                <div class="sidebar-submenu ">
+                                                    <ul>
+                                                        
+                                                            
+                                                            
+                                                                <li class=" "><a class="sidebar-nested-link" href="//localhost:1313/docs/simplex-algorithm/implement/simplex-basic/">基础算法</a></li>
+                                                            
+                                                        
+                                                            
+                                                            
+                                                                <li class=" "><a class="sidebar-nested-link" href="//localhost:1313/docs/simplex-algorithm/implement/simplex-degeneracy/">处理退化</a></li>
+                                                            
+                                                        
+                                                            
+                                                            
+                                                                <li class=" "><a class="sidebar-nested-link" href="//localhost:1313/docs/simplex-algorithm/implement/simplex-two-phase/">处理起点</a></li>
+                                                            
+                                                        
+                                                    </ul>
+                                                </div>
+                                            </li>
+                                        
+                                    
+                                </ul>
+                            </div>
+                        </li>
+                    
+                
+                    
+                        
+                        <li class="">
+                            <a class="sidebar-root-link" href="//localhost:1313/docs/interior-point-method/">
+                                <i class="material-icons me-2">chips</i>
+                                
+                                内点法
+                            </a>
+                        </li>
+                    
+                
+                    
+                    
+                        <li class="sidebar-dropdown  ">
+                            <button class="btn">
+                                <i class="material-icons me-2">scatter_plot</i>
+                                整数规划
+                            </button>
+                            <div class="sidebar-submenu ">
+                                <ul>
+                                    
+                                        
+                                        
+                                            <li class=" "><a class="sidebar-nested-link" href="//localhost:1313/docs/integer-programming/branch-and-bound/">分支定界法</a></li>
+                                        
+                                    
+                                        
+                                        
+                                            <li class=" "><a class="sidebar-nested-link" href="//localhost:1313/docs/integer-programming/cutting-plane/">割平面法</a></li>
+                                        
+                                    
+                                </ul>
+                            </div>
+                        </li>
+                    
+                
+                    
+                    
+                        <li class="sidebar-dropdown  ">
+                            <button class="btn">
+                                <i class="material-icons me-2">grid_view</i>
+                                分解
+                            </button>
+                            <div class="sidebar-submenu ">
+                                <ul>
+                                    
+                                        
+                                        
+                                            <li class=" "><a class="sidebar-nested-link" href="//localhost:1313/docs/decomposition/column-generation/">列生成</a></li>
+                                        
+                                    
+                                        
+                                        
+                                            <li class=" "><a class="sidebar-nested-link" href="//localhost:1313/docs/decomposition/row-generation/">行生成</a></li>
+                                        
+                                    
+                                        
+                                        
+                                            <li class=" "><a class="sidebar-nested-link" href="//localhost:1313/docs/decomposition/benders/">Benders分解</a></li>
+                                        
+                                    
+                                </ul>
+                            </div>
+                        </li>
+                    
+                
+                    
+                    
+                        <li class="sidebar-dropdown  ">
+                            <button class="btn">
+                                <i class="material-icons me-2">conversion_path</i>
+                                建模
+                            </button>
+                            <div class="sidebar-submenu ">
+                                <ul>
+                                    
+                                        
+                                        
+                                            <li class=" "><a class="sidebar-nested-link" href="//localhost:1313/docs/modeling/write-linear-program/">如何写线性规划</a></li>
+                                        
+                                    
+                                        
+                                        
+                                            <li class=" "><a class="sidebar-nested-link" href="//localhost:1313/docs/modeling/write-dual/">如何写对偶问题</a></li>
+                                        
+                                    
+                                        
+                                        
+                                            <li class=" "><a class="sidebar-nested-link" href="//localhost:1313/docs/modeling/linearize/">线性化技巧</a></li>
+                                        
+                                    
+                                </ul>
+                            </div>
+                        </li>
+                    
+                
+                    
+                        
+                        <li class="">
+                            <a class="sidebar-root-link" href="//localhost:1313/docs/practice/">
+                                <i class="material-icons me-2">code_blocks</i>
+                                
+                                练习
+                            </a>
+                        </li>
+                    
+                
+            
+        </ul>
+        
+    </div>
+    
+        <ul class="sidebar-footer list-unstyled mb-0">
+            
+        </ul>
+    
+</nav>
+
+                    <main class="page-content bg-transparent">
+                        
+<div id="top-header" class="top-header d-print-none">
+    <div class="header-bar d-flex justify-content-between">
+        <div class="d-flex align-items-center">
+            <a href='/' class="logo-icon me-3" aria-label="HomePage" alt="HomePage">
+                <div class="small">
+                    
+                            <?xml version="1.0" encoding="UTF-8"?><svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 250"><path d="m143,39.5c-18,0-18,18-18,18,0,0,0-18-18-18H22c-2.76,0-5,2.24-5,5v143c0,2.76,2.24,5,5,5h76c7.2,0,8.64,11.52,8.93,16.13.07,1.05.95,1.87,2,1.87h32.14c1.06,0,1.94-.82,2-1.87.29-4.61,1.73-16.13,8.93-16.13h76c2.76,0,5-2.24,5-5V44.5c0-2.76-2.24-5-5-5h-85Zm63,123.5c0,1.38-1.12,2.5-2.5,2.5h-60.5c-18,0-18,18-18,18,0,0,0-18-18-18h-60.5c-1.38,0-2.5-1.12-2.5-2.5v-94c0-1.38,1.12-2.5,2.5-2.5h51.5c7.2,0,8.64,11.52,8.93,16.13.07,1.05.95,1.87,2,1.87h32.14c1.06,0,1.94-.82,2-1.87.29-4.61,1.73-16.13,8.93-16.13h51.5c1.38,0,2.5,1.12,2.5,2.5v94Z" style="fill:#06f;"/></svg>
+                    
+                </div>
+                <div class="big">
+                    
+                            <?xml version="1.0" encoding="UTF-8"?><svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 250"><path d="m143,39.5c-18,0-18,18-18,18,0,0,0-18-18-18H22c-2.76,0-5,2.24-5,5v143c0,2.76,2.24,5,5,5h76c7.2,0,8.64,11.52,8.93,16.13.07,1.05.95,1.87,2,1.87h32.14c1.06,0,1.94-.82,2-1.87.29-4.61,1.73-16.13,8.93-16.13h76c2.76,0,5-2.24,5-5V44.5c0-2.76-2.24-5-5-5h-85Zm63,123.5c0,1.38-1.12,2.5-2.5,2.5h-60.5c-18,0-18,18-18,18,0,0,0-18-18-18h-60.5c-1.38,0-2.5-1.12-2.5-2.5v-94c0-1.38,1.12-2.5,2.5-2.5h51.5c7.2,0,8.64,11.52,8.93,16.13.07,1.05.95,1.87,2,1.87h32.14c1.06,0,1.94-.82,2-1.87.29-4.61,1.73-16.13,8.93-16.13h51.5c1.38,0,2.5,1.12,2.5,2.5v94Z" style="fill:#06f;"/></svg>
+                    
+                </div>
+            </a>
+            <button id="close-sidebar" class="btn btn-icon btn-soft">
+                <span class="material-icons size-20 menu-icon align-middle">menu</span>
+            </button>
+            <span><div id="docsearch"></div></span>
+            
+            </div>
+
+        <div class="d-flex align-items-center">
+            <ul class="list-unstyled mb-0">
+                
+                
+                    
+                    <li class="list-inline-item mb-0">
+                        <a href=" https://github.com/xianqiu/linear-programming " alt="github" rel="noopener noreferrer" target="_blank">
+                            <div class="btn btn-icon btn-default border-0">
+                                
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><title>GitHub</title><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                                
+                            </div>
+                        </a>
+                    </li>
+                    
+                
+            </ul>
+            
+        </div>
+    </div>
+    
+    
+    
+</div>
+
+
+                            <div class="container-fluid">
+                                <div class="layout-spacing">
+                                    
+                                        <div class="d-md-flex justify-content-between align-items-center"><nav aria-label="breadcrumb" class="d-inline-block pb-2 mt-1 mt-sm-0">
+    <ul id="breadcrumbs" class="breadcrumb bg-transparent mb-0" itemscope itemtype="https://schema.org/BreadcrumbList">
+        
+            
+                <li class="breadcrumb-item text-capitalize active" aria-current="page" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                    <a itemprop="item" href="/docs/">
+                        <i class="material-icons size-20 align-text-bottom" itemprop="name">Home</i>
+                    </a>
+                    <meta itemprop="position" content='1' />
+                </li>
+            
+            
+                <li class="breadcrumb-item text-capitalize" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                    <a itemprop="item" href="/docs/simplex-algorithm/">
+                        <span itemprop="name">单纯形算法</span>
+                    </a>
+                    <meta itemprop="position" content='2' />
+                </li>
+            
+        
+            <li class="breadcrumb-item text-capitalize active" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                <span itemprop="name">单纯形算法</span>
+                <meta itemprop="position" content='3' />
+            </li>
+        
+    </ul>
+</nav></div>
+                                    
+                                    <div class="row flex-xl-nowrap">
+                                        
+                                        <div class="docs-toc col-xl-3    d-xl-block"><toc>
+    <div class="fw-bold text-uppercase mb-2">On this page</div>
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#分块矩阵">分块矩阵</a></li>
+        <li><a href="#目标函数">目标函数</a></li>
+        <li><a href="#缩减成本">缩减成本</a></li>
+        <li><a href="#出基入基">出基入基</a></li>
+        <li><a href="#算法描述">算法描述</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </toc></div>
+                                        
+                                        
+                                        <div class="docs-toc-mobile    d-print-none d-xl-none">
+                                            <button id="toc-dropdown-btn" class="btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" data-bs-offset="0,0" aria-expanded="false">
+                                                Table of Contents
+                                            </button>
+<nav id="toc-mobile">
+  <ul class="dropdown-menu">
+    <li>
+      <ul>
+        <li><a href="#分块矩阵">分块矩阵</a></li>
+        <li><a href="#目标函数">目标函数</a></li>
+        <li><a href="#缩减成本">缩减成本</a></li>
+        <li><a href="#出基入基">出基入基</a></li>
+        <li><a href="#算法描述">算法描述</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+                                        <div class="docs-content col-12 col-xl-9 mt-0">
+                                            <div class="mb-0 d-flex">
+                                                
+                                                <i class="material-icons title-icon me-2">article</i>
+                                                
+                                                <h1 class="content-title mb-0">
+                                                    单纯形算法
+                                                    
+                                                        <span class="badge bg-default fs-6 mb-1 align-middle">DRAFT</span>
+                                                    
+                                                </h1>
+                                            </div>
+                                            
+                                                <p class="lead mb-3"></p>
+                                            
+                                            <div id="content" class="main-content" >
+                                                
+    
+    <div data-prismjs-copy="" data-prismjs-copy-success="" data-prismjs-copy-error="">
+        <p>考虑线性规划问题的标准形式。</p>
+
+  <div class="equation leqno" >$$
+\begin{aligned}
+\min~ &amp; c^T x\\ 
+\text{s.t.}~ &amp; Ax=b\\
+&amp; x\geq 0
+\end{aligned}
+$$
+  </div>
+<p>其中 $c, x \in \mathbb{R}^n$，$A\in\mathbb{R}^{m\times n}$，$b\in\mathbb{R}^m \geq \mathbf{0}$，$n\geq m$。</p>
+<p>这个问题还可以这样描述。</p>
+<p>找到一个点 $x\in P:={\{x| Ax=b, x\geq 0\}}$，使得目标函数 $f(x):=c^Tx$ 最小化。从几何的角度来看，$P$ 是一个多面体，$x$ 是多面体的一个顶点。</p>
+<p>单纯形算法的思路就是，从多面体的某一个顶点开始，然后沿着目标函数减少的方向，迭代到另一个顶点，直到目标函数值无法降低。那么对应的顶点就是最优解。</p>
+<h3 id="分块矩阵">分块矩阵 <a href="#%e5%88%86%e5%9d%97%e7%9f%a9%e9%98%b5" class="anchor" aria-hidden="true"><i class="material-icons align-middle">link</i></a></h3><p>先把原问题中的矩阵和向量用分块的方式表达。令 $B$ 和 $N$ 分别代表基矩阵和非基矩阵。$A$ 可以写成下面的形式。</p>
+
+  <div class="equation leqno" >$$
+A = [B \quad N]
+$$
+  </div>
+<p>相应地，$x$ 和 $c$ 可以写成
+
+  <div class="equation leqno" >$$
+x = \begin{bmatrix}
+x_B \\
+x_N
+\end{bmatrix}\quad
+c = \begin{bmatrix} c_B \\
+c_N\end{bmatrix}
+$$
+  </div></p>
+<h3 id="目标函数">目标函数 <a href="#%e7%9b%ae%e6%a0%87%e5%87%bd%e6%95%b0" class="anchor" aria-hidden="true"><i class="material-icons align-middle">link</i></a></h3><p>用分块矩阵的形式来表示目标函数。</p>
+
+  <div class="equation leqno" >$$
+\begin{aligned}
+f(x) &amp; = c^Tx \\
+&amp; = \begin{bmatrix}
+c_B^T &amp; c_N^T
+\end{bmatrix}\begin{bmatrix}
+x_B\\
+x_N
+\end{bmatrix}\\
+&amp; = c_B^Tx_B &#43; c_N^T x_N \\
+\end{aligned}
+$$
+  </div>
+<p>根据约束条件 $Ax=b$，我们可以计算 $x_B$。</p>
+
+  <div class="equation leqno" >$$
+\begin{aligned}
+Ax &amp; = \begin{bmatrix}
+B &amp; N
+\end{bmatrix}\begin{bmatrix}
+x_B\\
+x_N
+\end{bmatrix}\\
+&amp; = B x_B &#43; N x_N \\
+&amp; = b
+\end{aligned}
+$$
+  </div>
+<p>因此</p>
+<p>$$
+x_B = B^{-1}b - B^{-1}N x_N
+$$</p>
+<p>把 $x_B$ 代入目标函数得到</p>
+
+  <div class="equation leqno" >$$
+f(x) = c_B^T B^{-1}b &#43; (c_N^T - c_B^T B^{-1}N) x_N
+$$
+  </div>
+<h3 id="缩减成本">缩减成本 <a href="#%e7%bc%a9%e5%87%8f%e6%88%90%e6%9c%ac" class="anchor" aria-hidden="true"><i class="material-icons align-middle">link</i></a></h3><p>对 $f(x)$ 关于 $x_N$ 求导数
+
+  <div class="equation leqno" >$$
+\nabla f(x) = (c_N^T - c_B^T B^{-1}N)^T
+$$
+  </div></p>
+<p>令 $\mu := \nabla f(x)$，即
+
+  <div class="equation leqno" >$$
+\mu^T = c_N^T - c_B^T B^{-1}N
+$$
+  </div></p>
+<p>它表示 $f(x)$ 关于 $x_N$ 的变化率，称为<strong>缩减成本 (Reduced Cost)</strong>。换句话说，$x_j$ 增加一个单位，那么函数值改变 $\mu_j$，$\forall j=m+1, &hellip;,n$。</p>
+<p>因此，如果存在 $j$ 使得 $\mu_j &lt; 0$，那么 $x_j$ 增加一个单位，目标函数值就减少 $-\mu_j$。但是要注意，$x_j$ 的值不能任意改变，因为要保证可行性，即满足条件 $Ax=b$  和 $x\geq 0$。</p>
+<p>下面我们描述如何保证可行性。</p>
+<h3 id="出基入基">出基入基 <a href="#%e5%87%ba%e5%9f%ba%e5%85%a5%e5%9f%ba" class="anchor" aria-hidden="true"><i class="material-icons align-middle">link</i></a></h3><p>根据前面的计算，我们知道 $x$ 可以表示成下面的形式。
+
+  <div class="equation leqno" >$$
+x = \begin{bmatrix}
+x_B\\
+x_N
+\end{bmatrix}=
+\begin{bmatrix}
+B^{-1}b - B^{-1}N x_N\\
+x_N
+\end{bmatrix}
+$$
+  </div></p>
+<p>可以验证 $Ax=b$。因此，只需要保证等式最右边是非负的，那么 $x$ 就是可行的。即</p>
+
+  <div class="equation leqno" >$$
+\begin{aligned}
+&amp; B^{-1}b - B^{-1}N x_N \geq 0, \\
+&amp; x_N\geq 0
+\end{aligned}
+$$
+  </div>
+<p>为了简化描述，引入两个记号</p>
+
+  <div class="equation leqno" >$$
+\tilde{b} := B^{-1}b = \begin{bmatrix}
+\tilde{b}_1\\
+\tilde{b}_2\\
+\vdots\\
+\tilde{b}_m
+\end{bmatrix}
+$$
+  </div>
+
+  <div class="equation leqno" >$$
+\tilde{A} := B^{-1}N = \begin{bmatrix}
+\tilde{a}_{1, m&#43;1}, \tilde{a}_{1, m&#43;2}, ..., \tilde{a}_{1, n}\\
+\tilde{a}_{2, m&#43;1}, \tilde{a}_{2, m&#43;1}, ..., \tilde{a}_{2, n}\\
+\vdots\\
+\tilde{a}_{m, n}, \tilde{a}_{m, m&#43;1}, ..., \tilde{a}_{m, n}
+\end{bmatrix}
+$$
+  </div>
+<p>这样一来，上述两个条件可以写成</p>
+
+  <div class="equation leqno" >$$x=
+\begin{bmatrix}
+\tilde{b} - \tilde{A} x_N \\
+x_N
+\end{bmatrix}
+\geq\mathbf{0}
+$$
+  </div>
+<p>再把它写成分量的形式</p>
+
+  <div class="equation leqno" >$$x=
+\begin{bmatrix}
+\tilde{b}_1 - \sum_{k=m&#43;1}^n \tilde{a}_{1,k}x_k \\
+\vdots\\
+\tilde{b}_m - \sum_{k=m&#43;1}^n \tilde{a}_{m,k}x_k \\[6pt]
+x_{m&#43;1}\\
+\vdots\\
+x_{n}
+\end{bmatrix}
+\geq\mathbf{0}
+$$
+  </div>
+<p>接下来要以一个基本可行解为起点，沿着目标函数值下降的方向迭代。为了简化符号，仍然用 $x$ 来表示这个起点。那么在上面的式子中，$x_j=0$，$\forall j = m+1, &hellip;,n$。</p>
+<p>迭代的方向通过计算 $\mu$ 得到。如果当前 $x$ 不是最优解，那么存在某个 $j$ 使得 $\mu_j &lt; 0$。换句话说，这表示目标函数值可以进一步降低。</p>
+<p>把 $x_j$ 增加 $\delta$，其中 $\delta &gt; 0$，即 $x_j := x_j + \delta$，我们有</p>
+
+  <div class="equation leqno" >$$x=
+\begin{bmatrix}
+\tilde{b}_1 - \sum_{k=m&#43;1}^n \tilde{a}_{1,k}x_k  - \tilde{a}_{1,j}\delta \\
+\vdots\\
+\tilde{b}_m - \sum_{k=m&#43;1}^n \tilde{a}_{m,k}x_k - \tilde{a}_{m, j}\delta\\[6pt]
+x_{m&#43;1}\\
+\vdots\\
+x_j&#43;\delta\mu_j\\
+\vdots\\
+x_{n}
+\end{bmatrix}
+$$
+  </div>
+<p>根据前面的假设，起点 $x$ 是一个基本可行解。那么 $x_j=0$，$\forall j=m+1, &hellip;, n$。</p>
+<p>于是上式可以写成
+
+  <div class="equation leqno" >$$x=
+\begin{bmatrix}
+\tilde{b}_1  - \tilde{a}_{1,j}\delta \\
+\vdots\\
+\tilde{b}_m - \tilde{a}_{m, j}\delta \\[6pt]
+0\\
+\vdots\\
+\delta\\
+\vdots\\
+0
+\end{bmatrix}
+$$
+  </div></p>
+<p>要保证可行性，只需要上式每个分量非负，即
+
+  <div class="equation leqno" >$$
+\tilde{b}_i  - \tilde{a}_{i,j}\delta \geq 0,\quad \forall i = 1, 2, ...,m
+$$
+  </div></p>
+<p>如果 $\tilde{a}_{i,j} &lt; 0$，$\forall i=1, 2, &hellip;,m$，那么 $\delta$ 可以无穷大，目标函数值就是负无穷，因而问题没有最优解。</p>
+<p>假设原问题有最优解。那么存在 $i$ 使得 $\tilde{a}_{i,j} &gt; 0$。注意到起点是基本可行解，那么 $x_B =  B^{-1}b \geq 0$。注意，这里 $x_B$ 中的 $x$ 指的是起点。因此，$\tilde{b}_i \geq 0$。</p>
+<p>于是，$\delta$ 可以按如下公式取值。</p>
+
+  <div class="equation leqno" >$$
+\delta = \min \left\{ \frac{\tilde{b}_i}{\tilde{a}_{i,j}} \text{ and } \tilde{a}_{i,j} &gt; 0, \quad i=1,2,\ldots, m \right\}
+$$
+  </div>
+<p>容易验证，上式 $x$ 中的每个分量都非负，因此迭代后的解也是可行的。</p>
+<p>回顾这个迭代过程。已知 $\mu_j &lt; 0$，于是把 $x_j$ 的值增加到 $\delta$。假设原问题有界。因而存在某个某个下标 $i$ ，使得 $\tilde{a}_{i,j} &gt; 0$ 且</p>
+
+  <div class="equation leqno" >$$
+\delta = \frac{\tilde{b}_i}{\tilde{a}_{i,j}}
+$$
+  </div>
+<p>于是
+
+  <div class="equation leqno" >$$
+x_i  = \tilde{b}_i  - \tilde{a}_{i,j}\delta  = 0
+$$
+  </div></p>
+<p>这意味着 $x_j$ 从之前的非基变量变成了基变量（简称<strong>入基变量</strong>），而 $x_i$ 从之前的基变量变成了基变量（简称<strong>出基变量</strong>）。这个迭代过程，就是从一个基本可行解，移动到了令一个基本可行解，并且使得目标函数值降低。</p>
+<h3 id="算法描述">算法描述 <a href="#%e7%ae%97%e6%b3%95%e6%8f%8f%e8%bf%b0" class="anchor" aria-hidden="true"><i class="material-icons align-middle">link</i></a></h3><p>先明确算法的输入与输出。</p>
+<ul>
+<li>
+<p><strong>输入</strong> 根据线形规划的标准形式，$A\in\mathbb{R}^{m\times n}, b\in\mathbb{R}^m_+, c\in\mathbb{R}^n$ 定义一个线性规划问题。注意：$A$ 是满秩矩阵，即 $A$ 的秩是 $m$，且 $n\geq m$。</p>
+<p>此外，单纯形算法需要一个起点 $s$。它是一个基本可行解，即 $A$ 中 $m$ 个线性无关的列向量。因此可以用列标的集合来表示 $s$，例如 $s=\{1, 2, ..., m\}$ 代表 $A$ 的前 $m$ 列。</p>
+</li>
+<li>
+<p><strong>输出</strong> 返回最优解或者判断无界，即最优目标函数值是负无穷。注意，由于存在初始解，那么可行区域非空，不存在无解的情况。</p>
+</li>
+</ul>
+<p>接下来描述单纯形算法。</p>
+<p><strong>第 0 步：初始化</strong></p>
+<p>输入线性规划问题的参数 $A, b, c$ 和起点 $s$。根据起点 $s$ 计算对应的基矩阵 $B$ 和非基矩阵 $N$。</p>
+<p>令 $A=[a_1, a_2, &hellip;, a_n]$，其中 $a_j$ 代表 $A$ 的列向量。我们有</p>
+
+  <div class="equation leqno" >$$
+\begin{aligned}
+&amp; B = [a_j]  \quad  j\in s \\
+&amp; N = [a_j] \quad j \not\in s
+\end{aligned}
+$$
+  </div>
+<p><strong>第 1 步：判断最优性</strong></p>
+<p>计算 $\mu^T = c_N^T - c_B^T B^{-1}N$。注意：$\mu$ 和 $c_N$ 的下标与 $N$ 的列标对应；$c_B$ 的下标与 $B$ 的列标对应。</p>
+<p>如果 $\mu \geq 0$，则满足最优性条件，并返回当前解 $x$。</p>
+<p><strong>第 2 步：入基和出基</strong></p>
+<p>计算出基变量的下标 $i$ 和入基变量的下标 $j$；或者返回无界，即最优目标函数值为负无穷。</p>
+<p>① 计算入基变量下标 $j$。在 $\mu$ 中找到一个分量 $j$ 使得 $\mu_j &lt; 0$ 即可。</p>
+<p>② 判断最优目标函数值是否有界。</p>
+<p>计算 $\tilde{b} = B^{-1}b$ 和 $\tilde{A}=B^{-1}N$。注意：$\tilde{A}$ 的列标与 $N$ 的列标对应。</p>
+<p>考虑 $\tilde{A}$ 的第 $j$ 列，记作 $\tilde{a}_j$，即</p>
+
+  <div class="equation leqno" >$$
+\tilde{a}_j = \begin{bmatrix}
+\tilde{a}_{1, j}\\
+\tilde{a}_{2, j}\\
+\vdots\\
+\tilde{a}_{m, j}
+\end{bmatrix}
+$$
+  </div>
+<p>如果 $\tilde{a}_j \leq 0$，则返回无界。</p>
+<p>③ 计算出基变量的下标。</p>
+
+  <div class="equation leqno" >$$
+i = \arg\min_k \left\{ \frac{\tilde{b}_k}{\tilde{a}_{k,j}}\text{ and } \tilde{a}_{k,j} &gt; 0, \quad k=1,2,\ldots, m \right\}
+$$
+  </div>
+<p><strong>第 3 步：更新</strong></p>
+<p>更新变量值
+
+  <div class="equation leqno" >$$
+x_i = 0, \quad x_j = \frac{\tilde{b}_i}{\tilde{a}_{j,j}}
+$$
+  </div>
+其中 $i$ 和 $j$ 是上一步计算的出基变量和入基变量的下标。</p>
+<p>更新更新基矩阵 $B$ 和 非基矩阵 $N$。即，把 $a_j$ 和 $a_i$ 交换位置。</p>
+<p>回到第 1 步。</p>
+
+    </div>
+
+    
+
+    
+                                            </div>
+                                            <div><hr class="doc-hr">
+<div id="doc-nav" class="d-print-none">
+
+	<div class="row flex-xl-nowrap ">
+	<div class="col-sm-6 pt-2 doc-next">
+		<a href="/docs/basics/standard-form/">
+			<div class="card h-100 my-1">
+				<div class="card-body py-2">
+                    <p class="card-title fs-5 fw-semibold lh-base mb-0"><i class="material-icons align-middle">navigate_before</i> 标准形式</p>
+					
+				</div>
+			</div>
+		</a>
+        </div>
+	<div class="col-sm-6 pt-2 doc-prev">
+		<a class="ms-auto" href="/docs/start/why/">
+			<div class="card h-100 my-1 text-end">
+				<div class="card-body py-2">
+                    <p class="card-title fs-5 fw-semibold lh-base mb-0">为什么写这个教程 <i class="material-icons align-middle">navigate_next</i></p>
+					
+				</div>
+			</div>
+		</a>
+        </div>
+	</div>
+</div></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+<footer class="shadow py-3 d-print-none">
+    <div class="container-fluid">
+        <div class="row align-items-center">
+            <div class="col">
+                <div class="text-sm-start text-center mx-md-2">
+                    <p class="mb-0">
+                        
+                        
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+</main>
+            </div>
+        </div>
+
+        
+        
+        <button onclick="topFunction()" id="back-to-top" aria-label="Back to Top Button" class="back-to-top fs-5"><svg width="24" height="24"><path d="M12,10.224l-6.3,6.3L4.32,15.152,12,7.472l7.68,7.68L18.3,16.528Z" style="fill:#fff"/></svg></button>
+        
+        
+
+        
+        
+
+
+    
+
+
+    
+    
+    
+
+
+
+
+
+
+    <script src="/docs/js/bootstrap.js" defer></script>
+
+
+    <script type="text/javascript" src="//localhost:1313/docs/js/bundle.js" defer></script>
+
+        <script>
+    window.addEventListener('DOMContentLoaded', function() {
+        
+        docsearch({
+            container: '#docsearch',
+            appId: 'LOI5OKXTGT',
+            apiKey: '2714a64027ec87c56646114eb7d2c3b3',
+            indexName: 'lpp-buypdf',
+            placeholder: 'Search Documentation',
+            translations: {
+                button: {
+                    buttonText: 'Search',
+                    buttonAriaLabel: 'Search',
+                }
+            }
+        });
+    });
+</script>
+
+        
+        
+    </body>
+</html>
