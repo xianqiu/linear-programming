@@ -87,7 +87,7 @@ class SimplexBasic:
         
     @property
     def solution(self):
-    		# returns the solution vector
+        # returns the solution vector
         pass
 
     @property
