@@ -58,7 +58,7 @@ $$
 $$
 {{</katex>}}
 
-其中 $c, x \in \mathbb{R}^n$，$A\in\mathbb{R}^{m\times n}$，$b\in\mathbb{R}^m \geq \mathbf{0}$。
+其中 $c, x \in \mathbb{R}^n$，$A\in\mathbb{R}^{m\times n}$，$b\in\mathbb{R}^m \geq \mathbf{0}$，$n\geq m$。
 
 注意 $Ax=b$ 代表 $m$ 个等式约束，如下所示。
 
