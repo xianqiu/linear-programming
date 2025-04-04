@@ -1,6 +1,6 @@
 ---
 weight: 700
-title: "练习"
+title: "应用"
 description: ""
 icon: "code_blocks"
 date: "2025-03-22T13:51:39+08:00"
