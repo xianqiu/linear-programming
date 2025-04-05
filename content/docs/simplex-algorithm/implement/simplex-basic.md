@@ -234,7 +234,7 @@ class SimplexBasic:
 
 相关代码在 [`codes/simplex-algorithms`](https://github.com/xianqiu/linear-programming/tree/main/codes/simplex-algorithms) 文件夹。
 
+* [simplex_basic.py](https://github.com/xianqiu/linear-programming/blob/main/codes/simplex-algorithms/simplex_basic.py) 单纯形算法实现
 * [common.py](https://github.com/xianqiu/linear-programming/blob/main/codes/simplex-algorithms/common.py) 定义解的状态，例如 `OPTIMAL`, `UNBOUNDED`
-* [simplex_basic.py](https://github.com/xianqiu/linear-programming/blob/main/codes/simplex-algorithms/simplex_basic.py) 算法的实现
-* [test-data/basic.json](https://github.com/xianqiu/linear-programming/blob/main/codes/simplex-algorithms/test-data/basic.json)  测试用例
 * [test_simplex_basic.py](https://github.com/xianqiu/linear-programming/blob/main/codes/simplex-algorithms/test_simplex_basic.py) 测试代码
+* [test-data/basic.json](https://github.com/xianqiu/linear-programming/blob/main/codes/simplex-algorithms/test-data/basic.json)  测试用例

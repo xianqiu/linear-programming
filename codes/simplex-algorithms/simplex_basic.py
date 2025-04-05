@@ -185,3 +185,4 @@ if __name__ == '__main__':
 
     simplex = SimplexBasic(A, b, c, s)
     simplex.solve()
+    print(f"status = {simplex.status}")
