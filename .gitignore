@@ -4,3 +4,4 @@ resources/_gen
 .DS_Store
 assets/.DS_Store
 content/.DS_Store
+content/docs/.DS_Store
