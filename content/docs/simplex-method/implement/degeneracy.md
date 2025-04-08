@@ -38,6 +38,8 @@ class SimplexDegen(SimplexBasic):
 
 ```python
 class SimplexDegen(SimplexBasic):
+  
+  	# ...
 
     def _I0(self, j):
         """
@@ -66,13 +68,6 @@ class SimplexDegen(SimplexBasic):
 有了这两个函数，就很容易实现 `_find_leaving_var`。
 
 ```python
-from typing import override
-
-import numpy as np
-
-from simplex_basic import SimplexBasic
-
-
 class SimplexDegen(SimplexBasic):
 
     @override

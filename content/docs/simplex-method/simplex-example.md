@@ -1,6 +1,6 @@
 ---
 weight: 15
-title: "算法示例"
+title: "单纯形算法示例"
 description: ""
 icon: "article"
 date: "2025-03-27T13:47:58+08:00"
@@ -370,7 +370,7 @@ $$
 ⑤ 计算比值。
 
 {{< katex >}}
-$$ 
+$$
 \begin{aligned}
 \tilde{b}\div \tilde{a}_2 & =
 \begin{bmatrix}
@@ -515,7 +515,7 @@ $$
 ⑤ 计算比值。
 
 {{< katex >}}
-$$ 
+$$
 \begin{aligned}
 \tilde{b}\div \tilde{a}_5 & =
 \begin{bmatrix}

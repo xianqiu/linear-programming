@@ -1,6 +1,6 @@
 ---
 weight: 100
-title: "单纯形算法"
+title: "单纯形法"
 description: ""
 icon: "polyline"
 date: "2025-03-21T19:35:16+08:00"
