@@ -105,7 +105,9 @@ class SimplexBasic:
         ratio = np.zeros(self.m)
         for i in range(self.m):
             if A_tilde_j[i] > 0:
-                ratio[i] = b_tilde[i] / A_tilde_j[i]
+                # use abs(b_tilde[i]) instead of b_tilde[i] to avoid negative b_tilde[i]
+                # because floating error may cause negative b_tilde[i], e.g. -1e-16
+                ratio[i] = abs(b_tilde[i]) / A_tilde_j[i]
             else:
                 ratio[i] = np.inf
 
@@ -143,7 +145,6 @@ class SimplexBasic:
     def solve(self):
         # Iterate until the solution is optimal,
         # or the maximum number of iterations is reached
-
         self._print_iteration(self.print_iter)
         while not self._is_optimal():
             self._iter += 1

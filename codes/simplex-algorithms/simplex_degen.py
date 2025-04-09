@@ -31,16 +31,19 @@ class SimplexDegen(SimplexBasic):
         ratio = np.zeros(self.m)
         for i in range(self.m):
             if A_tilde_j[i] > 0:
-                ratio[i] = b_tilde[i] / A_tilde_j[i]
+                # use abs(b_tilde[i]) instead of b_tilde[i] to avoid negative b_tilde[i]
+                # because floating error may cause negative b_tilde[i], e.g. -1e-16
+                ratio[i] = abs(b_tilde[i]) / A_tilde_j[i]
             else:
                 ratio[i] = np.inf
 
         if np.all(ratio == np.inf):
             return []  # Unbounded
-
+        
         min_ratio = np.min(ratio)
         I0 = np.where(ratio == min_ratio)[0]
         I0 = [int(i) for i in I0]
+        
         return I0
 
     def _I_next(self, j, I, k):
@@ -60,6 +63,7 @@ class SimplexDegen(SimplexBasic):
         for i in I:
             if abs(tilde_a_j[i]) > 1e-6:
                 ratio[i] = tilde_a_k[i] / tilde_a_j[i]
+                
         min_ratio = np.min(ratio)
         I1 = np.where(ratio == min_ratio)[0]
         I1 = [int(i) for i in I1]

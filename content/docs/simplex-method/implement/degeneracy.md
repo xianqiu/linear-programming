@@ -107,11 +107,11 @@ class SimplexDegen(SimplexBasic):
 相关代码在 [`codes/simplex-algorithms`](https://github.com/xianqiu/linear-programming/tree/main/codes/simplex-algorithms) 文件夹。
 
 * [simplex_degen.py](https://github.com/xianqiu/linear-programming/blob/main/codes/simplex-algorithms/simplex_degen.py) 字典序最小测试比的实现
-* [simplex_basic.py](https://github.com/xianqiu/linear-programming/blob/main/codes/simplex-algorithms/simplex_basic.py) 单纯形算法的实现
-* [common.py](https://github.com/xianqiu/linear-programming/blob/main/codes/simplex-algorithms/common.py) 定义解的状态，例如 `OPTIMAL`, `UNBOUNDED`
+	* [simplex_basic.py](https://github.com/xianqiu/linear-programming/blob/main/codes/simplex-algorithms/simplex_basic.py) 单纯形算法的实现
+	* [common.py](https://github.com/xianqiu/linear-programming/blob/main/codes/simplex-algorithms/common.py) 解的状态定义
 * [test_simplex_degen.py](https://github.com/xianqiu/linear-programming/blob/main/codes/simplex-algorithms/test_simplex_degen.py) 测试代码
-* [test-data/cycle.json](https://github.com/xianqiu/linear-programming/blob/main/codes/simplex-algorithms/test-data/cycle.json) 测试用例
-* [test-data/degen.json](https://github.com/xianqiu/linear-programming/blob/main/codes/simplex-algorithms/test-data/degen.json)  测试用例
+	* [test-data/cycle.json](https://github.com/xianqiu/linear-programming/blob/main/codes/simplex-algorithms/test-data/cycle.json) 测试用例
+	* [test-data/degen.json](https://github.com/xianqiu/linear-programming/blob/main/codes/simplex-algorithms/test-data/degen.json)  测试用例
 
 ### 注意
 

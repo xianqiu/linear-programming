@@ -120,7 +120,7 @@ $$
 
 其中 $c, x \in \mathbb{R}^n$，$A\in\mathbb{R}^{m\times n}$，$b\in\mathbb{R}^m \geq \mathbf{0}$，$n\geq m$。
 
-注意：变量个数 $n$ 不少于约束数量 $m$，否则可以添加冗余变量使得 $n\geq m$。
+注意：如果 $n < m$，可以添加冗余变量使得 $n\geq m$。
 
 
 

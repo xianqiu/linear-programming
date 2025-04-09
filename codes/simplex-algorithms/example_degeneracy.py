@@ -2,7 +2,7 @@ import json
 from simplex_basic import SimplexBasic
 
 
-def solve_instance(instance, index=""):
+def solve_instance(instance, index=0):
     A, b, c, s = instance['A'], instance['b'], instance['c'], instance['s']
     print(f"==== instance{index} ====")
     print(f"|-- A: {A}")
