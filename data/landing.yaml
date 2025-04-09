@@ -37,7 +37,7 @@ hero:
   ctaButton:
     icon: rocket_launch
     btnText: "开始学习"
-    url: "/docs/start"
+    url: "/docs/"
   #cta2Button:
   #  icon: code
   #  btnText: "Github"
