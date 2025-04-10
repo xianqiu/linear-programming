@@ -1,6 +1,6 @@
 ---
-weight: 300
-title: "线性化技巧"
+weight: 150
+title: "一些建模的技巧"
 description: ""
 icon: "article"
 date: "2025-03-22T17:39:17+08:00"
