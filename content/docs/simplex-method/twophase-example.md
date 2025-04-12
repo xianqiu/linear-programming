@@ -1,5 +1,5 @@
 ---
-weight: 50
+weight: 350
 title: "两阶段法示例"
 description: ""
 icon: "article"

@@ -1,5 +1,5 @@
 ---
-weight: 550
+weight: 600
 title: "建模基础"
 description: "介绍建模的基础知识，如何写线性规划，如何写对偶问题等。"
 icon: "conversion_path"

@@ -1,5 +1,5 @@
 ---
-weight: 200
+weight: 400
 title: "内点法"
 description: ""
 icon: "chips"

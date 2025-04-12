@@ -1,5 +1,5 @@
 ---
-weight: 30
+weight: 230
 title: "基本可行解"
 description: ""
 icon: "article"

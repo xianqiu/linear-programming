@@ -1,5 +1,5 @@
 ---
-weight: 600
+weight: 700
 title: "分解"
 description: ""
 icon: "grid_view"

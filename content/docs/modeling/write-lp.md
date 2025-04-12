@@ -1,5 +1,5 @@
 ---
-weight: 100
+weight: 610
 title: "如何写线性规划"
 description: ""
 icon: "article"

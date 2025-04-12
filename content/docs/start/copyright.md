@@ -1,5 +1,5 @@
 ---
-weight: 100
+weight: 130
 title: "版权声明"
 description: ""
 icon: "copyright"

@@ -1,5 +1,5 @@
 ---
-weight: 10
+weight: 381
 title: "基础算法"
 description: ""
 icon: "article"

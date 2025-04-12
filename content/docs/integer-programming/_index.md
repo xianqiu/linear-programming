@@ -1,5 +1,5 @@
 ---
-weight: 300
+weight: 500
 title: "整数规划"
 description: ""
 icon: "scatter_plot"

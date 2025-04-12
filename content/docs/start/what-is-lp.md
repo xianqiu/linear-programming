@@ -1,5 +1,5 @@
 ---
-weight: 40
+weight: 120
 title: "什么是线性规划"
 description: ""
 icon: "article"

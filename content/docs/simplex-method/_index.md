@@ -1,5 +1,5 @@
 ---
-weight: 100
+weight: 300
 title: "单纯形法"
 description: "基于单纯形算法实现一个线性规划的求解器。有方法，有例子，还有代码。"
 icon: "polyline"

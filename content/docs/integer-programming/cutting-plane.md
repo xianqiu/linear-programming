@@ -1,5 +1,5 @@
 ---
-weight: 200
+weight: 420
 title: "割平面法"
 description: ""
 icon: "article"

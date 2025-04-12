@@ -1,5 +1,5 @@
 ---
-weight: 40
+weight: 340
 title: "两阶段法"
 description: ""
 icon: "article"

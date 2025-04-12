@@ -1,5 +1,5 @@
 ---
-weight: 10
+weight: 100
 title: "开始"
 description: "什么是线性规划。"
 icon: "circle"

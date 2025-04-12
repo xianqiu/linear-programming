@@ -1,5 +1,5 @@
 ---
-weight: 999
+weight: 1
 title: "线性规划"
 description: "Linear Programming in Practice -- LPP"
 icon: "home"

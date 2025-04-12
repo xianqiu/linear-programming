@@ -1,5 +1,5 @@
 ---
-weight: 15
+weight: 315
 title: "单纯形算法示例"
 description: ""
 icon: "article"

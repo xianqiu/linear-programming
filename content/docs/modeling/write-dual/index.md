@@ -1,5 +1,5 @@
 ---
-weight: 200
+weight: 640
 title: "如何写对偶问题"
 description: ""
 icon: "article"

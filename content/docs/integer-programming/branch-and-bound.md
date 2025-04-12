@@ -1,5 +1,5 @@
 ---
-weight: 100
+weight: 410
 title: "分支定界法"
 description: ""
 icon: "article"

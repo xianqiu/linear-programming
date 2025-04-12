@@ -1,5 +1,5 @@
 ---
-weight: 300
+weight: 730
 title: "Benders分解"
 description: ""
 icon: "article"
