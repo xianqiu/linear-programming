@@ -1,6 +1,6 @@
 ---
 weight: 410
-title: "分支定界法"
+title: "分支定界"
 description: ""
 icon: "article"
 date: "2025-03-22T17:12:18+08:00"

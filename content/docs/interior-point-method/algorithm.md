@@ -5,118 +5,142 @@ description: ""
 icon: "article"
 date: "2025-04-12T09:14:38+08:00"
 lastmod: "2025-04-12T09:14:38+08:00"
-draft: true
+draft: false
 toc: true
 katex: true
 ---
 
-## 中心路径
+考虑标准的线性规划问题。
 
-回顾问题 $\text{(PP)}$，它在 $\mathcal{F}^{\circ}(P)$ 中最小化最小化 $B_{\mu}(x)$，即
+{{<katex>}}
 $$
 \begin{aligned}
-\min~ & c^Tx + \mu F(x)\\
+\min~ & c^Tx\\
+\text{s.t. } & Ax=b\\
+& x\geq 0
+\end{aligned}
+$$
+{{</katex>}}
+
+其中 $A\in\mathbb{R}^{m\times n}$ 满秩，$b \in\mathbb{R}^m$，$c, x \in\mathbb{R}^n$，$n\geq m$。
+
+我们不直接求解它，而是通过下面这个 **近似问题** 来逼近。
+
+{{<katex>}}
+$$
+\begin{aligned}
+\min~ & c^Tx - \mu \sum_{j=1}^n \ln (x_j) \\
 \text{s.t. } & Ax = b\\
 & x > 0
-\end{aligned} \quad\quad  (\text{PP})
+\end{aligned}
 $$
-我们已知它最优解的充要条件，而且可以用牛顿法求它的最优解。
+{{</katex>}}
 
-但是，给定 $\mu > 0$，$\text{(PP)}$ 的最优解并不是原问题 $\text{(P)}$ 的最优解。因此，迭代的目标不是求解 $\text{(PP)}$ ，而是去逼近原问题 $\text{(P)}$ 的最优解。逼近的方式就是在迭代中不断减小 $\mu$ 值，然后更新下降方向；当 $\mu$ 足够小时，得到的解与原问题的最优解足够接近。
+在求解过程中不断减小 $\mu$ 值，使得近似问题与原问题的最优解就足够接近。
 
-具体来说，给定初始值 $\mu^0 > 0$ 和初始点 $x^0(\mu^0), y^0(\mu^0), s^0(\mu^0) \in \mathcal{F}^{\circ}(P)\times \mathcal{F}^{\circ}(D)$ ，迭代过程得到如下的点列：
+### 牛顿方向
+
+解上面这个近似问题，它的 [最优解](optimality) 需要满足如下线性方程组。
+
+{{<katex>}}
 $$
-x^0(\mu^0), y^0(\mu^0), s^0(\mu^0),\\
-x^1(\mu^1), y^1(\mu^1), s^1(\mu^1),\\
-\vdots\\
-x^k(\mu^k), y^k(\mu^k), s^k(\mu^k)\\
+F(x,y,s) = 
+\begin{bmatrix}
+Ax-b\\
+A^Ty + s - c\\
+XSe-\mu e
+\end{bmatrix} = \mathbf{0}
 $$
-其中 $\mu^0 > \mu^1 > \dots > \mu^k$。当 $\mu^k < \epsilon$ 时，迭代停止，其中 $\epsilon > 0$ 代表逼近的精度。
+{{</katex>}}
 
-我们把 $\{x(\mu),y(\mu),s(\mu): \mu > 0\}$ 称为 **中心路径**（Central Path）。迭代的过程就是沿着中心路径，令 $\mu$ 值不断减小的过程，这样的算法也称为 *路径跟踪*（Path Following）。
+我们可以用 [牛顿法](newton) 求解。
 
-## 内点法（理论版）
+已知 $x^k, y^k, s^k$，需要计算 $x^{k+1}, y^{k+1}, s^{k+1}$。
 
-接下来介绍具体的迭代步骤。
+① 计算牛顿方向 $\Delta x^k, \Delta y^k, \Delta s^k$。
 
-**原始对偶内点法 (Primal-Dual Interior Point Method)**
-
----
-
-第一步，初始化 $\mu^0,x^0,y^0,s^0$。注意： $\mu, x, s >0$ 且 $x^0,y^0,s^0$ 可行。
-
-第二步，判断误差：如果 $\mu < \epsilon$ 则停止。
-
-第三步，计算牛顿方向：
+{{<katex>}}
 $$
 \begin{bmatrix}
 A & 0 & 0 \\
 0 & A^T & I \\
-S & 0 & X
+S^k & 0 & X^k
 \end{bmatrix}\begin{bmatrix}
-\Delta x\\
-\Delta y\\
-\Delta s
+\Delta x^k\\
+\Delta y^k\\
+\Delta s^k
 \end{bmatrix} = -\begin{bmatrix}
-0\\
-0\\
-XSe-\mu e
+\mathbf{0} \\
+\mathbf{0} \\
+X^kS^ke-\mu e
 \end{bmatrix}
 $$
-第四步，更新 $x, y, s$：
-$$
-(x,y,s) \leftarrow (x,y,s) + (\Delta x, \Delta y, \Delta s)
-$$
-第五步，减小 $\mu$ 值，令 $\mu \leftarrow \sigma \cdot \mu$，其中 $\sigma \in [0,1]$， 然后执行第二步。
+{{</katex>}}
 
----
+② 得到 $x^{k+1}, y^{k+1}, s^{k+1}$。
 
-这里还有几个问题需要回答：
-
-1. $\mu$ 和 $\sigma$ 值如何选取？
-
-2. 第四步更新 $x,y,s$ 之后，它还是可行解吗？
-
-3. 如何计算初始可行解 $x^0,y^0,s^0$ ？ 
-
-先看第一个问题。
-
-先计算原问题 $\text{(P)}$ 和对偶问题 $\text{(D)}$ 的对偶间隙 (Duality Gap)：
-$$
-c^Tx - b^Ty = (A^Ty + s)^Tx - b^Ty = s^Tx
-$$
-令 $\mu = \frac{s^Tx}{n}$，当 $\mu < \epsilon$ 时，我们有 $c^Tx - b^Ty \leq n \epsilon$，即目标函数值与最优值当误差不超过 $n\epsilon$。
-
-此外，令 $\sigma = 1- \frac{0.4}{\sqrt{n}}$，可以证明最多 $O(\sqrt{n}\ln(1/\epsilon))$ 次迭代，就可以使得 $\mu < \epsilon$。
-
-再看第二个问题。
-
-只需要验证 $x+\Delta x$ 与 $(y+\Delta y, s+\Delta s)$ 是否满足原始问题和对偶问题的约束：
+{{<katex>}}
 $$
 \begin{aligned}
-& A(x+\Delta x) = b + A\Delta x = b\\
-& A^T(y +\Delta y) + (s + \Delta s) =c + A^T\Delta y + \Delta s = c
+& x^{k+1} = x^k + \Delta x^k\\
+& y^{k+1} = y^k + \Delta y^k\\
+& s^{k+1} = s^k + \Delta s^k\\
 \end{aligned}
 $$
-因此答案是肯定的。
+{{</katex>}}
 
-关于第三个问题，计算初始可行解并不容易，这里不做介绍。原因是在实际应用中，可以通过逼近的方式满足可行性，因而初始解只要保证 $x,s>0$ 即可。
+持续迭代，直到满足停止条件。
 
-## 内点法（实践版）
+## 算法描述
 
-编程实现内点法时，一般不会严格按照上面的理论版，原因是效率不高。
+**第一步：初始化**
 
-下面介绍一个实践版本。
+令 $x^0, y^0, s^0$ 代表迭代的起点。它们是原问题和对偶问题的内点，因此是可行解。但是这样的起点不容易找。在实际中，可以放松这个要求。只需要满足 $x^0 >0, s^0 > 0$。迭代过程中随着 $\mu$ 越来越小，对应的解收敛到可行解。
 
----
-
-第一步，初始化 $x^0 > 0,s^0 >0, y^0$，令 $\mu = \frac{s^Tx}{n}$。
-
-第二步，判断误差：如果 $\mu < \epsilon$ 则停止，其中
+根据 $F(x,y,s) =\mathbf{0}$，我们有
 $$
-\mu = \max \{||Ax-b||, ||A^Ty+s-c||, ||s^Tx||\}
+XSe -\mu e =\mathbf{0} \Rightarrow x^T s = n \cdot \mu
 $$
-第三步，计算牛顿方向：
+
+我们有
+
+$$
+\mu =\frac{x^Ts}{n} = \frac{(x^0)^Ts^0}{n}
+$$
+
+**第二步：判断停止条件**
+
+令 $\epsilon = 10^{-8}$。当如下条件满足时，得到最优解，算法停止。
+
+{{<katex>}}
+$$
+\max \{||Ax-b||,~ ||A^Ty+s-c||,~||x^Ts||\} < \epsilon
+$$
+{{</katex>}}
+
+前面两项保证可行性。解释一下第三项，它是原问题与对偶问题目标函数的差值。
+
+{{<katex>}}
+$$
+\begin{aligned}
+&~ c^Tx - b^Ty \\
+= &~ (A^Ty + s)^Tx - b^Ty \\
+= &~ s^Tx
+\end{aligned}
+$$
+{{</katex>}}
+
+根据对偶理论，如果 $s^Tx =  0$，那么 $x, y, s$ 是最优解。
+
+**第三步：缩小 $\mu$ 值**
+
+令 $\mu := \alpha \cdot \mu$，其中 $\alpha\in [0,1]$ 是一个缩放因子。例如取 $\alpha=0.1$。
+
+**第四步： 计算牛顿方向**
+
+根据下面的方程计算牛顿方向。
+
+{{<katex>}}
 $$
 \begin{bmatrix}
 A & 0 & 0 \\
@@ -132,25 +156,33 @@ A^Ty + s - c\\
 XSe-\mu e
 \end{bmatrix}
 $$
-第四步，更新 $x, y, s$：
+{{</katex>}}
+
+等式右边前两项没有写成 $\mathbf{0}$，原因是当前的 $x,y,s$ 可能不是可行解。但是在后续的迭代中，它会逐步变成可行解。
+
+**第五步，更新 $x, y, s$**
+
+{{<katex>}}
 $$
 \begin{aligned}
-& x \leftarrow x + \alpha_P \cdot \Delta x \\
-& (y,s) \leftarrow (y,s) + \alpha_D \cdot (\Delta y, \Delta s)
+& x := x + \alpha_P \cdot \Delta x \\
+& y := y + \alpha_D \cdot \Delta y \\
+& s := s + \alpha_D \cdot \Delta s 
 \end{aligned}
 $$
-其中 $\alpha_P, \alpha_D$ 使得 $x,s>0$，即
+{{</katex>}}
+
+其中 $\alpha_P, \alpha_D$ 作用是保证 $x,s>0$。
+
+它们的取值如下所示。
+
+{{<katex>}}
 $$
-\alpha_P = \min \left\{1, \min_{\Delta x_j < 0} \left\{\frac{x_j}{-\Delta x_j}\right\}\right\}\\
-\alpha_D = \min \left\{1, \min_{\Delta s_j < 0} \left\{\frac{s_j}{-\Delta s_j}\right\}\right\}
+\alpha_P = \min \left\{1,~ r\min_{\Delta x_j < 0} \left\{\frac{x_j}{-\Delta x_j}\right\}\right\}\\[6pt]
+\alpha_D = \min \left\{1,~ r\min_{\Delta s_j < 0} \left\{\frac{s_j}{-\Delta s_j}\right\}\right\}
 $$
-第五步，减小 $\mu$ 值，令 $\mu \leftarrow \sigma \cdot \mu$，其中 $\sigma = 0.1$ (经验值)， 然后执行第二步。
+{{</katex>}}
 
----
+其中 $0<r<1$，一般取 $r=0.99$。
 
-注意两点变化：
-
-第一，初始解不要求可行，原因是可以通过迭代的方式保障可行性。它通过 $\mu$ 的选择来实现，它是三种误差的最大值，即原问题的可行性误差 $||Ax-b||$， 对偶问题的可行性误差 $||A^Ty + s-c||$，以及目标函数误差 $s^Tx$。 当 $\mu < \epsilon$ 且 $\epsilon$ 精度足够小时，原问题和对偶问题可行，并且目标函数值达到最优。
-
-第二，由于迭代过程中，原始解和对偶解可能不满足可行性，因此更新 $x,y,s$ 的步长 $\alpha$ 需要保证 $x,s>0$。其中 $x$ 与 $(y,s)$ 也可以采用相同的步长，例如 $\alpha = \min (\alpha_D, \alpha_P)$。
-
+回到**第二步**。
