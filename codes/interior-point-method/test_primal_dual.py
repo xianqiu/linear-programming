@@ -1,5 +1,6 @@
-from primal_dual import PDInteriorPoint
 import json
+
+from primal_dual import PDInteriorPoint
 
 
 def test_instance(instance):
