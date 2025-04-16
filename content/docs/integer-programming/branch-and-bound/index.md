@@ -40,7 +40,7 @@ $$
 \text{s.t. } & x_1+4x_2 \leq 10\\
 & 3x_1-4x_2 \leq 6\\
 & x_1, x_2 \geq 0
-\end{aligned}\quad \text{(LP0)}
+\end{aligned}
 $$
 {{</katex>}}
 
