@@ -195,6 +195,6 @@ class BranchAndBound:
 相关代码在 [`codes/integer-programming`](https://github.com/xianqiu/linear-programming/tree/main/codes/integer-programming) 文件夹。
 
 * [branchbound.py](https://github.com/xianqiu/linear-programming/blob/main/codes/integer-programming/branchbound.py) 分支定界法实现
- 
-* [test_branchbound.py](https://github.com/xianqiu/linear-programming/blob/main/codes/integer-programming/test_branchbound.py) 分支定界法实现
+
+* [test_branchbound.py](https://github.com/xianqiu/linear-programming/blob/main/codes/integer-programming/test_branchbound.py) 测试代码
   * [integer.json](https://github.com/xianqiu/linear-programming/blob/main/codes/integer-programming/integer.json)   测试用例

@@ -68,20 +68,20 @@ x_B + \sum_{j\in J} \lfloor \tilde{a}_j \rfloor x_j \leq \tilde{b}
 $$
 {{</katex>}}
 
-由于 $x$ 是可行解，那么它的分量都是整数。因此，不等式的左边是整数向量。那么，对不等式右边的向量 $\bar{b}$ 进行取整，不等式依然成立。
+由于 $x$ 是可行解，那么它的分量都是整数。因此，不等式的左边是整数向量。那么，对不等式右边的向量 $\tilde{b}$ 进行取整，不等式依然成立。
 
 我们得到
 
 {{<katex>}}
 $$
-x_B + \sum_{j\in J} \lfloor \tilde{a}_j \rfloor x_j \leq \lfloor\bar{b}\rfloor
+x_B + \sum_{j\in J} \lfloor \tilde{a}_j \rfloor x_j \leq \lfloor\tilde{b}\rfloor
 $$
 {{</katex>}}
 
 由于 $x_B=  \tilde{b} - \sum_{j\in J}\tilde{a}_{j} x_j$，代入上式得到 **GC 割**。
 {{<katex>}}
 $$
-\sum_{j\in J}(\bar{a}_j-\lfloor \tilde{a}_j\rfloor) x_j \geq \tilde{b} - \lfloor\tilde{b}\rfloor
+\sum_{j\in J}(\tilde{a}_j-\lfloor \tilde{a}_j\rfloor) x_j \geq \tilde{b} - \lfloor\tilde{b}\rfloor
 $$
 {{</katex>}}
 
@@ -228,7 +228,7 @@ $$
 $$
 {{</katex>}}
 
-把它们添加到松弛问题中，然后重复上面的步骤，直到得到整数解。
+把它们添加到松弛问题中，引入松弛变量改写成等式。然后重复上面的步骤，直到得到整数解。
 
 ### 算法描述
 
@@ -254,4 +254,53 @@ $$
 
 **第 2 步：生成割平面**
 
-生成割平面，把它添加到松弛问题中。再执行第 1 步。
+计算基矩阵 $B$ 和非基矩阵 $N$。注意，如果存在冗余的约束，需要先删除对应的行。比如，最优解对应的基列是 $\set{1, 3}$，但此时系数矩阵 $A$ 有三行，那么第 $2$ 行是冗余的。
+
+接下来计算 $\tilde{a}_j, \tilde{b}$，从而得到下面的不等式。
+
+{{<katex>}}
+$$
+\sum_{j\in J}(\tilde{a}_j-\lfloor \tilde{a}_j\rfloor) x_j \geq \tilde{b} - \lfloor\tilde{b}\rfloor
+$$
+{{</katex>}}
+
+**第3步：添加割平面**
+
+引入松弛变量 $s$，把不等式改写成等式。
+
+{{<katex>}}
+$$
+\sum_{j\in J}(\tilde{a}_j-\lfloor \tilde{a}_j\rfloor) x_j - s = \tilde{b} - \lfloor\tilde{b}\rfloor
+$$
+{{</katex>}}
+
+令 $f_j := \tilde{a}_j-\lfloor \tilde{a}_j\rfloor$，$f:=\tilde{b} - \lfloor\tilde{b}\rfloor$，上式可以写成
+
+{{<katex>}}
+$$
+\sum_{j\in J}f_j x_j - s = f
+$$
+{{</katex>}}
+
+令 $F = [f_j]_{j\in N}$，$\mathbf{I}$ 为单位矩阵，我们有
+
+{{<katex>}}
+$$
+F x_n - \mathbf{I}\cdot s = f
+$$
+{{</katex>}}
+
+把它添加到松弛问题中得到
+
+{{<katex>}}
+$$
+\begin{aligned}
+\max~ & c^Tx + \mathbf{0}^Ts \\
+& Ax + s = b\\
+& F x_n - \mathbf{I}\cdot s  = f\\
+& x, s\geq \mathbf{0}\\
+\end{aligned}
+$$
+{{</katex>}}
+
+再执行 **第 1 步**。

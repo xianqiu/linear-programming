@@ -110,34 +110,36 @@ $$
 
 从根节点 `root` 开始，计算它的最优解，如果是分数解，就按上面的方法进行分支得到子问题，用递归的方式对子问题求解，直到子问题是整数解或者子问题无解。
 
-在搜索过程中，`b` 记录可行解中目标函数值的最大值，`x` 是对应的整数解。如果原问题存在最优解，搜索结束后 `x` 就是最优解，`b` 就是最优目标函数值。
-
 下面是伪代码。
 
 ```python
 def depth_first_search(node):
 
-    # Solve the current linear program
-    x_node, objective_node = solve(node)
+    # 求解当前节点
+    x_node, objective_node, status = solve(node)
     
-    # Infeasible
-    if node is not feasible:
+    # 不可行或者无界则返回
+    if status is not "OPTIMAL":
         return
     
-    # Prune
+    # 剪枝
     if objective_node <= b:
         return
         
-    # Update b and x (if feasible and larger objective)
+    # 更新 b 和 x
     if x_node is feasible:
         if objective_node > b:
     	      b = objective
     	      x = x_node
     	  return
     
-    # Branch
+    # 分支
     child1, child2 = branch(x_node)
-    # Recursively search all children
+    # 递归求解子节点
     depth_first_search(child1)
     depth_first_search(child2)
 ```
+
+**结果**
+
+在上面的搜索过程中，`b` 记录可行解中目标函数值的最大值，`x` 是对应的整数解。如果原问题存在最优解，搜索结束后 `x` 就是最优解，`b` 就是最优目标函数值。

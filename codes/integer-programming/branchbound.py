@@ -68,7 +68,7 @@ class LPSolver:
         obj.SetMaximization()
         # Solve
         self.status = s.Solve()
-        if self.status == s.OPTIMAL or self.status == s.FEASIBLE:
+        if self.status == s.OPTIMAL:
             self.node.solution = [x[j].solution_value() for j in range(n)]
             self.node.objective = obj.Value()
             
@@ -81,6 +81,7 @@ class BranchAndBound:
     """
 
     print_info = True
+    max_visited = 1_000
     
     def __init__(self, A, b, c):
         """
@@ -96,6 +97,7 @@ class BranchAndBound:
         # Best search result
         self._best_solution = None
         self._best_objective = -np.inf
+        self._count = 0  # Count the number of visited nodes
         # Final Solution
         self.solution = None
         self.objective = None
@@ -141,16 +143,19 @@ class BranchAndBound:
         # Solve the LP instance
         self.status = LPSolver(node).solve().status
 
-        # Return if unbounded
-        if self.status == pywraplp.Solver.UNBOUNDED:
+        self._count += 1
+        if self._count == self.max_visited:
+            self.status = pywraplp.Solver.FEASIBLE
+            return
+
+        if self.status != pywraplp.Solver.OPTIMAL:
+            # Return if not optimal
+            # E.g. infeasible, unbounded, unknown
             return
 
         # Print the node
         self._print_node(node, self.print_info)
         
-        # Infeasible
-        if self.status == pywraplp.Solver.INFEASIBLE:
-            return
         # Prune
         if node.objective < self._best_objective:
             return
@@ -198,6 +203,7 @@ class BranchAndBound:
         """ Solve the problem.
         """
         self._search(self.root)
+        
         if self._best_solution is not None:
             self.status = 'OPTIMAL'
             self.solution = self._best_solution
@@ -205,9 +211,10 @@ class BranchAndBound:
         elif self.status == pywraplp.Solver.UNBOUNDED:
             self.status = 'UNBOUNDED'
             self.objective = np.inf
-        else:
+        elif self.status == pywraplp.Solver.INFEASIBLE:
             self.status = 'INFEASIBLE'
-            self.objective = None
+        else:
+            self.status = 'UNKNOWN'
 
 
 if __name__ == '__main__':
