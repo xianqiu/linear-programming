@@ -1,6 +1,6 @@
 ---
 weight: 730
-title: "Benders分解"
+title: "Benders"
 description: ""
 icon: "article"
 date: "2025-03-22T17:08:24+08:00"
