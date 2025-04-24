@@ -16,8 +16,10 @@ def test_instance(instance):
 
 
 def tests():
-    filename = 'test-data/basic.json'
-    with open(filename, 'r') as f:
+    from pathlib import Path
+    directory = Path(__file__).parent / 'test-data'
+    filename = 'basic.json'
+    with open(directory / filename, 'r') as f:
         instances = json.load(f)
     for instance in instances:
         test_instance(instance)

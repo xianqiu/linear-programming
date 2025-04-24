@@ -27,13 +27,15 @@ def test_file(filename):
 
 
 def tests():
+    from pathlib import Path
+    directory = Path(__file__).parent / 'test-data'
     filenames = [
-        "test-data/twophase.json",
-        "test-data/degen.json",
-        "test-data/cycle.json"
+        "twophase.json",
+        "degen.json",
+        "cycle.json"
     ]
     for filename in filenames:
-        test_file(filename)
+        test_file(directory / filename)
 
 
 if __name__ == '__main__':

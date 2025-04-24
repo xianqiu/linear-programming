@@ -13,8 +13,10 @@ def test_instance(instance):
 
 
 def tests():
+    from pathlib import Path
+    directory = Path(__file__).parent
     filename = 'interior.json'
-    with open(filename, 'r') as f:
+    with open(directory / filename, 'r') as f:
         instances = json.load(f)
     for instance in instances:
         test_instance(instance)
