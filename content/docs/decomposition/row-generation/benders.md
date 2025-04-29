@@ -15,7 +15,7 @@ katex: true
 {{<katex>}}
 $$
 \begin{aligned}
-\min ~  & \sum_{i=1}^m f_iy_i + \sum_{i=1}^n\sum_{j=1}^n c_{ij}x_{ij}\\[6pt]
+\min ~  & \sum_{i=1}^m f_iy_i + \sum_{i=1}^m\sum_{j=1}^n c_{ij}x_{ij}\\[6pt]
 \text{s.t. } & \sum_{i=1}^m x_{ij} = 1, \quad \forall j\\[6pt]
 & x_{ij}\leq y_i, \quad \forall i, j\\[6pt]
 & x_{i,j}\geq 0,~ y_i \in \set{0,1}, \quad \forall i, j
@@ -262,11 +262,7 @@ $$
 
 **第 0 步，初始化**
 
-令 `LB = 0`，`UB = INF`。
-
-把约束 $\sum_{j=1}^n y_j \geq 1$ 添加到主问题中。
-
-**第 1 步，求解主问题**
+初始化主问题并求解。
 
 {{<katex>}}
 $$
@@ -278,11 +274,11 @@ $$
 $$
 {{</katex>}}
 
-更新 `LB` 的值，即主问题的最优目标函数值。
+令 `UB = INF`。计算  `LB`，它是主问题的最优目标函数值。
 
-**第 2 步，求解子问题**
+**第 1 步，求解子问题**
 
-把主问题的解 $y$ 作为输入参数，并求解下面的问题。
+求解下面的问题。
 
 {{<katex>}}
 $$
@@ -294,13 +290,15 @@ $$
 $$
 {{</katex>}}
 
-最优目标函数值记作 `OPT_S`，然后更新 `UB` ，即
+其中 $y$ 是输入参数，来自主问题的解。最优目标函数值记作 `OPT_S`。
+
+更新上界 `UB`。
 
 $$
 UB = \sum_{i=1}^m f_i y_i + OPT_S
 $$
 
-**第 3 步，添加约束**
+**第 2 步，添加约束**
 
 先判断最优条件。如果 `UB - LB < 1e-6`，则停止并返回最优解。
 
@@ -310,6 +308,11 @@ $$
 \sum_{j=1}^n \textcolor{blue}{\alpha_j} - \sum_{i=1}^m\sum_{j=1}^n y_i \textcolor{blue}{\beta_{ij}} \leq z
 $$
 
-其中 $y_i$ 和 $z$ 变量， $\alpha_j, \beta_{ij}$ 是系数，来自第 2 步中子问题的最优解。
+其中 $y_i$ 和 $z$ 是变量， $\alpha_j, \beta_{ij}$ 是系数，来自第 1 步中子问题的最优解。
+
+
+**第 3 步，求解主问题**
+
+求解主问题并更新下界 `LB` 值。
 
 执行 **第 1 步**。

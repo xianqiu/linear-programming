@@ -2,45 +2,53 @@ import time
 
 import numpy as np
 
-from exact import CutStockExact
-from approximate import CutStockApprox
-from column_generation import CutStockApproxCG
+from exact import FacilityLocationExact
+from benders import FacilityLocationBenders
 
-from test_cutstock import RandomInstance
+
+class RandomInstance:
+
+    def __init__(self, m, n):
+        """
+        m: number of facility locations
+        n: number of customers
+        """
+        self.f = np.random.randint(10, 100, m)
+        self.C = np.random.randint(1, 20, (m, n))
 
 
 class TestRunTime:
 
-    timeout = 60  # in seconds
+    timeout = 30  # seconds
     print_info = True
 
     methods = [
-        CutStockExact,
-        CutStockApprox,
-        CutStockApproxCG
+        FacilityLocationExact,
+        FacilityLocationBenders
     ]
 
-    def __init__(self, m):
+    def __init__(self, m, n):
         """
-        m: number of stock sizes
+        m: number of facility locations
+        n: number of customers
         """
-        self.ins = RandomInstance(m)
-        self.L = self.ins.L
-        self.s = self.ins.s
-        self.d = self.ins.d
+        self.ins = RandomInstance(m, n)
+        self.f = self.ins.f
+        self.C = self.ins.C
 
     def _run_method(self, Method):
         start = time.time()
-        cs = Method(self.L, self.s, self.d)
-        cs.timeout = self.timeout
-        objective = cs.solve().count
+        fl = Method(self.f, self.C)
+        fl.print_info = False
+        fl.timeout = self.timeout
+        objective = fl.solve().objective
         elapsed_time = time.time() - start
 
         return  {
             "method": Method.__name__,
             "objective": objective,
             "elapsed_time": elapsed_time,
-            "status": cs.status
+            "status": fl.status
         }
 
     def _print_result(self, result, enable=True):
@@ -56,12 +64,9 @@ class TestRunTime:
         if not enable:
             return
         print("-" * 50)
-        print(f"Instance: k={len(self.s)}")
-        print(f"|-- L: {self.L}")
-        print(f"|-- s: {self.s}")
-        print(f"|-- d: {self.d}")
-        print(f"|-- Time limit: {self.timeout} seconds")
-        print(f"|-- Size of columns: {self.ins.size()}")
+        m, n = self.C.shape
+        print(f"Instance: m = {m}, n = {n}")
+        print(f"|-- Time Limit: {self.timeout} seconds")
 
     def run(self):
     
@@ -77,13 +82,15 @@ class TestRunTime:
 
 class TestRunTimeBatch:
 
-    def __init__(self, m, b, timeout):
+    def __init__(self, m, n, b, timeout):
         """
-        m: number of stock sizes
+        m: number of facility locations
+        n: number of customers
         b: number of instances
         timeout: timeout in seconds
         """
         self.m = m
+        self.n = n
         self.b = b
         self.timeout = timeout
         self.records = None
@@ -92,9 +99,9 @@ class TestRunTimeBatch:
         print("-" * 50)
         print(f"Running multiple instances.")
         print(f"|-- Instance number = {self.b}")
-        print(f"|-- Stock size number = {self.m}")
-        print(f"|-- Instance size = {RandomInstance(self.m).size()}")
-        print(f"|-- Timeout = {self.timeout} seconds")
+        print(f"|-- Facility location number = {self.m}")
+        print(f"|-- Customer number = {self.n}")
+        print(f"|-- Time limit = {self.timeout} seconds")
         print(f"|-- Methods: {[m.__name__ for m in TestRunTime.methods]}")
         print("-" * 50)
     
@@ -102,9 +109,8 @@ class TestRunTimeBatch:
         self._print_header()
         results = []
         for i in range(self.b):
-            t = TestRunTime(self.m)
+            t = TestRunTime(self.m, self.n)
             print(f">> Instance {i+1}/{self.b}")
-            print(f"   |-- L = {t.L}, s = {t.s}, d = {t.d}")
             t.timeout = self.timeout
             t.print_info = False
             result = t.run()
@@ -164,37 +170,39 @@ class TestRunTimeBatch:
             print(f"    |-- Solved number: {stats[method]['solved_number']}")
             print(f"    |-- Mean elapsed time: {stats[method]['mean_elapsed_time']:.2f} seconds")
         print("-" * 50)
-    
 
-def estimate_instance_sizes():
-    print(f"Estimated instance sizes")
-    for m in range(5, 21):
-        # estimate in multiple times and take the average
-        sizes = np.array([RandomInstance(m).size() for _ in range(100)])
-        size = np.mean(sizes).astype(int)
-        print(f">> m = {m}, size = {size}")
-        
 
-def solve_small_instances():
-    """
-    Compare the three methods on small instances.
-    """
-    t = TestRunTimeBatch(m=8, b=100, timeout=1)
-    t.run().print_statistics()
- 
-
-def solve_large_instances():
-    """ Use column generation method to solve large instances.
-    As direct methods cannot solve them.
-    """
-    t = TestRunTimeBatch(m=20, b=100, timeout=10)
-    TestRunTime.methods = [CutStockApproxCG]
+def test_small():
+    t = TestRunTimeBatch(m=20, n=100, b=100, timeout=5)
     t.run().print_statistics()
 
 
-if __name__ == "__main__":
-    estimate_instance_sizes()
-    # solve_small_instances()
-    # solve_large_instances()
+def _solve_instance(ins, Method, timeout):
+    print("-" * 50)
+    print(f">> [Solving] Method = {Method.__name__}")
+    start = time.time()
+    fl = Method(ins.f, ins.C)
+    fl.timeout = timeout
+    fl.solve()
+    print(f">> [Done] {fl.status}")
+    print(f"Elapsed time: {time.time() - start:.2f} seconds")
+    print(f"Objective: {fl.objective}")
+
+
+def test_large():
+    r = RandomInstance(m=50, n=6000)
+    methods = [
+        #FacilityLocationExact,
+        FacilityLocationBenders
+    ]
+    for method in methods:
+        _solve_instance(r, method, timeout=30)
+
+
+if __name__ == '__main__':
+    test_small()
+    # test_large()
+
 
     
+
