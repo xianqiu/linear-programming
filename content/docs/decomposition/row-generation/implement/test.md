@@ -52,3 +52,11 @@ toc: true
 Elapsed time: 34.95 seconds
 Objective: 8384.0
 ```
+
+### 代码
+
+相关代码在 [`codes/decomposition/facility-location`](https://github.com/xianqiu/linear-programming/tree/main/codes/decomposition/facility-location) 文件夹。
+
+* [test_runtime.py](https://github.com/xianqiu/linear-programming/blob/main/codes/decomposition/facility-location/test_runtime.py) 测试代码
+  * [benders.py](https://github.com/xianqiu/linear-programming/blob/main/codes/decomposition/facility-location/benders.py) 行生成方法
+  * [exact.py](https://github.com/xianqiu/linear-programming/blob/main/codes/decomposition/facility-location/exact.py) 直接求解
