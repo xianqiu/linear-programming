@@ -8,7 +8,7 @@
 
 在线阅读地址：https://lpp.buypdf.cn/
 
-本人水平有限，难免有错误或者不准确的地方，欢迎指正。
+由于本人水平有限，难免有错误或者不准确的地方，欢迎指正。
 
 ### 目录
 
@@ -22,4 +22,5 @@
 - [应用](https://lpp.buypdf.cn/docs/application/)
 
 ### 贡献
+
 如果您对本教程有任何建议或意见，欢迎提交 issue 或 pull request。
