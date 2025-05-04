@@ -13,7 +13,7 @@ hero:
   #    mobile: "gradient-mobile.webp"
 
   badge:
-    text: draft
+    text: v0.1
     color: primary # primary, secondary, success, danger, warning, info, light, dark
     pill: false # boolean
     soft: true # boolean
