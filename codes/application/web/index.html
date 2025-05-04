@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sudoku Puzzle</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        table {
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        td {
+            width: 30px;
+            height: 30px;
+            border: 1px solid #ccc;
+            text-align: center;
+            font-size: 16px;
+        }
+
+        .bold-border {
+            border: 3px solid black; /* Make the 3x3 grid lines thicker */
+        }
+
+        .button-container {
+            display: flex;
+            gap: 10px; /* Add horizontal gap between buttons */
+            margin-bottom: 20px; /* Add margin below the buttons */
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Sudoku Puzzle</h1>
+
+    <table id="sudoku-grid">
+    </table>
+
+    <div class="button-container">
+        <button id="generate-button">Generate</button>
+        <button id="solve-button">Solve</button>
+    </div>
+
+    <script>
+        const table = document.getElementById('sudoku-grid');
+        const generateButton = document.getElementById('generate-button');
+        const solveButton = document.getElementById('solve-button');
+
+        // Generate the 9x9 table dynamically using JavaScript
+        for (let i = 0; i < 9; i++) {
+            const row = table.insertRow();
+            for (let j = 0; j < 9; j++) {
+                const cell = row.insertCell();
+
+                // Add the 'bold-border' class to the appropriate cells to create the 3x3 grid effect
+                if ((i % 3 === 0) && (i > 0)) {
+                    row.classList.add("bold-border-top");
+                }
+                if ((j % 3 === 0) && (j > 0)) {
+                    cell.classList.add("bold-border-left");
+                }
+
+                cell.dataset.row = i; // Store row index
+                cell.dataset.col = j; // Store column index
+                cell.textContent = '';  // Initialize with empty content
+            }
+        }
+
+        // Add CSS rules for the bold borders
+        const style = document.createElement('style');
+        style.innerHTML = `
+            .bold-border-top {
+                border-top: 3px solid black;
+            }
+            .bold-border-left {
+                border-left: 3px solid black;
+            }
+        `;
+        document.head.appendChild(style);
+
+        var board = []; // Declare the board variable outside the event listeners
+
+        // Event listener for the "Generate" button
+        generateButton.addEventListener('click', async () => {
+            const response = await fetch('http://localhost:8000/generate');
+            const data = await response.json();
+            // Extract the board data from the response
+            board = data.board;
+            // Populate the table with the received data
+            for (let i = 0; i < 9; i++) {
+                for (let j = 0; j < 9; j++) {
+                    const cell = table.rows[i].cells[j];
+                    cell.textContent = board[i][j] === 0 ? '' : board[i][j]; // Display empty string for 0
+                }
+            }
+        });
+
+        // Event listener for the "Solve" button
+        solveButton.addEventListener('click', async () => {
+            
+            // 1. Prepare the data to send
+            const data = { board: board };
+            // 2. Send the data to the solve service
+            const response = await fetch('http://localhost:8000/solve', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                });
+            // 3. Receive the response from the solve service
+            const solvedData = await response.json();
+            const solvedBoard = solvedData.solution;
+            const status = solvedData.status;
+
+            if (status === 'SOLVED') {
+                // 4. Display the solved Sudoku on the table
+                for (let i = 0; i < 9; i++) {
+                    for (let j = 0; j < 9; j++) {
+                        const cell = table.rows[i].cells[j];
+                        cell.textContent = solvedBoard[i][j] === 0 ? '' : solvedBoard[i][j];
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
