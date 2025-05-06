@@ -32,7 +32,7 @@ $$
 
 {{< figure src="line1.png" width="400px" class="text-center" >}}
 
-第二个约束条件 $3x_1 + 4x_2 \leq 20$，它表示直线  $3x_1 + 4x_2 \leq 20$ 的左半边部分。再把它跟前面的区域取交集。
+第二个约束条件 $3x_1 + 4x_2 \leq 20$，它表示直线 $3x_1 + 4x_2 = 20$ 的左半边部分。再把它跟前面的区域取交集。
 
 {{< figure src="line2.png" width="400px" class="text-center">}}
 
