@@ -6,7 +6,9 @@
 
 这是一份线性规划的中文教程，侧重于相关算法的实现。 文档和代码都是免费开放。
 
-在线阅读地址：https://lpp.buypdf.cn/
+在线阅读地址
+* https://notes-lpp.netlify.app/
+* https://lpp.buypdf.cn/
 
 由于本人水平有限，难免有错误或者不准确的地方，欢迎指正。
 
