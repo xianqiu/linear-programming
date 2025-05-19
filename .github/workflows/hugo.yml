@@ -58,7 +58,7 @@ jobs:
         run: |
           hugo \
             --minify \
-            --baseURL "https://xianqiu.github.io/linear-programming/"
+            --baseURL ${{ steps.pages.outputs.base_url }}/
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
@@ -68,7 +68,7 @@ jobs:
   deploy:
     environment:
       name: github-pages
-      url: https://xianqiu.github.io/linear-programming/
+      url: ${{ steps.pages.outputs.base_url }}/
     runs-on: ubuntu-latest
     needs: build
     steps:
