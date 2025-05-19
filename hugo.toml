@@ -1,4 +1,4 @@
-baseURL = 'https://lpp.buypdf.cn/'
+baseURL = '/'
 title = 'Linear Programming in Practice'
 enableGitInfo = true 
 [module]
@@ -42,5 +42,3 @@ enableGitInfo = true
 [services]
   [services.googleAnalytics]
       id = 'G-PTWZS77SPR'
-
-    

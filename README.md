@@ -1,14 +1,14 @@
 [![Netlify Status](https://api.netlify.com/api/v1/badges/470d4630-e56b-434c-8e40-f5ad4f38cfe4/deploy-status)](https://app.netlify.com/sites/course-lpp/deploys) ![Static Badge](https://img.shields.io/badge/python-3.12%2B-blue)
 
 
-
 ### 线性规划
 
 这是一份线性规划的中文教程，侧重于相关算法的实现。 文档和代码都是免费开放。
 
 在线阅读地址
-* https://notes-lpp.netlify.app/
-* https://lpp.buypdf.cn/
+* [主要] https://notes-lpp.netlify.app/
+* [备用] https://xianqiu.github.io/linear-programming/docs/
+* [备用] https://lpp.buypdf.cn/
 
 由于本人水平有限，难免有错误或者不准确的地方，欢迎指正。
 
