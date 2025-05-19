@@ -1,4 +1,4 @@
-# baseURL = "/"
+baseURL = 'https://lpp.buypdf.cn/'
 title = 'Linear Programming in Practice'
 enableGitInfo = true 
 [module]
