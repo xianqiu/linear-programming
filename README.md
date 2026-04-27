@@ -7,7 +7,7 @@
 
 在线阅读地址
 * [主要] https://lpp.buypdf.cn/
-* [备用] https://notes-lpp.netlify.app/
+* [备用] https://linear-programming.pages.dev/
 
 由于本人水平有限，难免有错误或者不准确的地方，欢迎指正。
 
