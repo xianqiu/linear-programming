@@ -3,8 +3,7 @@
 这是一份线性规划的中文教程，侧重于相关算法的实现。 文档和代码都是免费开放。
 
 在线阅读地址
-* [主要] https://lpp.buypdf.cn/
-* [备用] https://linear-programming.pages.dev/
+* https://linear-programming.pages.dev/
 
 由于本人水平有限，难免有错误或者不准确的地方，欢迎指正。
 
